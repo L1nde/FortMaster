@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 
-namespace Assets.Scripts
+namespace Assets.Scripts.enemies.ammo
 {
-    public class Arrow : MonoBehaviour
+    public class Projectile : MonoBehaviour
     {
         public float initialAngle = 45f;
 
