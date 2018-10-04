@@ -25,13 +25,13 @@ namespace Assets.Scripts.enemies
             // attacking
             if (attackAcc > attackDelay)
             {
-                Transform target = getTarget();
-                if (target != null)
+                Collider2D targetCollider = getTarget();
+                if (targetCollider != null)
                 {
                     anim.SetBool("attacking", true);
                     attackAcc = 0f;
                     Projectile projectile = Instantiate(projectilePrefab, transform.position, transform.rotation);
-                    projectile.setTarget(target.position);
+                    projectile.setTarget(targetCollider.gameObject.transform.position);
                 }
                 else
                 {

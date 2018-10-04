@@ -1,23 +1,20 @@
 fileFormatVersion: 2
-guid: 7353ef1348b158f4aaeb1d148fd9d94f
+guid: 6ef694d1b9a5d2e46b8e24dc4d7b964b
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Archer_0
-    21300002: Archer_1
-    21300004: Archer_2
-    21300006: Archer_3
-    21300008: Archer_4
-    21300010: Archer_5
-    21300012: Archer_6
-    21300014: Archer_7
-    21300016: Archer_8
-    21300018: Archer_9
-    21300020: Archer_10
-    21300022: Archer_11
-    21300024: Archer_12
-    21300026: Archer_13
-    21300028: Archer_14
-    21300030: Archer_15
+    21300000: MeeleAttack_0
+    21300002: MeeleAttack_1
+    21300004: MeeleAttack_2
+    21300006: MeeleAttack_3
+    21300008: MeeleAttack_4
+    21300010: MeeleAttack_5
+    21300012: MeeleAttack_6
+    21300014: MeeleAttack_7
+    21300016: MeeleAttack_8
+    21300018: MeeleAttack_9
+    21300020: MeeleAttack_10
+    21300022: MeeleAttack_11
+    21300024: MeeleAttack_12
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -61,7 +58,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 750
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -100,281 +97,261 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Archer_0
+      name: MeeleAttack_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 64.5
-        width: 63.285713
-        height: 64.5
-      alignment: 9
-      pivot: {x: 0.43, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ddd93db72ce8945a6bd9ce83172552c3
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Archer_1
-      rect:
-        serializedVersion: 2
-        x: 63
-        y: 64.5
-        width: 63.285713
-        height: 64.5
-      alignment: 9
-      pivot: {x: 0.43, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2eae8988e551d4af08aa9e3e5308bc00
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Archer_2
-      rect:
-        serializedVersion: 2
-        x: 126
-        y: 64.5
-        width: 63.285713
-        height: 64.5
-      alignment: 9
-      pivot: {x: 0.43, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2aee17a14c0494063948b4d87ee62039
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Archer_3
-      rect:
-        serializedVersion: 2
-        x: 189
-        y: 64.5
-        width: 63.285713
-        height: 64.5
-      alignment: 9
-      pivot: {x: 0.43, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 60f7f34e0dbef481e9484b75488c50f8
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Archer_4
-      rect:
-        serializedVersion: 2
-        x: 252
-        y: 64.5
-        width: 63.285713
-        height: 64.5
-      alignment: 9
-      pivot: {x: 0.43, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: bd3a8d7b2008f4ab894750d8c89c8e70
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Archer_5
-      rect:
-        serializedVersion: 2
-        x: 315
-        y: 64.5
-        width: 63.285713
-        height: 64.5
-      alignment: 9
-      pivot: {x: 0.43, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: efa5c991dcc71464a92d07cefd45185d
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Archer_6
-      rect:
-        serializedVersion: 2
-        x: 378
-        y: 64.5
-        width: 63.285713
-        height: 64.5
-      alignment: 9
-      pivot: {x: 0.43, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a28cec3cc624343769e367a28e14272a
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Archer_7
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0.5
-        width: 63.285713
-        height: 64.5
-      alignment: 9
-      pivot: {x: 0.43, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 18dc2dce5b5e8413f9488109394496bd
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Archer_8
-      rect:
-        serializedVersion: 2
-        x: 63
-        y: 0.5
-        width: 63.285713
-        height: 64.5
-      alignment: 9
-      pivot: {x: 0.43, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 18d4252b096a343dcb213d40f565eed4
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Archer_9
-      rect:
-        serializedVersion: 2
-        x: 126
-        y: 0.5
-        width: 63.285713
-        height: 64.5
-      alignment: 9
-      pivot: {x: 0.43, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1e2cfa95c7c244017beef61b8737d8eb
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Archer_10
-      rect:
-        serializedVersion: 2
-        x: 189
-        y: 0.5
-        width: 63.285713
-        height: 64.5
-      alignment: 9
-      pivot: {x: 0.43, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 81a599c73578f4267b011838e0dc7bb0
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Archer_11
-      rect:
-        serializedVersion: 2
-        x: 252
         y: 0
-        width: 70
-        height: 64
+        width: 794.0769
+        height: 562
       alignment: 9
-      pivot: {x: 0.3867436, y: 0.5157706}
+      pivot: {x: 0.53, y: 0.37}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 48418c116d3634a1d87b44907dbfbf58
+      spriteID: 260f8accb5967374b96548c2a00d886f
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Archer_12
+      name: MeeleAttack_1
       rect:
         serializedVersion: 2
-        x: 322
+        x: 794
         y: 0
-        width: 63
-        height: 64
+        width: 794.0769
+        height: 562
       alignment: 9
-      pivot: {x: 0.334275, y: 0.50788546}
+      pivot: {x: 0.53, y: 0.37}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 651314e8ed7bd46359bf6467fd7b5ffc
+      spriteID: a570c9fa9271361408909fad8e8688a9
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Archer_13
+      name: MeeleAttack_2
       rect:
         serializedVersion: 2
-        x: 385
+        x: 1585
         y: 0
-        width: 57
-        height: 64
+        width: 794
+        height: 562
       alignment: 9
-      pivot: {x: 0.3901576, y: 0.51182806}
+      pivot: {x: 0.53, y: 0.37}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: df34782af36fa42c589a9a4b5f7e8f3f
+      spriteID: 94f3a7c2ffe12064eb9d933dcdcc673d
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MeeleAttack_3
+      rect:
+        serializedVersion: 2
+        x: 2382
+        y: 0
+        width: 794.0769
+        height: 562
+      alignment: 9
+      pivot: {x: 0.53, y: 0.37}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b63e53d89bb825d4ab434089a9ce7233
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MeeleAttack_4
+      rect:
+        serializedVersion: 2
+        x: 3176
+        y: 0
+        width: 794.0769
+        height: 562
+      alignment: 9
+      pivot: {x: 0.53, y: 0.37}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5d438031c245e844387c9ea5c07d4db9
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MeeleAttack_5
+      rect:
+        serializedVersion: 2
+        x: 3970
+        y: 0
+        width: 794.0769
+        height: 562
+      alignment: 9
+      pivot: {x: 0.53, y: 0.37}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 38b495a4761dad64db536328b8e5f0d2
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MeeleAttack_6
+      rect:
+        serializedVersion: 2
+        x: 4764
+        y: 0
+        width: 794.0769
+        height: 562
+      alignment: 9
+      pivot: {x: 0.53, y: 0.37}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 77dd8913bbbb2cd489c7ad7bd324030a
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MeeleAttack_7
+      rect:
+        serializedVersion: 2
+        x: 5558
+        y: 0
+        width: 794.0769
+        height: 562
+      alignment: 9
+      pivot: {x: 0.53, y: 0.37}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 28cac7089ac27d44b9f45d6755503a7f
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MeeleAttack_8
+      rect:
+        serializedVersion: 2
+        x: 6352
+        y: 0
+        width: 794.0769
+        height: 562
+      alignment: 9
+      pivot: {x: 0.53, y: 0.37}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c1e0f65666f44e749b744284f8800c47
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MeeleAttack_9
+      rect:
+        serializedVersion: 2
+        x: 7146
+        y: 0
+        width: 794.0769
+        height: 562
+      alignment: 9
+      pivot: {x: 0.53, y: 0.37}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3706b07aac0107d419f4e5669d723b28
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MeeleAttack_10
+      rect:
+        serializedVersion: 2
+        x: 7940
+        y: 0
+        width: 852
+        height: 562
+      alignment: 9
+      pivot: {x: 0.49074215, y: 0.37743956}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 65cff7db19c2b72488beb689023788b7
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MeeleAttack_11
+      rect:
+        serializedVersion: 2
+        x: 8777
+        y: 0
+        width: 751
+        height: 562
+      alignment: 9
+      pivot: {x: 0.49542278, y: 0.37}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 102a5c4c6e2276846b42de77070cd8d0
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MeeleAttack_12
+      rect:
+        serializedVersion: 2
+        x: 9528
+        y: 0
+        width: 794.0769
+        height: 562
+      alignment: 9
+      pivot: {x: 0.53, y: 0.37}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3a4af7bd780eecd42b1dea85eb8a8b79
       vertices: []
       indices: 
       edges: []
@@ -382,7 +359,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: ec4561f7c75318849ac3fa2570266c1a
+    spriteID: a1b160497c2728a49b7894fb273c4f55
     vertices: []
     indices: 
     edges: []
