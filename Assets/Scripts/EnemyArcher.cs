@@ -15,10 +15,12 @@ namespace Assets.Scripts
         private float attackAcc = 0f;
         public Arrow arrowPreFab;
 
+
         // Use this for initialization
         void Start()
         {
             rb2d = GetComponent<Rigidbody2D>();
+            
             
         }
 
@@ -33,10 +35,11 @@ namespace Assets.Scripts
                 rb2d.velocity = new Vector2(speed, rb2d.velocity.y);
 
             // attacking
-            if (attackAcc > attackDelay)
+            if (attackAcc > attackDelay &&GameObject.FindGameObjectWithTag("StructureBlock") != null)
             {
                 attackAcc = 0f;
-                Instantiate(arrowPreFab, transform.position, transform.rotation);
+                Arrow arrow = Instantiate(arrowPreFab, transform.position, transform.rotation);
+                arrow.setTarget(GameObject.FindGameObjectWithTag("StructureBlock").transform.position);
             }
 
             attackAcc += Time.deltaTime;

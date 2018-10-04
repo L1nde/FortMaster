@@ -9,52 +9,54 @@ namespace Assets.Scripts
         public float damage = 10f;
 
         private Rigidbody2D rb2d;
-        private GameObject fortbase;
+        private Vector3 target;
 
         private bool flying = true;
         private bool impacted = false;
+        private bool newTarget = false;
 
         // Use this for initialization
         void Start()
         {
-            fortbase = GameObject.FindGameObjectWithTag("StructureBlock");
             rb2d = GetComponent<Rigidbody2D>();
-
-            Vector3 target = fortbase.transform.position;
-
-            float gravity = Physics.gravity.magnitude;
-            // Selected angle in radians
-            float angle = initialAngle * Mathf.Deg2Rad;
-
-
-            // Planar distance between objects
-            float distance = Vector3.Distance(target, transform.position);
-            // Distance along the y axis between objects
-            float yOffset = transform.position.y - target.y;
-
-            float initialVelocity = (1 / Mathf.Cos(angle)) *
-                                    Mathf.Sqrt((0.5f * gravity * Mathf.Pow(distance, 2)) /
-                                               (distance * Mathf.Tan(angle) + yOffset));
-
-            Vector3 velocity = new Vector3(0, initialVelocity * Mathf.Sin(angle), initialVelocity * Mathf.Cos(angle));
-
-            // Rotate our velocity to match the direction between the two objects
-            float angleBetweenObjects = Vector3.Angle(Vector3.forward, target - transform.position);
-            Vector3 finalVelocity = Quaternion.AngleAxis(angleBetweenObjects, Vector3.up) * velocity;
-            if (target.x - transform.position.x < 0)
-            {
-                finalVelocity = new Vector3(-finalVelocity.x, finalVelocity.y);
-            }
-
-            rb2d.AddForce(finalVelocity * rb2d.mass, ForceMode2D.Impulse);
-
-
-            transform.rotation = LookAt2D(rb2d.velocity);
         }
 
         // Update is called once per frame
         void Update()
         {
+            // if arrow got new target
+            if(newTarget){ 
+                newTarget = false;
+                float gravity = Physics.gravity.magnitude;
+                // Selected angle in radians
+                float angle = initialAngle * Mathf.Deg2Rad;
+
+
+                // Planar distance between objects
+                float distance = Vector3.Distance(target, transform.position);
+                // Distance along the y axis between objects
+                float yOffset = transform.position.y - target.y;
+
+                float initialVelocity = (1 / Mathf.Cos(angle)) *
+                                        Mathf.Sqrt((0.5f * gravity * Mathf.Pow(distance, 2)) /
+                                                (distance * Mathf.Tan(angle) + yOffset));
+
+                Vector3 velocity = new Vector3(0, initialVelocity * Mathf.Sin(angle), initialVelocity * Mathf.Cos(angle));
+
+                // Rotate our velocity to match the direction between the two objects
+                float angleBetweenObjects = Vector3.Angle(Vector3.forward, target - transform.position);
+                Vector3 finalVelocity = Quaternion.AngleAxis(angleBetweenObjects, Vector3.up) * velocity;
+                if (target.x - transform.position.x < 0)
+                {
+                    finalVelocity = new Vector3(-finalVelocity.x, finalVelocity.y);
+                }
+                
+                rb2d.AddForce(finalVelocity * rb2d.mass, ForceMode2D.Impulse);
+
+
+                transform.rotation = LookAt2D(rb2d.velocity);
+            }
+            
             if (!flying)
             {
                 rb2d.velocity = Vector2.zero;
@@ -63,6 +65,8 @@ namespace Assets.Scripts
             {
                 transform.rotation = LookAt2D(rb2d.velocity);
             }
+            
+            
 
             Destroy(gameObject, 10f);
         }
@@ -87,6 +91,11 @@ namespace Assets.Scripts
             impacted = true;
 
 //            gameObject.AddComponent<FixedJoint2D>().connectedBody = collision.gameObject.GetComponent<Rigidbody2D>();
+        }
+
+        public void setTarget(Vector3 target){
+            this.target = target;
+            newTarget = true;
         }
     }
 }
