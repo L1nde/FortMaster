@@ -22,8 +22,8 @@ GameObject:
   - component: {fileID: 212237153744355450}
   - component: {fileID: 61150851103297204}
   - component: {fileID: 58861570504882460}
-  - component: {fileID: 114341463140934870}
   - component: {fileID: 50140279646673856}
+  - component: {fileID: 114341463140934870}
   m_Layer: 8
   m_Name: Arrow
   m_TagString: Projectile
