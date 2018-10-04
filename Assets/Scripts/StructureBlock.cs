@@ -6,8 +6,9 @@ using UnityEngine;
 public class StructureBlock : MonoBehaviour {
 
     public float hp;
-    private GameObject[] attachPoints;
+    public float jointBreakTorque;
 
+    private GameObject[] attachPoints;
     private float initialGravity;
 
 	// Use this for initialization
@@ -82,6 +83,8 @@ public class StructureBlock : MonoBehaviour {
             anchor.y = Mathf.Round(anchor.y);
             fj.autoConfigureConnectedAnchor = false;
             fj.connectedAnchor = anchor;
+            fj.dampingRatio = 1;
+            fj.breakTorque = jointBreakTorque;
         }
     }
 
