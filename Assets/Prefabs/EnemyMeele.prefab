@@ -55,7 +55,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1503355525645332}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.9199872, y: -2.1445315, z: 0}
+  m_LocalPosition: {x: 7.0357604, y: -2.6305983, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4662245862962100}
@@ -119,7 +119,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.03427604, y: -0.18}
@@ -183,6 +183,7 @@ MonoBehaviour:
   speed: -1
   attackDelay: 1
   attackRange: 0.5
+  damage: 10
 --- !u!212 &212425399086275006
 SpriteRenderer:
   m_ObjectHideFlags: 1

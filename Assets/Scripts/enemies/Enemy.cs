@@ -40,24 +40,28 @@ namespace Assets.Scripts.enemies
             {
                 Destroy(gameObject);
             }
-
-            rb2d.velocity = new Vector2(speed, rb2d.velocity.y);
+            move();
+            
 
             
         }
 
-        protected Transform getTarget()
+        protected Collider2D getTarget()
         {
             Collider2D[] colliders = new Collider2D[10];
             int count = attackRangeCollider.GetContacts(colliders);
             if (count != 0)
             {
-                return colliders[0].gameObject.transform;
+                return colliders[0];
             }
             else
             {
                 return null;
             }
+        }
+
+        protected void move(){
+            rb2d.velocity = new Vector2(speed, rb2d.velocity.y);
         }
 
         public abstract void attack();
