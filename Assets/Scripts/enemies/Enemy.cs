@@ -14,6 +14,7 @@ namespace Assets.Scripts.enemies
         protected float attackAcc = 0f;
         protected Rigidbody2D rb2d;
         protected Animator anim;
+        protected bool stopMovement = false;
 
 
 
@@ -61,7 +62,24 @@ namespace Assets.Scripts.enemies
         }
 
         protected void move(){
-            rb2d.velocity = new Vector2(speed, rb2d.velocity.y);
+            if (!stopMovement)
+            {
+                rb2d.velocity = new Vector2(speed, rb2d.velocity.y);
+            }
+            else
+            {
+                rb2d.velocity = new Vector2(0, 0);
+//                rb2d.constraints = RigidbodyConstraints2D.FreezeAll;
+            }
+            
+        }
+
+        void OnCollisionEnter2D(Collision2D collision)
+        {
+            if (collision.gameObject.tag == "StructureBlock")
+            {
+                stopMovement = true;
+            }
         }
 
         public abstract void attack();

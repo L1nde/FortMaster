@@ -22,7 +22,7 @@ namespace Assets.Scripts.enemies
         {
             Collider2D targetCollider = getTarget();
             if (targetCollider != null){
-                rb2d.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
+                
                 if (attackAcc > attackDelay)
                 {
                     anim.SetBool("attacking", true);
@@ -32,9 +32,15 @@ namespace Assets.Scripts.enemies
             } else
                 {
                 anim.SetBool("attacking", false);
-                rb2d.constraints = RigidbodyConstraints2D.FreezeRotation;
+                    stopMovement = false;
                 }
             attackAcc += Time.deltaTime;
         }
+
+        
+
+       
+
+
     }
 }

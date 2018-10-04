@@ -6,7 +6,8 @@ public class EnemySpawn : MonoBehaviour
 {
 
     public float spawnDelay = 1f;
-    public GameObject enemyPrefab;
+
+    public GameObject[] enemyPrefabs;
 
     private float spawnAcc = 0f;
 
@@ -20,7 +21,8 @@ public class EnemySpawn : MonoBehaviour
 	    if (spawnAcc > spawnDelay)
 	    {
 	        spawnAcc = 0f;
-	        Instantiate(enemyPrefab, transform.position, transform.rotation);
+	        int n = Random.Range(0, 2);
+	        Instantiate(enemyPrefabs[n], transform.position, transform.rotation);
 	    }
 
 	    spawnAcc += Time.deltaTime;
