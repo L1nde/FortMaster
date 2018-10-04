@@ -19,7 +19,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4591679312313314}
-  - component: {fileID: 58429953209870870}
   m_Layer: 0
   m_Name: StructureAttatchPoint4
   m_TagString: StructureBlockAttachPoint
@@ -35,7 +34,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4475377870035296}
-  - component: {fileID: 58092858564774510}
   m_Layer: 0
   m_Name: StructureAttatchPoint3
   m_TagString: StructureBlockAttachPoint
@@ -70,7 +68,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4417286232915452}
-  - component: {fileID: 58195315609455456}
   m_Layer: 0
   m_Name: StructureAttatchPoint1
   m_TagString: StructureBlockAttachPoint
@@ -86,7 +83,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4934672139369372}
-  - component: {fileID: 58972163470127686}
   m_Layer: 0
   m_Name: StructureAttatchPoint2
   m_TagString: StructureBlockAttachPoint
@@ -101,7 +97,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1381435729713604}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -7.64, y: -1.96, z: 0}
+  m_LocalPosition: {x: -4.4562893, y: -1.1879716, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children:
   - {fileID: 4417286232915452}
@@ -183,66 +179,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!58 &58092858564774510
-CircleCollider2D:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1280705138233248}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.3
---- !u!58 &58195315609455456
-CircleCollider2D:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1796199850680466}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.3
---- !u!58 &58429953209870870
-CircleCollider2D:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1016019451023470}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.3
---- !u!58 &58972163470127686
-CircleCollider2D:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1962515592589496}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.3
 --- !u!61 &61988434040851230
 BoxCollider2D:
   m_ObjectHideFlags: 1
