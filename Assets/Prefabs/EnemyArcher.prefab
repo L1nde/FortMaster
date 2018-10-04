@@ -11,6 +11,22 @@ Prefab:
   m_SourcePrefab: {fileID: 0}
   m_RootGameObject: {fileID: 1600820357053968}
   m_IsPrefabAsset: 1
+--- !u!1 &1437435827417142
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4147415559906300}
+  - component: {fileID: 58285769264135254}
+  m_Layer: 10
+  m_Name: AttackRange
+  m_TagString: AttackRange
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1600820357053968
 GameObject:
   m_ObjectHideFlags: 0
@@ -23,8 +39,8 @@ GameObject:
   - component: {fileID: 50527214513293046}
   - component: {fileID: 58699295861812054}
   - component: {fileID: 61235662996074658}
-  - component: {fileID: 114967010285271176}
   - component: {fileID: 95976975897231170}
+  - component: {fileID: 114219937301509240}
   m_Layer: 9
   m_Name: EnemyArcher
   m_TagString: Untagged
@@ -32,6 +48,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!4 &4147415559906300
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1437435827417142}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4185228992580262}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4185228992580262
 Transform:
   m_ObjectHideFlags: 1
@@ -41,7 +70,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 9.63, y: -2.78, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 4147415559906300}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -65,6 +95,21 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!58 &58285769264135254
+CircleCollider2D:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1437435827417142}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 10
 --- !u!58 &58699295861812054
 CircleCollider2D:
   m_ObjectHideFlags: 1
@@ -123,7 +168,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &114967010285271176
+--- !u!114 &114219937301509240
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -131,13 +176,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1600820357053968}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 906a1cbd2ed10724d9300647af663b83, type: 3}
+  m_Script: {fileID: 11500000, guid: 926399207a2ca4e43b13bda3110d1bc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 100
   speed: -0.5
   attackDelay: 1
-  arrowPreFab: {fileID: 114341463140934870, guid: c874c41003b9ed9479010e688907b355,
+  attackRange: 1
+  projectilePrefab: {fileID: 114341463140934870, guid: c874c41003b9ed9479010e688907b355,
     type: 2}
 --- !u!212 &212208394430703736
 SpriteRenderer:
