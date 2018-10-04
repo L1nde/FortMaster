@@ -19,6 +19,7 @@ namespace Assets.Scripts
         void Start()
         {
             rb2d = GetComponent<Rigidbody2D>();
+            
         }
 
         // Update is called once per frame
@@ -29,7 +30,7 @@ namespace Assets.Scripts
                 Destroy(gameObject);
             }
 
-            rb2d.velocity = new Vector2(speed * Time.deltaTime, rb2d.velocity.y);
+                rb2d.velocity = new Vector2(speed, rb2d.velocity.y);
 
             // attacking
             if (attackAcc > attackDelay)

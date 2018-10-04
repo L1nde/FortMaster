@@ -6,10 +6,13 @@ namespace Assets.Scripts
     {
         public float initialAngle = 45f;
 
+        public float damage = 10f;
+
         private Rigidbody2D rb2d;
         private GameObject fortbase;
 
         private bool flying = true;
+        private bool impacted = false;
 
         // Use this for initialization
         void Start()
@@ -75,6 +78,13 @@ namespace Assets.Scripts
             {
                 flying = false;
             }
+
+            if (collision.gameObject.tag == "StructureBlock" && !impacted)
+            {
+                collision.gameObject.GetComponent<StructureBlock>().doDamage(damage);
+            }
+
+            impacted = true;
 
 //            gameObject.AddComponent<FixedJoint2D>().connectedBody = collision.gameObject.GetComponent<Rigidbody2D>();
         }
