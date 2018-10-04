@@ -10,15 +10,19 @@ namespace Assets.Scripts.enemies
         public float attackDelay = 1f;
         public float attackRange = 1f;
         public float radius = 10f;
+        public Projectile projectilePrefab;
 
         private CircleCollider2D attackRangeCollider;
         private float attackAcc = 0f;
         private Rigidbody2D rb2d;
-        public Projectile projectilePrefab;
+        private Animator anim;
+        
+
 
         // Use this for initialization
         void Start()
         {
+            anim = GetComponent<Animator>();
             rb2d = GetComponent<Rigidbody2D>();
             foreach (var child in GetComponentsInChildren<CircleCollider2D>())
             {
@@ -42,15 +46,21 @@ namespace Assets.Scripts.enemies
             rb2d.velocity = new Vector2(speed, rb2d.velocity.y);
 
             // attacking
-            if (attackAcc > attackDelay && GameObject.FindGameObjectWithTag("StructureBlock") != null)
+            if (attackAcc > attackDelay)
             {
                 Transform target = getTarget();
                 if (target != null)
                 {
+                    anim.SetBool("attacking", true);
                     attackAcc = 0f;
                     Projectile projectile = Instantiate(projectilePrefab, transform.position, transform.rotation);
                     projectile.setTarget(target.position);
                 }
+                else
+                {
+                    anim.SetBool("attacking", false);
+                }
+                Debug.Log(target);
                
             }
             
