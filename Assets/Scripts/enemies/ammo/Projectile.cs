@@ -1,9 +1,7 @@
 ﻿using UnityEngine;
 
-namespace Assets.Scripts.enemies.ammo
-{
-    public class Projectile : MonoBehaviour
-    {
+namespace Assets.Scripts.enemies.ammo {
+    public class Projectile : MonoBehaviour {
         public float initialAngle = 45f;
 
         public float damage = 10f;
@@ -16,48 +14,39 @@ namespace Assets.Scripts.enemies.ammo
         private bool newTarget = false;
 
         // Use this for initialization
-        void Start()
-        {
+        void Start() {
             rb2d = GetComponent<Rigidbody2D>();
         }
 
         // Update is called once per frame
-        void Update()
-        {
+        void Update() {
             // if arrow got new target
-            if(newTarget){ 
+            if (newTarget) {
                 newTarget = false;
                 shootProjectile();
             }
-            
-            if (!flying)
-            {
+
+            if (!flying) {
                 rb2d.velocity = Vector2.zero;
             }
-            else
-            {
+            else {
                 transform.rotation = LookAt2D(rb2d.velocity);
             }
-            
-        
+
 
             Destroy(gameObject, 10f);
         }
 
-        private Quaternion LookAt2D(Vector2 forward)
-        {
+        private Quaternion LookAt2D(Vector2 forward) {
             return Quaternion.Euler(0, 0, Mathf.Atan2(forward.y, forward.x) * Mathf.Rad2Deg);
         }
 
-        private void OnCollisionEnter2D(Collision2D collision)
-        {
-            if (collision.gameObject.tag == "Terrain")
-            {
+        private void OnCollisionEnter2D(Collision2D collision) {
+            if (collision.gameObject.tag == "Terrain") {
                 flying = false;
             }
 
-            if (collision.gameObject.tag == "StructureBlock" && !impacted)
-            {
+            if (collision.gameObject.tag == "StructureBlock" && !impacted) {
                 collision.gameObject.GetComponent<StructureBlock>().doDamage(damage);
             }
 
@@ -66,13 +55,12 @@ namespace Assets.Scripts.enemies.ammo
 //            gameObject.AddComponent<FixedJoint2D>().connectedBody = collision.gameObject.GetComponent<Rigidbody2D>();
         }
 
-        public void setTarget(Vector3 target){
+        public void setTarget(Vector3 target) {
             this.target = target;
             newTarget = true;
         }
 
-        private void shootProjectile()
-        {
+        private void shootProjectile() {
             float gravity = Physics.gravity.magnitude;
             // Selected angle in radians
             float angle = initialAngle * Mathf.Deg2Rad;
@@ -92,8 +80,7 @@ namespace Assets.Scripts.enemies.ammo
             // Rotate our velocity to match the direction between the two objects
             float angleBetweenObjects = Vector3.Angle(Vector3.forward, target - transform.position);
             Vector3 finalVelocity = Quaternion.AngleAxis(angleBetweenObjects, Vector3.up) * velocity;
-            if (target.x - transform.position.x < 0)
-            {
+            if (target.x - transform.position.x < 0) {
                 finalVelocity = new Vector3(-finalVelocity.x, finalVelocity.y);
             }
 

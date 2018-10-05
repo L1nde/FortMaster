@@ -1,10 +1,8 @@
 ﻿using Assets.Scripts.enemies.ammo;
 using UnityEngine;
 
-namespace Assets.Scripts.enemies
-{
+namespace Assets.Scripts.enemies {
     public abstract class Enemy : MonoBehaviour {
-
         public float hp = 100f;
         public float speed = 1f;
         public float attackDelay = 1f;
@@ -17,16 +15,12 @@ namespace Assets.Scripts.enemies
         protected bool stopMovement = false;
 
 
-
         // Use this for initialization
-        protected void Start()
-        {
+        protected void Start() {
             anim = GetComponent<Animator>();
             rb2d = GetComponent<Rigidbody2D>();
-            foreach (var child in GetComponentsInChildren<CircleCollider2D>())
-            {
-                if (child.gameObject.tag == "AttackRange")
-                {
+            foreach (var child in GetComponentsInChildren<CircleCollider2D>()) {
+                if (child.gameObject.tag == "AttackRange") {
                     attackRangeCollider = child;
                     attackRangeCollider.radius = attackRange;
                     break;
@@ -35,49 +29,39 @@ namespace Assets.Scripts.enemies
         }
 
         // Update is called once per frame
-        protected void Update()
-        {
-            if (hp <= 0)
-            {
+        protected void Update() {
+            if (hp <= 0) {
                 Destroy(gameObject);
             }
-            move();
-            
 
-            
+            move();
         }
 
-        protected Collider2D getTarget()
-        {
+
+        protected Collider2D getTarget() {
             Collider2D[] colliders = new Collider2D[10];
             int count = attackRangeCollider.GetContacts(colliders);
-            if (count != 0)
-            {
+            if (count != 0) {
                 return colliders[0];
             }
-            else
-            {
+            else {
                 return null;
             }
         }
 
-        protected void move(){
-            if (!stopMovement)
-            {
+
+        protected void move() {
+            if (!stopMovement) {
                 rb2d.velocity = new Vector2(speed, rb2d.velocity.y);
             }
-            else
-            {
+            else {
                 rb2d.velocity = new Vector2(0, 0);
 //                rb2d.constraints = RigidbodyConstraints2D.FreezeAll;
             }
-            
         }
 
-        void OnCollisionEnter2D(Collision2D collision)
-        {
-            if (collision.gameObject.tag == "StructureBlock")
-            {
+        void OnCollisionEnter2D(Collision2D collision) {
+            if (collision.gameObject.tag == "StructureBlock") {
                 stopMovement = true;
             }
         }
