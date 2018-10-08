@@ -90,7 +90,7 @@ public class StructureBlock : MonoBehaviour {
 
     private StructureBlock GetClosestStructureBlockToPos(Vector3 pos)
     {
-        GameObject o = ConstructionManager.instance.getClosestAttatcherInRange(pos, 0.3f);
+        GameObject o = ConstructionManager.instance.getClosestAttatcherInRange(pos, 0.01f);
         if (Equals(o, null))
             return null;
         return o.transform.GetComponentInParent<StructureBlock>();
