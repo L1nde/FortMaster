@@ -67,5 +67,11 @@ namespace Assets.Scripts.enemies {
         }
 
         public abstract void attack();
+
+        public void doDamage(float damage) {
+            hp -= damage;
+        }
     }
+
+
 }

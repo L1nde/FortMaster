@@ -216,6 +216,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 100
+  jointBreakTorque: 100
 --- !u!212 &212518249846193314
 SpriteRenderer:
   m_ObjectHideFlags: 1

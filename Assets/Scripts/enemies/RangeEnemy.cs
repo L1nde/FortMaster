@@ -18,17 +18,20 @@ namespace Assets.Scripts.enemies {
 
         public override void attack() {
             // attacking
-            if (attackAcc > attackDelay) {
-                Collider2D targetCollider = getTarget();
-                if (targetCollider != null) {
+            Collider2D targetCollider = getTarget();
+            if (targetCollider != null) {
+                if (attackAcc > attackDelay) {
                     anim.SetBool("attacking", true);
                     attackAcc = 0f;
                     Projectile projectile = Instantiate(projectilePrefab, transform.position, transform.rotation);
                     projectile.setTarget(targetCollider.gameObject.transform.position);
                 }
-                else {
-                    anim.SetBool("attacking", false);
-                }
+
+                stopMovement = true;
+            }
+            else {
+                anim.SetBool("attacking", false);
+                stopMovement = false;
             }
 
 
