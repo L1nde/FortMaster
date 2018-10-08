@@ -17,7 +17,7 @@ public class EnemySpawn : MonoBehaviour {
     void Update() {
         if (spawnAcc > spawnDelay) {
             spawnAcc = 0f;
-            int n = Random.Range(0, 2);
+            int n = Random.Range(0, enemyPrefabs.Length);
             Instantiate(enemyPrefabs[n], transform.position, transform.rotation);
         }
 
