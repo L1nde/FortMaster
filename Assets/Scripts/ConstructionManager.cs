@@ -61,8 +61,10 @@ public class ConstructionManager : MonoBehaviour {
         pos.z = 0;
         selectedSB.transform.position = pos;
         GameObject closestAttatcher = getClosestAttatcherInRange(pos, 0.3f);
-        if (Equals(closestAttatcher, null))
+        if (Equals(closestAttatcher, null)) {
             selectedSB.transform.position = pos;
+            selectedSB.transform.rotation = new Quaternion();
+        }
         else
         {
             Transform parent = closestAttatcher.transform.parent.transform;
