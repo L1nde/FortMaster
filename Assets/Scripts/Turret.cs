@@ -41,6 +41,7 @@ public class Turret : Placeable {
             Destroy(gameObject);
             return;
         }
+        sb.disableTurretAttatchPoint();
         FixedJoint2D fj = gameObject.AddComponent<FixedJoint2D>();
         fj.connectedBody = sb.GetComponent<Rigidbody2D>();
         transform.parent = sb.transform;

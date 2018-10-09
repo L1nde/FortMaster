@@ -50,11 +50,6 @@ public class ConstructionManager : MonoBehaviour {
         block.activateDragMode();
     }
 
-    private void deSelect() {
-        selected.disableDragMode();
-        selected = null;
-    }
-
     public GameObject getClosestStructureAttatcherInRange(Vector3 pos, float range)
     {
         StructureBlock[] blocks = fortBase.GetComponentsInChildren<StructureBlock>();
@@ -81,6 +76,8 @@ public class ConstructionManager : MonoBehaviour {
         GameObject closest = null;
         for (int i = 0; i < blocks.Length; i++) {
             GameObject a = blocks[i].getTurretAttatchPoint();
+            if (Equals(a, null))
+                continue;
             Vector3 aPos = a.transform.position;
             float d = Mathf.Pow(aPos.x - pos.x, 2) + Mathf.Pow(aPos.y - pos.y, 2);
             if (range > d) {

@@ -29,4 +29,10 @@ public abstract class Placeable : MonoBehaviour {
         c.a = a;
         gameObject.GetComponent<SpriteRenderer>().color = c;
     }
+
+    protected void setSelectedGreenColor(float g) {
+        Color c = gameObject.GetComponent<SpriteRenderer>().color;
+        c.g = g;
+        gameObject.GetComponent<SpriteRenderer>().color = c;
+    }
 }

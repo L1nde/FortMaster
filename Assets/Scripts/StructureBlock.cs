@@ -12,10 +12,15 @@ public class StructureBlock : Placeable {
     private GameObject turretAttatchPoint;
     private float initialGravity;
 
+    private bool isTurretAttatchPointFree;
+    private bool canPlace;
+
     // Use this for initialization
     void Start () {
         attachPoints = new GameObject[4];
         setAttatchPoints();
+        isTurretAttatchPointFree = true;
+        canPlace = true;
 	}
 	
 	// Update is called once per frame
@@ -24,8 +29,7 @@ public class StructureBlock : Placeable {
             DestroySelf();
 	}
 
-    private void DestroySelf()
-    {
+    private void DestroySelf() {
         Destroy(gameObject);
     }
 
@@ -43,7 +47,9 @@ public class StructureBlock : Placeable {
     }
 
     public GameObject getTurretAttatchPoint() {
-        return turretAttatchPoint;
+        if (isTurretAttatchPointFree)
+            return turretAttatchPoint;
+        return null;
     }
 
     public void doDamage(float damage)
@@ -52,9 +58,23 @@ public class StructureBlock : Placeable {
     }
 
     public override void place(Transform parent) {
-        disableDragMode();
-        CreateJoints();
-        transform.parent = parent;
+        if (canPlace) {
+            disableDragMode();
+            CreateJoints();
+            transform.parent = parent;
+        } else {
+            DestroySelf();
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision) {
+        canPlace = false;
+        setSelectedGreenColor(0.5f);
+    }
+
+    private void OnTriggerExit2D(Collider2D collision) {
+        canPlace = true;
+        setSelectedGreenColor(1f);
     }
 
     override
@@ -81,7 +101,8 @@ public class StructureBlock : Placeable {
     override
     public void activateDragMode()
     {
-        gameObject.GetComponent<BoxCollider2D>().enabled = false;
+        gameObject.GetComponent<BoxCollider2D>().isTrigger = true;
+        gameObject.GetComponent<BoxCollider2D>().size = new Vector2(0.9f, 0.9f);
         initialGravity = gameObject.GetComponent<Rigidbody2D>().gravityScale;
         gameObject.GetComponent<Rigidbody2D>().gravityScale = 0f;
         setSelectedAlpha(0.5f);
@@ -90,7 +111,8 @@ public class StructureBlock : Placeable {
     override
     public void disableDragMode()
     {
-        gameObject.GetComponent<BoxCollider2D>().enabled = true;
+        gameObject.GetComponent<BoxCollider2D>().isTrigger = false;
+        gameObject.GetComponent<BoxCollider2D>().size = new Vector2(1, 1);
         gameObject.GetComponent<Rigidbody2D>().velocity = new Vector3();
         gameObject.GetComponent<Rigidbody2D>().gravityScale = initialGravity;
         setSelectedAlpha(1f);
@@ -123,6 +145,15 @@ public class StructureBlock : Placeable {
         return o.transform.GetComponentInParent<StructureBlock>();
     }
 
-    
+    public void setTurretAttatchPointFree() {
+        isTurretAttatchPointFree = true;
+    }
+
+    public void disableTurretAttatchPoint() {
+        isTurretAttatchPointFree = false;
+    }
+
+
+
 }
 
