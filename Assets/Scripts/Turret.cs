@@ -8,7 +8,7 @@ public class Turret : Placeable {
     public float reloadTime;
     private float currentReloadTime;
     private Animator anim;
-    private bool enabled;
+    private bool enabled = false;
     // Use this for initialization
     void Start () {
         anim = GetComponent<Animator>();
