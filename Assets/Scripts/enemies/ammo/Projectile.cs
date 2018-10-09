@@ -3,7 +3,7 @@
 namespace Assets.Scripts.enemies.ammo {
     public class Projectile : MonoBehaviour {
         public float initialAngle = 45f;
-
+        
         public float damage = 10f;
 
         private Rigidbody2D rb2d;
@@ -55,7 +55,7 @@ namespace Assets.Scripts.enemies.ammo {
 //            gameObject.AddComponent<FixedJoint2D>().connectedBody = collision.gameObject.GetComponent<Rigidbody2D>();
         }
 
-        public void setTarget(Vector3 target) {
+        public void setTarget(Vector2 target) {
             this.target = target;
             newTarget = true;
         }
