@@ -29,14 +29,12 @@ public class BlockCreate : MonoBehaviour {
         trigger.triggers.Add(pointerUp);
     }
 	
-    void OnPointerDown()
-    {
+    void OnPointerDown() {
         // sets the selected block in ConstructionManager
-        ConstructionManager.instance.SelectStructureBlock(Instantiate(block).GetComponent<StructureBlock>());
+        ConstructionManager.instance.Select(Instantiate(block).GetComponent<Placeable>());
     }
 
-    void OnPointerUp()
-    {
+    void OnPointerUp() {
         ConstructionManager.instance.PlaceBlock();
     }
 
@@ -45,27 +43,5 @@ public class BlockCreate : MonoBehaviour {
 
     }
 
-    private void tryToCreateJoint()
-    {
-        Vector3 pz = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        pz.z = 0;
-        //tryToCreateJointWithStructure(pz);
-    }
-
-    private void tryToCreateJointWithStructure(Vector3 pos)
-    {
-        /*
-        GameObject closestAttatcher = getClosestAttatcherInRange(pos, 0.3f);
-        if (!Equals(closestAttatcher, null)) {
-            Transform p = closestAttatcher.transform.parent;
-            //FixedJoint2D a1 = selected.AddComponent<FixedJoint2D>();
-            selected.GetComponent<FixedJoint2D>().dampingRatio = 1f;
-            selected.GetComponent<FixedJoint2D>().connectedBody = p.GetComponent<Rigidbody2D>();
-        }
-        */
-    }
-
-
-    
 
 }

@@ -3,16 +3,17 @@ using System.Collections.Generic;
 using Assets.Scripts;
 using UnityEngine;
 
-public class StructureBlock : MonoBehaviour {
+public class StructureBlock : Placeable {
 
     public float hp;
     public float jointBreakTorque;
 
     private GameObject[] attachPoints;
+    private GameObject turretAttatchPoint;
     private float initialGravity;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
         attachPoints = new GameObject[4];
         setAttatchPoints();
 	}
@@ -28,17 +29,21 @@ public class StructureBlock : MonoBehaviour {
         Destroy(gameObject);
     }
 
-    private void setAttatchPoints()
-    {
+    private void setAttatchPoints() {
         attachPoints[0] = gameObject.transform.Find("StructureAttatchPoint1").gameObject;
         attachPoints[1] = gameObject.transform.Find("StructureAttatchPoint2").gameObject;
         attachPoints[2] = gameObject.transform.Find("StructureAttatchPoint3").gameObject;
         attachPoints[3] = gameObject.transform.Find("StructureAttatchPoint4").gameObject;
+
+        turretAttatchPoint = gameObject.transform.Find("TurretAttatchPoint").gameObject;
     }
 
-    public GameObject[] getAttatchPoints()
-    {
+    public GameObject[] getAttatchPoints() {
         return attachPoints;
+    }
+
+    public GameObject getTurretAttatchPoint() {
+        return turretAttatchPoint;
     }
 
     public void doDamage(float damage)
@@ -46,6 +51,34 @@ public class StructureBlock : MonoBehaviour {
         hp -= damage;
     }
 
+    public override void place(Transform parent) {
+        disableDragMode();
+        CreateJoints();
+        transform.parent = parent;
+    }
+
+    override
+    public void move() {
+        Vector3 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        pos.z = 0;
+        transform.position = pos;
+        GameObject closestAttatcher = ConstructionManager.instance.getClosestStructureAttatcherInRange(pos, 0.33f);
+        if (Equals(closestAttatcher, null)) {
+            transform.position = pos;
+            transform.rotation = new Quaternion();
+        } else {
+            Transform parent = closestAttatcher.transform.parent.transform;
+            float dir = Mathf.Deg2Rad * parent.rotation.eulerAngles.z + Mathf.Atan2(closestAttatcher.transform.localPosition.y, closestAttatcher.transform.localPosition.x);
+            float dist = 0.5f;
+            Vector3 pPos = parent.localPosition;
+            pPos.x += dist * Mathf.Cos(dir);
+            pPos.y += dist * Mathf.Sin(dir);
+            transform.position = pPos;
+            transform.rotation = parent.rotation;
+        }
+    }
+
+    override
     public void activateDragMode()
     {
         gameObject.GetComponent<BoxCollider2D>().enabled = false;
@@ -54,23 +87,17 @@ public class StructureBlock : MonoBehaviour {
         setSelectedAlpha(0.5f);
     }
 
+    override
     public void disableDragMode()
     {
-        
         gameObject.GetComponent<BoxCollider2D>().enabled = true;
         gameObject.GetComponent<Rigidbody2D>().velocity = new Vector3();
         gameObject.GetComponent<Rigidbody2D>().gravityScale = initialGravity;
         setSelectedAlpha(1f);
     }
 
-    private void setSelectedAlpha(float a)
-    {
-        Color c = gameObject.GetComponent<SpriteRenderer>().color;
-        c.a = a;
-        gameObject.GetComponent<SpriteRenderer>().color = c;
-    }
-
-    public void CreateJoints()
+    override
+    protected void CreateJoints()
     {
         for (int i = 0; i < attachPoints.Length; i++) {
             StructureBlock sb = GetClosestStructureBlockToPos(attachPoints[i].transform.position);
@@ -90,11 +117,12 @@ public class StructureBlock : MonoBehaviour {
 
     private StructureBlock GetClosestStructureBlockToPos(Vector3 pos)
     {
-        GameObject o = ConstructionManager.instance.getClosestAttatcherInRange(pos, 0.01f);
+        GameObject o = ConstructionManager.instance.getClosestStructureAttatcherInRange(pos, 0.1f);
         if (Equals(o, null))
             return null;
         return o.transform.GetComponentInParent<StructureBlock>();
     }
 
+    
 }
 
