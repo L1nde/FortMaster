@@ -2,7 +2,7 @@
 
 namespace Assets.Scripts.enemies.ammo {
     public class Projectile : MonoBehaviour {
-        public float initialAngle = 45f;
+        public float shootingAngleOffset = 10f;
         
         public float damage = 10f;
 
@@ -12,6 +12,7 @@ namespace Assets.Scripts.enemies.ammo {
         private bool flying = true;
         private bool impacted = false;
         private bool newTarget = false;
+        private float initialAngle;
 
         // Use this for initialization
         void Start() {
@@ -39,6 +40,7 @@ namespace Assets.Scripts.enemies.ammo {
 
         private Quaternion LookAt2D(Vector2 forward) {
             return Quaternion.Euler(0, 0, Mathf.Atan2(forward.y, forward.x) * Mathf.Rad2Deg);
+            
         }
 
         private void OnCollisionEnter2D(Collision2D collision) {
@@ -53,11 +55,20 @@ namespace Assets.Scripts.enemies.ammo {
             impacted = true;
 
 //            gameObject.AddComponent<FixedJoint2D>().connectedBody = collision.gameObject.GetComponent<Rigidbody2D>();
+            
         }
 
         public void setTarget(Vector2 target) {
             this.target = target;
             newTarget = true;
+            calculateAngle();
+        }
+
+        private void calculateAngle() {
+            Vector2 offset = target - transform.position;
+            float angle = Mathf.Atan(Mathf.Abs(offset.y / offset.x));
+            initialAngle = Mathf.Clamp(shootingAngleOffset + angle * Mathf.Rad2Deg, 10f, 89f);
+
         }
 
         private void shootProjectile() {
@@ -67,20 +78,20 @@ namespace Assets.Scripts.enemies.ammo {
 
 
             // Planar distance between objects
-            float distance = Vector3.Distance(target, transform.position);
+            float distance = Mathf.Abs(target.x - transform.position.x);
             // Distance along the y axis between objects
             float yOffset = transform.position.y - target.y;
 
-            float initialVelocity = (1 / Mathf.Cos(angle)) *
-                                    Mathf.Sqrt((0.5f * gravity * Mathf.Pow(distance, 2)) /
+            float initialVelocity = (1f / Mathf.Cos(angle)) *
+                                    Mathf.Sqrt((0.5f * gravity * rb2d.gravityScale * Mathf.Pow(distance, 2f)) /
                                                (distance * Mathf.Tan(angle) + yOffset));
 
-            Vector3 velocity = new Vector3(0, initialVelocity * Mathf.Sin(angle), initialVelocity * Mathf.Cos(angle));
+            Vector3 velocity = new Vector3(0f, initialVelocity * Mathf.Sin(angle), initialVelocity * Mathf.Cos(angle));
 
             // Rotate our velocity to match the direction between the two objects
             float angleBetweenObjects = Vector3.Angle(Vector3.forward, target - transform.position);
             Vector3 finalVelocity = Quaternion.AngleAxis(angleBetweenObjects, Vector3.up) * velocity;
-            if (target.x - transform.position.x < 0) {
+            if (target.x - transform.position.x < 0f) {
                 finalVelocity = new Vector3(-finalVelocity.x, finalVelocity.y);
             }
 

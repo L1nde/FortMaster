@@ -115,7 +115,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca3bdef8ec938274c8aa2b1dcd350919, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialAngle: 45
+  shootingAngleOffset: 25
   damage: 10
 --- !u!212 &212237153744355450
 SpriteRenderer:

@@ -68,11 +68,15 @@ public class StructureBlock : Placeable {
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
+        if (collision.tag == "AttackRange" || collision.tag == "Projectile")
+            return;
         canPlace = false;
         setSelectedGreenColor(0.5f);
     }
 
     private void OnTriggerExit2D(Collider2D collision) {
+        if (collision.tag == "AttackRange" || collision.tag == "Projectile")
+            return;
         canPlace = true;
         setSelectedGreenColor(1f);
     }
