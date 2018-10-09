@@ -14,6 +14,7 @@ public class StructureBlock : Placeable {
 
     private bool isTurretAttatchPointFree;
     private bool canPlace;
+    private bool isPlaced;
 
     // Use this for initialization
     void Start () {
@@ -21,6 +22,7 @@ public class StructureBlock : Placeable {
         setAttatchPoints();
         isTurretAttatchPointFree = true;
         canPlace = true;
+        isPlaced = false;
 	}
 	
 	// Update is called once per frame
@@ -62,19 +64,24 @@ public class StructureBlock : Placeable {
             disableDragMode();
             CreateJoints();
             transform.parent = parent;
+            isPlaced = true;
         } else {
             DestroySelf();
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision) {
+    private void OnTriggerStay2D(Collider2D collision) {
+        if (collision.tag == "AttackRange" || collision.tag == "Projectile" || isPlaced)
+            return;
         canPlace = false;
-        setSelectedGreenColor(0.5f);
+        setSelectedRedColor(0.5f);
     }
 
     private void OnTriggerExit2D(Collider2D collision) {
+        if (collision.tag == "AttackRange" || collision.tag == "Projectile" || isPlaced)
+            return;
         canPlace = true;
-        setSelectedGreenColor(1f);
+        setSelectedRedColor(1f);
     }
 
     override
