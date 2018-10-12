@@ -26,7 +26,7 @@ TagManager:
   - Range
   - Destroyable
   - PlayerProjectile
-  - 
+  - TurretRange
   - 
   - 
   - 
@@ -60,4 +60,7 @@ TagManager:
     locked: 0
   - name: Ground
     uniqueID: 3918893263
+    locked: 0
+  - name: Foreground
+    uniqueID: 1606476137
     locked: 0

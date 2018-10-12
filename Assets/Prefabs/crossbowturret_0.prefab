@@ -39,7 +39,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4344473845668530}
   - component: {fileID: 58482066306019862}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: AttackRange
   m_TagString: AttackRange
   m_Icon: {fileID: 0}
@@ -137,7 +137,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38d98e168527a1d418aaad94c600f6fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackRange: 0
+  attackRange: 10
   projectile: {fileID: 114591867546780856, guid: ed1a42e6fcae41e41ae07f0d1ad5a439,
     type: 2}
   reloadTime: 1
@@ -173,8 +173,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1606476137
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 5c29c9ea78510274994592aba35acd99, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
