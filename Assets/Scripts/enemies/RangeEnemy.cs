@@ -26,7 +26,7 @@ namespace Assets.Scripts.enemies {
                     attackAcc = 0f;
                     Projectile projectile = Instantiate(projectilePrefab, transform.position, transform.rotation);
 //                    projectile.setTarget(new Vector2(targetCollider.gameObject.transform.position.x + Random.Range(-1.0f, 1.0f) * accuracySpread, targetCollider.gameObject.transform.position.y));
-                    projectile.setTarget(new Vector2(targetCollider.gameObject.transform.position.x, targetCollider.gameObject.transform.position.y) + Random.insideUnitCircle * accuracySpread);
+                    projectile.shootProjectile(new Vector2(targetCollider.gameObject.transform.position.x, targetCollider.gameObject.transform.position.y) + Random.insideUnitCircle * accuracySpread);
                 }
 
                 stopMovement = true;

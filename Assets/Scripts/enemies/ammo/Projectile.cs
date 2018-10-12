@@ -6,13 +6,10 @@ namespace Assets.Scripts.enemies.ammo {
         
         public float damage = 10f;
 
-        private Rigidbody2D rb2d;
-        private Vector3 target;
+        protected Rigidbody2D rb2d;
 
         private bool flying = true;
         private bool impacted = false;
-        private bool newTarget = false;
-        private float initialAngle;
 
         // Use this for initialization
         void Start() {
@@ -22,10 +19,6 @@ namespace Assets.Scripts.enemies.ammo {
         // Update is called once per frame
         void Update() {
             // if arrow got new target
-            if (newTarget) {
-                newTarget = false;
-                shootProjectile();
-            }
 
             if (!flying) {
                 rb2d.velocity = Vector2.zero;
@@ -58,20 +51,16 @@ namespace Assets.Scripts.enemies.ammo {
             
         }
 
-        public void setTarget(Vector2 target) {
-            this.target = target;
-            newTarget = true;
-            calculateAngle();
-        }
-
-        private void calculateAngle() {
+        public float calculateAngle(Vector3 target) {
             Vector2 offset = target - transform.position;
             float angle = Mathf.Atan(Mathf.Abs(offset.y / offset.x));
-            initialAngle = Mathf.Clamp(shootingAngleOffset + angle * Mathf.Rad2Deg, 10f, 89f);
+            return Mathf.Clamp(shootingAngleOffset + angle * Mathf.Rad2Deg, 10f, 89f);
 
         }
 
-        private void shootProjectile() {
+        public void shootProjectile(Vector3 target) {
+            Rigidbody2D body = GetComponent<Rigidbody2D>();
+            float initialAngle = calculateAngle(target);
             float gravity = Physics.gravity.magnitude;
             // Selected angle in radians
             float angle = initialAngle * Mathf.Deg2Rad;
@@ -83,7 +72,7 @@ namespace Assets.Scripts.enemies.ammo {
             float yOffset = transform.position.y - target.y;
 
             float initialVelocity = (1f / Mathf.Cos(angle)) *
-                                    Mathf.Sqrt((0.5f * gravity * rb2d.gravityScale * Mathf.Pow(distance, 2f)) /
+                                    Mathf.Sqrt((0.5f * gravity * 1f * Mathf.Pow(distance, 2f)) /
                                                (distance * Mathf.Tan(angle) + yOffset));
 
             Vector3 velocity = new Vector3(0f, initialVelocity * Mathf.Sin(angle), initialVelocity * Mathf.Cos(angle));
@@ -94,11 +83,10 @@ namespace Assets.Scripts.enemies.ammo {
             if (target.x - transform.position.x < 0f) {
                 finalVelocity = new Vector3(-finalVelocity.x, finalVelocity.y);
             }
+            Debug.Log(angleBetweenObjects);
+            body.AddForce(finalVelocity * body.mass, ForceMode2D.Impulse);
 
-            rb2d.AddForce(finalVelocity * rb2d.mass, ForceMode2D.Impulse);
-
-
-            transform.rotation = LookAt2D(rb2d.velocity);
+            transform.rotation = LookAt2D(body.velocity);
         }
     }
 }

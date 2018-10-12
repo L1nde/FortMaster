@@ -3,16 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Turret : Placeable {
-
+    public float attackRange;
     public PlayerProjectile projectile;
     public float reloadTime;
     private float currentReloadTime;
     private Animator anim;
     private bool enabled = false;
+    private CircleCollider2D attackRangeCollider;
     // Use this for initialization
     void Start () {
         anim = GetComponent<Animator>();
         currentReloadTime = reloadTime;
+        foreach (var child in GetComponentsInChildren<CircleCollider2D>()) {
+                if (child.gameObject.tag == "AttackRange") {
+                    attackRangeCollider = child;
+                    attackRangeCollider.radius = attackRange;
+                    break;
+                }
+            }
     }
 	
 	// Update is called once per frame
@@ -25,10 +33,24 @@ public class Turret : Placeable {
 	}
 
     private void fire() {
-        anim.Play("Fire");
-        PlayerProjectile p = Instantiate(projectile);
-        p.init(transform.rotation.eulerAngles.z, transform.position);
+        Collider2D target = getTarget();
+        if (target != null){
+            anim.Play("Fire");
+            PlayerProjectile p = Instantiate(projectile);
+            p.init(transform.rotation.eulerAngles.z, transform.position, new Vector2(target.transform.position.x, target.transform.position.y - target.transform.localScale.y / 2));
+        }
     }
+
+    private Collider2D getTarget() {
+            Collider2D[] colliders = new Collider2D[10];
+            int count = attackRangeCollider.GetContacts(colliders);
+            if (count != 0) {
+                return colliders[0];
+            }
+            else {
+                return null;
+            }
+        }
 
     public override void place(Transform parent) {
         disableDragMode();
@@ -42,7 +64,7 @@ public class Turret : Placeable {
             return;
         }
         sb.disableTurretAttatchPoint();
-        FixedJoint2D fj = gameObject.AddComponent<FixedJoint2D>();
+        HingeJoint2D fj = gameObject.AddComponent<HingeJoint2D>();
         fj.connectedBody = sb.GetComponent<Rigidbody2D>();
         transform.parent = sb.transform;
     }
