@@ -8,6 +8,7 @@ public class PlayerProjectile : Projectile {
 
     public float speed;
     public float noGravityTime;
+    public float accuracySpread = 0.8f;
     private bool dead;
     private Quaternion lastRot;
     // Use this for initialization
@@ -20,7 +21,7 @@ public class PlayerProjectile : Projectile {
     private void OnCollisionEnter2D(Collision2D collision) {
         dead = true;
         Destroy(GetComponent<Rigidbody2D>());
-        Destroy(gameObject, 5);
+        Destroy(gameObject, 1);
         transform.rotation = lastRot;
     }
 
@@ -44,7 +45,7 @@ public class PlayerProjectile : Projectile {
         //transform.GetComponent<Rigidbody2D>().velocity = vel;
         transform.position = pos;
         transform.rotation = Quaternion.Euler(0, 0, z);
-        shootProjectile(target);
+        shootProjectile(new Vector2(target.x, target.y) + Random.insideUnitCircle * accuracySpread);
     }
     
 }
