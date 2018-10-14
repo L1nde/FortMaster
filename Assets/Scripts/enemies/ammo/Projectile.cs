@@ -83,7 +83,6 @@ namespace Assets.Scripts.enemies.ammo {
             if (target.x - transform.position.x < 0f) {
                 finalVelocity = new Vector3(-finalVelocity.x, finalVelocity.y);
             }
-            Debug.Log(angleBetweenObjects);
             body.AddForce(finalVelocity * body.mass, ForceMode2D.Impulse);
 
             transform.rotation = LookAt2D(body.velocity);
