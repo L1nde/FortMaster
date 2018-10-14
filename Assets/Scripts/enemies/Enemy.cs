@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Assets.Scripts.enemies {
     public abstract class Enemy : MonoBehaviour {
-        public float hp = 100f;
+        public float hp = 100;
         public float speed = 1f;
         public float attackDelay = 1f;
         public float attackRange = 10f;

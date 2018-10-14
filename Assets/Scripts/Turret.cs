@@ -38,6 +38,7 @@ public class Turret : Placeable {
             anim.Play("Fire");
             PlayerProjectile p = Instantiate(projectile);
             p.init(transform.rotation.eulerAngles.z, transform.position, new Vector2(target.transform.position.x, target.transform.position.y - target.transform.localScale.y / 2));
+            transform.rotation = p.transform.rotation;
         }
     }
 

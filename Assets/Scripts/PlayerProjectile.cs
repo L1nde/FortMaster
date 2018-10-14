@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Assets.Scripts.enemies.ammo;
+using Assets.Scripts.enemies;
 
 public class PlayerProjectile : Projectile {
 
@@ -19,6 +20,10 @@ public class PlayerProjectile : Projectile {
 	}
 
     private void OnCollisionEnter2D(Collision2D collision) {
+        if (collision.gameObject.tag == "Enemy")
+        {
+            collision.gameObject.GetComponent<Enemy>().doDamage(damage);
+        }
         dead = true;
         Destroy(GetComponent<Rigidbody2D>());
         Destroy(gameObject, 1);
