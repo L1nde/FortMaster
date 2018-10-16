@@ -50,7 +50,7 @@ public class PlayerProjectile : Projectile {
     }
 
     public void init(float z, Vector3 pos, Vector3 target) {
-        float r = Mathf.Deg2Rad * z;
+        //float r = Mathf.Deg2Rad * z;
         //Vector2 vel = new Vector2(Mathf.Cos(r)*speed, Mathf.Sin(r)*speed);
         //transform.GetComponent<Rigidbody2D>().velocity = vel;
         transform.position = pos;

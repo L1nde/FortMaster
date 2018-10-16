@@ -6,19 +6,22 @@ using UnityEngine.UI;
 public class BuildingCatButton : MonoBehaviour {
 
     private bool isEnabled;
+    public GameObject buttonsToShow;
+    public bool enableOnStart;
     // Use this for initialization
     void Start ()
     {
         gameObject.GetComponent<Button>().onClick.AddListener(TaskOnClick);
-        Disable();
+        if (!enableOnStart)
+            Disable();
+        else
+            Enable();
     }
 
     void TaskOnClick()
     {
-        if (isEnabled)
-            Disable();
-        else
-            Enable();
+        UIController.Instance.DisableAllBuildingSubButtons();
+        Enable();
     }
 
     // Update is called once per frame
@@ -28,16 +31,16 @@ public class BuildingCatButton : MonoBehaviour {
 
     public void Enable()
     {
-        
-        UIController.Instance.DisableAllBuildingSubButtons();
         isEnabled = true;
-        gameObject.transform.Find("SubButtons").gameObject.SetActive(true);
+        GetComponent<Image>().color = new Color(0.5f, 0.5f, 0.5f);
+        buttonsToShow.SetActive(true);
     }
 
     public void Disable()
     {
         isEnabled = false;
-        gameObject.transform.Find("SubButtons").gameObject.SetActive(false);
+        GetComponent<Image>().color = new Color(1, 1, 1);
+        buttonsToShow.SetActive(false);
     }
 
 

@@ -8,7 +8,7 @@ public class Turret : Placeable {
     public float reloadTime;
     private float currentReloadTime;
     private Animator anim;
-    private bool enabled = false;
+    private bool isEnabled = false;
     private CircleCollider2D attackRangeCollider;
     // Use this for initialization
     void Start () {
@@ -26,7 +26,7 @@ public class Turret : Placeable {
 	// Update is called once per frame
 	void Update () {
         currentReloadTime -= Time.deltaTime;
-        if (currentReloadTime <= 0 && enabled) {
+        if (currentReloadTime <= 0 && isEnabled) {
             currentReloadTime = reloadTime;
             fire();
         }
@@ -96,7 +96,7 @@ public class Turret : Placeable {
     public override void disableDragMode() {
         setSelectedAlpha(1f);
         GetComponent<SpriteRenderer>().sortingLayerName = "Foreground";
-        enabled = true;
+        isEnabled = true;
     }
 
     private StructureBlock GetClosestStructureBlockToPos(Vector3 pos) {
