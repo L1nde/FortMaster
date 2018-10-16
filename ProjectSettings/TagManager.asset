@@ -12,6 +12,7 @@ TagManager:
   - AttackRange
   - Enemy
   - PlayerProjectile
+  - SelectedItem
   layers:
   - Default
   - TransparentFX
@@ -27,7 +28,7 @@ TagManager:
   - Destroyable
   - PlayerProjectile
   - TurretRange
-  - 
+  - SelectedItem
   - 
   - 
   - 
@@ -63,4 +64,7 @@ TagManager:
     locked: 0
   - name: Foreground
     uniqueID: 1606476137
+    locked: 0
+  - name: SelectedItem
+    uniqueID: 3925949303
     locked: 0
