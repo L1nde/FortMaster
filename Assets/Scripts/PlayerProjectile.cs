@@ -19,15 +19,20 @@ public class PlayerProjectile : Projectile {
         rb2d = GetComponent<Rigidbody2D>();
 	}
 
-    private void OnCollisionEnter2D(Collision2D collision) {
+    private void OnTriggerEnter2D(Collider2D collision) {
         if (collision.gameObject.tag == "Enemy" && !dead)
-        {
             collision.gameObject.GetComponent<Enemy>().doDamage(damage);
-        }
+
         dead = true;
-        Destroy(GetComponent<Rigidbody2D>());
+        CreateJoint(collision.gameObject.GetComponent<Rigidbody2D>());
+        //Destroy(GetComponent<Rigidbody2D>());
         Destroy(gameObject, 1);
         transform.rotation = lastRot;
+    }
+
+    private void CreateJoint(Rigidbody2D rb) {
+        FixedJoint2D fj = gameObject.AddComponent<FixedJoint2D>();
+        fj.connectedBody = rb.GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame

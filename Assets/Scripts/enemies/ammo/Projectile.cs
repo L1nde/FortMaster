@@ -19,16 +19,12 @@ namespace Assets.Scripts.enemies.ammo {
         // Update is called once per frame
         void Update() {
             // if arrow got new target
-
-            if (!flying) {
-                rb2d.velocity = Vector2.zero;
+            if (!impacted) {
+                if (!flying) 
+                    rb2d.velocity = Vector2.zero;
+                else 
+                    transform.rotation = LookAt2D(rb2d.velocity);
             }
-            else {
-                transform.rotation = LookAt2D(rb2d.velocity);
-            }
-
-
-            Destroy(gameObject, 10f);
         }
 
         private Quaternion LookAt2D(Vector2 forward) {
@@ -36,19 +32,26 @@ namespace Assets.Scripts.enemies.ammo {
             
         }
 
-        private void OnCollisionEnter2D(Collision2D collision) {
+        private void OnTriggerEnter2D(Collider2D collision) {
             if (collision.gameObject.tag == "Terrain") {
                 flying = false;
             }
 
             if (collision.gameObject.tag == "StructureBlock" && !impacted) {
                 collision.gameObject.GetComponent<StructureBlock>().doDamage(damage);
+                if (collision.gameObject.GetComponent<StructureBlock>().isDead())
+                    Destroy(gameObject);
             }
-
+            CreateJoint(collision.gameObject.GetComponent<Rigidbody2D>());
+            Destroy(gameObject, 1);
             impacted = true;
 
-//            gameObject.AddComponent<FixedJoint2D>().connectedBody = collision.gameObject.GetComponent<Rigidbody2D>();
-            
+            //            gameObject.AddComponent<FixedJoint2D>().connectedBody = collision.gameObject.GetComponent<Rigidbody2D>();
+        }
+
+        private void CreateJoint(Rigidbody2D rb) {
+            FixedJoint2D fj = gameObject.AddComponent<FixedJoint2D>();
+            fj.connectedBody = rb.GetComponent<Rigidbody2D>();
         }
 
         public float calculateAngle(Vector3 target) {

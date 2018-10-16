@@ -54,9 +54,12 @@ public class StructureBlock : Placeable {
         return null;
     }
 
-    public void doDamage(float damage)
-    {
+    public void doDamage(float damage) {
         hp -= damage;
+    }
+
+    public bool isDead() {
+        return hp <= 0;
     }
 
     public override void place(Transform parent) {
