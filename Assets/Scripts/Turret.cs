@@ -76,9 +76,11 @@ public class Turret : Placeable {
         transform.position = pos;
         GameObject closestAttatcher = ConstructionManager.instance.getClosestTurretAttatcherInRange(pos, 0.33f);
         if (Equals(closestAttatcher, null)) {
+            setSelectedRedColor(0.5f);
             transform.position = pos;
             transform.rotation = new Quaternion();
         } else {
+            setSelectedRedColor(1f);
             Transform parent = closestAttatcher.transform.parent.transform;
             transform.position = parent.position;
             transform.rotation = parent.rotation;
@@ -88,10 +90,12 @@ public class Turret : Placeable {
 
     public override void activateDragMode() {
         setSelectedAlpha(0.5f);
+        GetComponent<SpriteRenderer>().sortingLayerName = "SelectedItem";
     }
 
     public override void disableDragMode() {
         setSelectedAlpha(1f);
+        GetComponent<SpriteRenderer>().sortingLayerName = "Foreground";
         enabled = true;
     }
 

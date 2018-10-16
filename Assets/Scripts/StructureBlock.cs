@@ -111,6 +111,9 @@ public class StructureBlock : Placeable {
     override
     public void activateDragMode()
     {
+        gameObject.tag = "SelectedItem";
+        gameObject.layer = 14; // SelectedItem
+        GetComponent<SpriteRenderer>().sortingLayerName = "SelectedItem";
         gameObject.GetComponent<BoxCollider2D>().isTrigger = true;
         gameObject.GetComponent<BoxCollider2D>().size = new Vector2(0.9f, 0.9f);
         initialGravity = gameObject.GetComponent<Rigidbody2D>().gravityScale;
@@ -121,6 +124,9 @@ public class StructureBlock : Placeable {
     override
     public void disableDragMode()
     {
+        gameObject.tag = "StructureBlock";
+        gameObject.layer = 11; // Destroyable
+        GetComponent<SpriteRenderer>().sortingLayerName = "Default";
         gameObject.GetComponent<BoxCollider2D>().isTrigger = false;
         gameObject.GetComponent<BoxCollider2D>().size = new Vector2(1, 1);
         gameObject.GetComponent<Rigidbody2D>().velocity = new Vector3();
