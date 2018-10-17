@@ -24,7 +24,9 @@ public class PlayerProjectile : Projectile {
             collision.gameObject.GetComponent<Enemy>().doDamage(damage);
 
         dead = true;
-        CreateJoint(collision.gameObject.GetComponent<Rigidbody2D>());
+        Rigidbody2D rb = collision.gameObject.GetComponent<Rigidbody2D>();
+        if (rb != null)
+            CreateJoint(rb);
         //Destroy(GetComponent<Rigidbody2D>());
         Destroy(gameObject, 1);
         transform.rotation = lastRot;

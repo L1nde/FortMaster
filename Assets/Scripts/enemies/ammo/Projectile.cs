@@ -42,7 +42,10 @@ namespace Assets.Scripts.enemies.ammo {
                 if (collision.gameObject.GetComponent<StructureBlock>().isDead())
                     Destroy(gameObject);
             }
-            CreateJoint(collision.gameObject.GetComponent<Rigidbody2D>());
+
+            Rigidbody2D rb = collision.gameObject.GetComponent<Rigidbody2D>();
+            if (rb != null)
+                CreateJoint(rb);
             Destroy(gameObject, 1);
             impacted = true;
 
