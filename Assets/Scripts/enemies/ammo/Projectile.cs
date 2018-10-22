@@ -38,9 +38,20 @@ namespace Assets.Scripts.enemies.ammo {
             }
 
             if (collision.gameObject.tag == "StructureBlock" && !impacted) {
-                collision.gameObject.GetComponent<StructureBlock>().doDamage(damage);
-                if (collision.gameObject.GetComponent<StructureBlock>().isDead())
-                    Destroy(gameObject);
+                if (collision.gameObject.GetComponent<StructureBlock>() == null)
+                {
+                    Core gameObject = collision.gameObject.GetComponent<Core>();
+                    if (gameObject.isDead())
+                        Destroy(gameObject);
+                    gameObject.doDamage(damage);
+                }
+                else
+                {
+                    StructureBlock gameObject = collision.gameObject.GetComponent<StructureBlock>();
+                    gameObject.doDamage(damage);
+                    if (gameObject.isDead())
+                        Destroy(gameObject);
+                }
             }
 
             Rigidbody2D rb = collision.gameObject.GetComponent<Rigidbody2D>();

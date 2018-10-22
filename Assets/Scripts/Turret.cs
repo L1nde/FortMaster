@@ -58,6 +58,11 @@ public class Turret : Placeable {
         CreateJoints();
     }
 
+    public override GameObject[] getAttachPoints()
+    {
+        return new GameObject[0];
+    }
+
     protected override void CreateJoints() {
         StructureBlock sb = GetClosestStructureBlockToPos(transform.position);
         if (Equals(sb, null)) {

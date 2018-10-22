@@ -52,11 +52,11 @@ public class ConstructionManager : MonoBehaviour {
 
     public GameObject getClosestStructureAttatcherInRange(Vector3 pos, float range)
     {
-        StructureBlock[] blocks = fortBase.GetComponentsInChildren<StructureBlock>();
+        Placeable[] blocks = fortBase.GetComponentsInChildren<StructureBlock>();
         range = Mathf.Pow(range, 2);
         GameObject closest = null;
         for (int i = 0; i < blocks.Length; i++) {
-            GameObject[] attatchers = blocks[i].getAttatchPoints();
+            GameObject[] attatchers = blocks[i].getAttachPoints();
             for (int j = 0; j < attatchers.Length; j++) {
                 GameObject a = attatchers[j];
                 Vector3 aPos = a.transform.position;
