@@ -36,6 +36,8 @@ public class BlockCreate : MonoBehaviour {
 
     void OnPointerUp() {
         ConstructionManager.instance.PlaceBlock();
+        if (block.GetComponent<MonoBehaviour>().GetType().Name == "Core")
+            Destroy(gameObject);
     }
 
     void Update()

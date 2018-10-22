@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class UIController : MonoBehaviour {
 
@@ -9,6 +10,8 @@ public class UIController : MonoBehaviour {
 
     public Button EnableStructureTabButton;
     public Button EnableTurretsTabButton;
+    public Image WinScreen;
+    public Image LoseScreen;
 
     // Use this for initialization
     void Start () {
@@ -27,6 +30,17 @@ public class UIController : MonoBehaviour {
 	void Update () {
 		
 	}
+
+    public void WinWave()
+    {
+        WinScreen.gameObject.SetActive(true);
+    }
+
+    public void LoseWave()
+    {
+        LoseScreen.gameObject.SetActive(true);
+        Time.timeScale = 0.0f;
+    }
 
     public void DisableAllBuildingSubButtons()
     {

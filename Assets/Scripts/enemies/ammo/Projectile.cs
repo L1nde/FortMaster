@@ -40,17 +40,20 @@ namespace Assets.Scripts.enemies.ammo {
             if (collision.gameObject.tag == "StructureBlock" && !impacted) {
                 if (collision.gameObject.GetComponent<StructureBlock>() == null)
                 {
-                    Core gameObject = collision.gameObject.GetComponent<Core>();
-                    if (gameObject.isDead())
-                        Destroy(gameObject);
-                    gameObject.doDamage(damage);
+                    Core core = collision.gameObject.GetComponent<Core>();
+                    if (core.isDead())
+                    {
+                        UIController.Instance.LoseWave();
+                        Destroy(core);
+                    }
+                    core.doDamage(damage);
                 }
                 else
                 {
-                    StructureBlock gameObject = collision.gameObject.GetComponent<StructureBlock>();
-                    gameObject.doDamage(damage);
-                    if (gameObject.isDead())
-                        Destroy(gameObject);
+                    StructureBlock structure = collision.gameObject.GetComponent<StructureBlock>();
+                    if (structure.isDead())
+                        Destroy(structure);
+                    structure.doDamage(damage);
                 }
             }
 

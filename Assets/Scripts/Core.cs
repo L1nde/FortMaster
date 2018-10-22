@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Assets.Scripts;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Core : Placeable
 {
@@ -32,6 +33,7 @@ public class Core : Placeable
 
     private void DestroySelf()
     {
+        UIController.Instance.LoseWave();
         Destroy(gameObject);
     }
 
