@@ -19,6 +19,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4591679312313314}
+  - component: {fileID: 114076229257546742}
   m_Layer: 0
   m_Name: StructureAttatchPoint4
   m_TagString: StructureBlockAttachPoint
@@ -49,6 +50,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4475377870035296}
+  - component: {fileID: 114419223834824584}
   m_Layer: 0
   m_Name: StructureAttatchPoint3
   m_TagString: StructureBlockAttachPoint
@@ -83,6 +85,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4417286232915452}
+  - component: {fileID: 114002795674540542}
   m_Layer: 0
   m_Name: StructureAttatchPoint1
   m_TagString: StructureBlockAttachPoint
@@ -98,6 +101,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4934672139369372}
+  - component: {fileID: 114084822718925492}
   m_Layer: 0
   m_Name: StructureAttatchPoint2
   m_TagString: StructureBlockAttachPoint
@@ -112,7 +116,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1381435729713604}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 6.424053, y: -1.492421, z: 0}
+  m_LocalPosition: {x: -5.0159006, y: -1.0554591, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children:
   - {fileID: 4417286232915452}
@@ -233,6 +237,50 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &114002795674540542
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1796199850680466}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b63aeddb33c2334685d0596454d112a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114076229257546742
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1016019451023470}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b63aeddb33c2334685d0596454d112a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114084822718925492
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1962515592589496}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b63aeddb33c2334685d0596454d112a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114419223834824584
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1280705138233248}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b63aeddb33c2334685d0596454d112a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114443561366279118
 MonoBehaviour:
   m_ObjectHideFlags: 1

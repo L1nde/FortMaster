@@ -9,6 +9,7 @@ public class ConstructionManager : MonoBehaviour {
 
     private GameObject fortBase;
     private Placeable selected;
+    public Core core;
 
 
     void Start()
@@ -20,6 +21,7 @@ public class ConstructionManager : MonoBehaviour {
             Destroy(gameObject);
 
         fortBase = new GameObject("FortBase");
+        createCore();
         DontDestroyOnLoad(gameObject);
         
     }
@@ -28,6 +30,10 @@ public class ConstructionManager : MonoBehaviour {
         if (isAnythingSelected())
             selected.move();
 	}
+
+    private void createCore() {
+        Core c = Instantiate(core, fortBase.transform);
+    }
 
     public void PlaceBlock() {
         if (isAnythingSelected()) {
@@ -50,15 +56,15 @@ public class ConstructionManager : MonoBehaviour {
         block.activateDragMode();
     }
 
-    public GameObject getClosestStructureAttatcherInRange(Vector3 pos, float range)
+    public Attatcher getClosestStructureAttatcherInRange(Vector3 pos, float range)
     {
         Placeable[] blocks = fortBase.GetComponentsInChildren<StructureBlock>();
         range = Mathf.Pow(range, 2);
-        GameObject closest = null;
+        Attatcher closest = null;
         for (int i = 0; i < blocks.Length; i++) {
-            GameObject[] attatchers = blocks[i].getAttachPoints();
+            Attatcher[] attatchers = blocks[i].getAttatchPoints();
             for (int j = 0; j < attatchers.Length; j++) {
-                GameObject a = attatchers[j];
+                Attatcher a = attatchers[j];
                 Vector3 aPos = a.transform.position;
                 float d = Mathf.Pow(aPos.x - pos.x, 2) + Mathf.Pow(aPos.y - pos.y, 2);
                 if (range > d) {

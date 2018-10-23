@@ -58,9 +58,9 @@ public class Turret : Placeable {
         CreateJoints();
     }
 
-    public override GameObject[] getAttachPoints()
+    public override Attatcher[] getAttatchPoints()
     {
-        return new GameObject[0];
+        return null;
     }
 
     protected override void CreateJoints() {

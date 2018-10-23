@@ -8,17 +8,17 @@ public class StructureBlock : Placeable {
     public float hp;
     public float jointBreakTorque;
 
-    private GameObject[] attachPoints;
+    protected Attatcher[] attatchPoints;
     private GameObject turretAttatchPoint;
     private float initialGravity;
 
     private bool isTurretAttatchPointFree;
-    private bool canPlace;
-    private bool isPlaced;
+    protected bool canPlace;
+    protected bool isPlaced;
 
     // Use this for initialization
     void Start () {
-        attachPoints = new GameObject[4];
+        
         setAttatchPoints();
         isTurretAttatchPointFree = true;
         canPlace = true;
@@ -36,16 +36,13 @@ public class StructureBlock : Placeable {
     }
 
     private void setAttatchPoints() {
-        attachPoints[0] = gameObject.transform.Find("StructureAttatchPoint1").gameObject;
-        attachPoints[1] = gameObject.transform.Find("StructureAttatchPoint2").gameObject;
-        attachPoints[2] = gameObject.transform.Find("StructureAttatchPoint3").gameObject;
-        attachPoints[3] = gameObject.transform.Find("StructureAttatchPoint4").gameObject;
+        attatchPoints = GetComponentsInChildren<Attatcher>();
 
         turretAttatchPoint = gameObject.transform.Find("TurretAttatchPoint").gameObject;
     }
 
-    public override GameObject[] getAttachPoints() {
-        return attachPoints;
+    public override Attatcher[] getAttatchPoints() {
+        return attatchPoints;
     }
 
     public GameObject getTurretAttatchPoint() {
@@ -92,18 +89,27 @@ public class StructureBlock : Placeable {
         Vector3 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         pos.z = 0;
         transform.position = pos;
-        GameObject closestAttatcher = ConstructionManager.instance.getClosestStructureAttatcherInRange(pos, 0.33f);
+        Attatcher closestAttatcher = ConstructionManager.instance.getClosestStructureAttatcherInRange(pos, 0.33f);
         if (Equals(closestAttatcher, null)) {
             transform.position = pos;
             transform.rotation = new Quaternion();
         } else {
+            
             Transform parent = closestAttatcher.transform.parent.transform;
-            float dir = Mathf.Deg2Rad * parent.rotation.eulerAngles.z + Mathf.Atan2(closestAttatcher.transform.localPosition.y, closestAttatcher.transform.localPosition.x);
-            float dist = 0.5f;
-            Vector3 pPos = parent.localPosition;
-            pPos.x += dist * Mathf.Cos(dir);
-            pPos.y += dist * Mathf.Sin(dir);
-            transform.position = pPos;
+
+            float dir = Mathf.Deg2Rad * parent.rotation.eulerAngles.z;
+            if (Mathf.Abs(closestAttatcher.transform.localPosition.x) > Mathf.Abs(closestAttatcher.transform.localPosition.y))
+                dir += Mathf.Atan2(0, closestAttatcher.transform.localPosition.x);
+            else
+                dir += Mathf.Atan2(closestAttatcher.transform.localPosition.y, 0);
+
+            Vector3 pPos = new Vector3();
+            float dist = 0.25f;
+            pPos.x = dist * Mathf.Cos(dir);
+            pPos.y = dist * Mathf.Sin(dir);
+            
+
+            transform.position = closestAttatcher.transform.position + pPos;
             transform.rotation = parent.rotation;
         }
     }
@@ -137,15 +143,15 @@ public class StructureBlock : Placeable {
     override
     protected void CreateJoints()
     {
-        for (int i = 0; i < attachPoints.Length; i++) {
-            StructureBlock sb = GetClosestStructureBlockToPos(attachPoints[i].transform.position);
+        for (int i = 0; i < attatchPoints.Length; i++) {
+            StructureBlock sb = GetClosestStructureBlockToPos(attatchPoints[i].transform.position);
             if (Equals(sb, null))
                 continue;
             FixedJoint2D fj = gameObject.AddComponent<FixedJoint2D>();
             fj.connectedBody = sb.GetComponent<Rigidbody2D>();
             Vector2 anchor = fj.connectedAnchor;
-            anchor.x = Mathf.Round(anchor.x);
-            anchor.y = Mathf.Round(anchor.y);
+            anchor.x = Mathf.Round(anchor.x*100)/100;
+            anchor.y = Mathf.Round(anchor.y*100)/100;
             fj.autoConfigureConnectedAnchor = false;
             fj.connectedAnchor = anchor;
             fj.dampingRatio = 1;
@@ -155,11 +161,12 @@ public class StructureBlock : Placeable {
 
     private StructureBlock GetClosestStructureBlockToPos(Vector3 pos)
     {
-        GameObject o = ConstructionManager.instance.getClosestStructureAttatcherInRange(pos, 0.1f);
+        Attatcher o = ConstructionManager.instance.getClosestStructureAttatcherInRange(pos, 0.1f);
         if (Equals(o, null))
             return null;
         return o.transform.GetComponentInParent<StructureBlock>();
     }
+
 
     public void setTurretAttatchPointFree() {
         isTurretAttatchPointFree = true;
