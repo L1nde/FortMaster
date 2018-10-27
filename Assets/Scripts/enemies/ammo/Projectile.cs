@@ -3,7 +3,7 @@
 namespace Assets.Scripts.enemies.ammo {
     public class Projectile : MonoBehaviour {
         public float shootingAngleOffset = 10f;
-        
+
         public float damage = 10f;
 
         protected Rigidbody2D rb2d;
@@ -20,16 +20,15 @@ namespace Assets.Scripts.enemies.ammo {
         void Update() {
             // if arrow got new target
             if (!impacted) {
-                if (!flying) 
+                if (!flying)
                     rb2d.velocity = Vector2.zero;
-                else 
+                else
                     transform.rotation = LookAt2D(rb2d.velocity);
             }
         }
 
         private Quaternion LookAt2D(Vector2 forward) {
             return Quaternion.Euler(0, 0, Mathf.Atan2(forward.y, forward.x) * Mathf.Rad2Deg);
-            
         }
 
         private void OnTriggerEnter2D(Collider2D collision) {
@@ -38,18 +37,17 @@ namespace Assets.Scripts.enemies.ammo {
             }
 
             if (collision.gameObject.tag == "StructureBlock" && !impacted) {
-                if (collision.gameObject.GetComponent<StructureBlock>() == null)
-                {
+                if (collision.gameObject.GetComponent<Core>() != null) {
                     Core core = collision.gameObject.GetComponent<Core>();
-                    if (core.isDead())
-                    {
-                        UIController.Instance.LoseWave();
-                        Destroy(core);
-                    }
+                    if (core.isDead()) {
+                    UIController.Instance.LoseWave();
+                    Destroy(core);
+                
+
                     core.doDamage(damage);
+                    }
                 }
-                else
-                {
+                else if (collision.gameObject.GetComponent<StructureBlock>() != null) {
                     StructureBlock structure = collision.gameObject.GetComponent<StructureBlock>();
                     if (structure.isDead())
                         Destroy(structure);
@@ -75,7 +73,6 @@ namespace Assets.Scripts.enemies.ammo {
             Vector2 offset = target - transform.position;
             float angle = Mathf.Atan(Mathf.Abs(offset.y / offset.x));
             return Mathf.Clamp(shootingAngleOffset + angle * Mathf.Rad2Deg, 10f, 89f);
-
         }
 
         public void shootProjectile(Vector3 target) {
@@ -103,6 +100,7 @@ namespace Assets.Scripts.enemies.ammo {
             if (target.x - transform.position.x < 0f) {
                 finalVelocity = new Vector3(-finalVelocity.x, finalVelocity.y);
             }
+
             body.AddForce(finalVelocity * body.mass, ForceMode2D.Impulse);
 
             transform.rotation = LookAt2D(body.velocity);
