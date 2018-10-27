@@ -7,11 +7,12 @@ using UnityEngine.UI;
 
 public class BlockCreate : MonoBehaviour {
 
-    public GameObject block;
+    public Placeable block;
 
 	// Use this for initialization
 	void Start () {
         initTriggers();
+        transform.Find("costText").GetComponent<Text>().text = block.cost + "$";
     }
 
     private void initTriggers()
@@ -31,7 +32,8 @@ public class BlockCreate : MonoBehaviour {
 	
     void OnPointerDown() {
         // sets the selected block in ConstructionManager
-        ConstructionManager.instance.Select(Instantiate(block).GetComponent<Placeable>());
+        if (GameController.instance.canAfford(block.cost))
+            ConstructionManager.instance.Select(Instantiate(block).GetComponent<Placeable>());
     }
 
     void OnPointerUp() {

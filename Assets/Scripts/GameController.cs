@@ -11,7 +11,7 @@ public class GameController : MonoBehaviour {
     public Text goldText;
 
     // Use this for initialization
-    void Start () {
+    void Start() {
         if (instance == null)
             instance = this;
 
@@ -19,6 +19,7 @@ public class GameController : MonoBehaviour {
             Destroy(gameObject);
 
         DontDestroyOnLoad(gameObject);
+        updateGoldText();
     }
 	
 	// Update is called once per frame
@@ -32,7 +33,7 @@ public class GameController : MonoBehaviour {
     }
 
     public bool canAfford(float amount) {
-        return amount < gold;
+        return amount <= gold;
     }
 
     public void removeGold(float amount) {
@@ -41,6 +42,6 @@ public class GameController : MonoBehaviour {
     }
 
     private void updateGoldText() {
-
+        goldText.text = "Gold: " + gold;
     }
 }

@@ -39,13 +39,12 @@ namespace Assets.Scripts.enemies.ammo {
             if (collision.gameObject.tag == "StructureBlock" && !impacted) {
                 if (collision.gameObject.GetComponent<Core>() != null) {
                     Core core = collision.gameObject.GetComponent<Core>();
-                    if (core.isDead()) {
-                    UIController.Instance.LoseWave();
-                    Destroy(core);
-                
-
-                    core.doDamage(damage);
+                    if (core.isDead())
+                    {
+                        UIController.Instance.LoseWave();
+                        Destroy(core);
                     }
+                    core.doDamage(damage);
                 }
                 else if (collision.gameObject.GetComponent<StructureBlock>() != null) {
                     StructureBlock structure = collision.gameObject.GetComponent<StructureBlock>();

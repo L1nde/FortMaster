@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4591679312313314}
   - component: {fileID: 114076229257546742}
   m_Layer: 0
-  m_Name: StructureAttatchPoint4
+  m_Name: StructureAttachPoint4
   m_TagString: StructureBlockAttachPoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -36,7 +36,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4479169473639988}
   m_Layer: 11
-  m_Name: TurretAttatchPoint
+  m_Name: TurretAttachPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -52,7 +52,7 @@ GameObject:
   - component: {fileID: 4475377870035296}
   - component: {fileID: 114419223834824584}
   m_Layer: 0
-  m_Name: StructureAttatchPoint3
+  m_Name: StructureAttachPoint3
   m_TagString: StructureBlockAttachPoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -87,7 +87,7 @@ GameObject:
   - component: {fileID: 4417286232915452}
   - component: {fileID: 114002795674540542}
   m_Layer: 0
-  m_Name: StructureAttatchPoint1
+  m_Name: StructureAttachPoint1
   m_TagString: StructureBlockAttachPoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -103,7 +103,7 @@ GameObject:
   - component: {fileID: 4934672139369372}
   - component: {fileID: 114084822718925492}
   m_Layer: 0
-  m_Name: StructureAttatchPoint2
+  m_Name: StructureAttachPoint2
   m_TagString: StructureBlockAttachPoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -292,6 +292,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b6f0eb6012310d4ca60914f679be452, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cost: 50
   hp: 100
   jointBreakTorque: 100000
 --- !u!212 &212518249846193314

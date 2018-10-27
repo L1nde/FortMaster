@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Attatcher : MonoBehaviour {
+public class Attacher : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
