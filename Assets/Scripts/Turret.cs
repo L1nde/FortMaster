@@ -58,7 +58,7 @@ public class Turret : Placeable {
         CreateJoints();
     }
 
-    public override Attatcher[] getAttatchPoints()
+    public override Attacher[] getAttachPoints()
     {
         return null;
     }
@@ -69,7 +69,7 @@ public class Turret : Placeable {
             Destroy(gameObject);
             return;
         }
-        sb.disableTurretAttatchPoint();
+        sb.disableTurretAttachPoint();
         HingeJoint2D fj = gameObject.AddComponent<HingeJoint2D>();
         fj.connectedBody = sb.GetComponent<Rigidbody2D>();
         transform.parent = sb.transform;
@@ -79,14 +79,14 @@ public class Turret : Placeable {
         Vector3 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         pos.z = 0;
         transform.position = pos;
-        GameObject closestAttatcher = ConstructionManager.instance.getClosestTurretAttatcherInRange(pos, 0.33f);
-        if (Equals(closestAttatcher, null)) {
+        GameObject closestAttacher = ConstructionManager.instance.getClosestTurretAttacherInRange(pos, 0.33f);
+        if (Equals(closestAttacher, null)) {
             setSelectedRedColor(0.5f);
             transform.position = pos;
             transform.rotation = new Quaternion();
         } else {
             setSelectedRedColor(1f);
-            Transform parent = closestAttatcher.transform.parent.transform;
+            Transform parent = closestAttacher.transform.parent.transform;
             transform.position = parent.position;
             transform.rotation = parent.rotation;
         }
@@ -105,7 +105,7 @@ public class Turret : Placeable {
     }
 
     private StructureBlock GetClosestStructureBlockToPos(Vector3 pos) {
-        GameObject o = ConstructionManager.instance.getClosestTurretAttatcherInRange(pos, 0.1f);
+        GameObject o = ConstructionManager.instance.getClosestTurretAttacherInRange(pos, 0.1f);
         if (Equals(o, null))
             return null;
         return o.transform.GetComponentInParent<StructureBlock>();

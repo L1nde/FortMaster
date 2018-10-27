@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4308162897751170}
   - component: {fileID: 114790861234389384}
   m_Layer: 0
-  m_Name: StructureAttatchPointS
+  m_Name: StructureAttachPointS
   m_TagString: StructureBlockAttachPoint
   m_Icon: {fileID: 3306451490063965843, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -56,7 +56,7 @@ GameObject:
   - component: {fileID: 4343796834409760}
   - component: {fileID: 114663893044107704}
   m_Layer: 0
-  m_Name: StructureAttatchPointE
+  m_Name: StructureAttachPointE
   m_TagString: StructureBlockAttachPoint
   m_Icon: {fileID: 3306451490063965843, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -72,7 +72,7 @@ GameObject:
   - component: {fileID: 4279495571409642}
   - component: {fileID: 114072998964151764}
   m_Layer: 0
-  m_Name: StructureAttatchPointN
+  m_Name: StructureAttachPointN
   m_TagString: StructureBlockAttachPoint
   m_Icon: {fileID: 3306451490063965843, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -88,7 +88,7 @@ GameObject:
   - component: {fileID: 4197655801591056}
   - component: {fileID: 114186990436956688}
   m_Layer: 0
-  m_Name: StructureAttatchPointN
+  m_Name: StructureAttachPointN
   m_TagString: StructureBlockAttachPoint
   m_Icon: {fileID: 3306451490063965843, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -104,7 +104,7 @@ GameObject:
   - component: {fileID: 4499184327570156}
   - component: {fileID: 114249058837346206}
   m_Layer: 0
-  m_Name: StructureAttatchPointS
+  m_Name: StructureAttachPointS
   m_TagString: StructureBlockAttachPoint
   m_Icon: {fileID: 3306451490063965843, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -120,7 +120,7 @@ GameObject:
   - component: {fileID: 4087062251899184}
   - component: {fileID: 114746162174150246}
   m_Layer: 0
-  m_Name: StructureAttatchPointW
+  m_Name: StructureAttachPointW
   m_TagString: StructureBlockAttachPoint
   m_Icon: {fileID: 3306451490063965843, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 4272584117126774}
   - component: {fileID: 114964273537503846}
   m_Layer: 0
-  m_Name: StructureAttatchPointW
+  m_Name: StructureAttachPointW
   m_TagString: StructureBlockAttachPoint
   m_Icon: {fileID: 3306451490063965843, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -152,7 +152,7 @@ GameObject:
   - component: {fileID: 4349940000602138}
   - component: {fileID: 114837774459659414}
   m_Layer: 0
-  m_Name: StructureAttatchPointE
+  m_Name: StructureAttachPointE
   m_TagString: StructureBlockAttachPoint
   m_Icon: {fileID: 3306451490063965843, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0

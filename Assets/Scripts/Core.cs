@@ -11,7 +11,7 @@ public class Core : StructureBlock
     // Use this for initialization
     void Start()
     {
-        setAttatchPoints();
+        setAttachPoints();
         canPlace = true;
         isPlaced = false;
     }
@@ -29,12 +29,12 @@ public class Core : StructureBlock
         Destroy(gameObject);
     }
 
-    private void setAttatchPoints() {
-        attatchPoints = GetComponentsInChildren<Attatcher>();
+    private void setAttachPoints() {
+        AttachPoints = GetComponentsInChildren<Attacher>();
     }
 
-    public override Attatcher[] getAttatchPoints() {
-        return attatchPoints;
+    public override Attacher[] getAttachPoints() {
+        return AttachPoints;
     }
 
 
