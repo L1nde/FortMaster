@@ -60,8 +60,6 @@ namespace Assets.Scripts.enemies.ammo {
                 CreateJoint(rb);
             Destroy(gameObject, 1);
             impacted = true;
-
-            //            gameObject.AddComponent<FixedJoint2D>().connectedBody = collision.gameObject.GetComponent<Rigidbody2D>();
         }
 
         private void CreateJoint(Rigidbody2D rb) {
