@@ -7,6 +7,7 @@ namespace Assets.Scripts.enemies {
         public float speed = 1f;
         public float attackDelay = 1f;
         public float attackRange = 10f;
+        public float moneyOnDeath;
 
         protected CircleCollider2D attackRangeCollider;
         protected float attackAcc = 0f;
@@ -35,6 +36,10 @@ namespace Assets.Scripts.enemies {
             }
 
             move();
+        }
+
+        private void OnDestroy() {
+            GameController.instance.addGold(moneyOnDeath);
         }
 
 

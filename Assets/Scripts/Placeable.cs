@@ -5,6 +5,7 @@ using UnityEngine;
 
 public abstract class Placeable : MonoBehaviour {
 
+    public float cost;
 
 	void Start () {
 		

@@ -183,6 +183,7 @@ MonoBehaviour:
   speed: -0.5
   attackDelay: 1
   attackRange: 9.5
+  moneyOnDeath: 10
   projectilePrefab: {fileID: 114341463140934870, guid: c874c41003b9ed9479010e688907b355,
     type: 2}
   accuracySpread: 1

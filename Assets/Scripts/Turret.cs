@@ -54,8 +54,13 @@ public class Turret : Placeable {
         }
 
     public override void place(Transform parent) {
-        disableDragMode();
-        CreateJoints();
+        if (GameController.instance.canAfford(cost)) {
+            GameController.instance.removeGold(cost);
+            disableDragMode();
+            CreateJoints();
+        } else {
+            Destroy(gameObject);
+        }
     }
 
     public override Attacher[] getAttachPoints()

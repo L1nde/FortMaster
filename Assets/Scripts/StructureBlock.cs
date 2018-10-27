@@ -60,7 +60,8 @@ public class StructureBlock : Placeable {
     }
 
     public override void place(Transform parent) {
-        if (canPlace) {
+        if (canPlace && GameController.instance.canAfford(cost)) {
+            GameController.instance.removeGold(cost);
             disableDragMode();
             CreateJoints();
             transform.parent = parent;
