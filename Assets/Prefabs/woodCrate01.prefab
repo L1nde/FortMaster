@@ -71,7 +71,7 @@ GameObject:
   - component: {fileID: 50528165806562186}
   - component: {fileID: 114443561366279118}
   m_Layer: 11
-  m_Name: woodCrate02
+  m_Name: woodCrate01
   m_TagString: StructureBlock
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -12,10 +12,13 @@ namespace Assets.Scripts.enemies {
         // Update is called once per frame
         new void Update() {
             base.Update();
-            attack();
+            attack();   
         }
 
         public override void attack() {
+            if (!attackEnabled)
+                return;
+
             Collider2D targetCollider = getTarget();
             if (targetCollider != null) {
                 if (attackAcc > attackDelay) {

@@ -19,6 +19,9 @@ namespace Assets.Scripts.enemies {
 
         public override void attack() {
             // attacking
+            if (!attackEnabled)
+                return;
+
             Collider2D targetCollider = getTarget();
             if (targetCollider != null) {
                 if (attackAcc > attackDelay) {

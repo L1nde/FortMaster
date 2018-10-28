@@ -34,12 +34,18 @@ public class Turret : Placeable {
 
     private void fire() {
         Collider2D target = getTarget();
-        if (target != null){
+        if (target != null && checkIfInView(target.gameObject.transform.position)){
             anim.Play("Fire");
             PlayerProjectile p = Instantiate(projectile);
             p.init(transform.rotation.eulerAngles.z, transform.position, new Vector2(target.transform.position.x, target.transform.position.y - target.transform.localScale.y / 2));
             transform.rotation = p.transform.rotation;
         }
+    }
+
+    private bool checkIfInView(Vector3 position)
+    {
+        Vector3 screenPoint = Camera.main.WorldToViewportPoint(position);
+        return screenPoint.z > 0 && screenPoint.x > 0 && screenPoint.x < 1 && screenPoint.y > 0 && screenPoint.y < 1;
     }
 
     private Collider2D getTarget() {
