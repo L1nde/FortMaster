@@ -34,11 +34,14 @@ public class UIController : MonoBehaviour {
     public void WinWave()
     {
         WinScreen.gameObject.SetActive(true);
+        DisableAllBuildingSubButtons();
+        Time.timeScale = 0.0f;
     }
 
     public void LoseWave()
     {
         LoseScreen.gameObject.SetActive(true);
+        DisableAllBuildingSubButtons();
         Time.timeScale = 0.0f;
     }
 
