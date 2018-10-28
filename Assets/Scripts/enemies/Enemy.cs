@@ -21,7 +21,6 @@ namespace Assets.Scripts.enemies {
         protected void Start() {
             anim = GetComponent<Animator>();
             rb2d = GetComponent<Rigidbody2D>();
-            attackEnabled = checkIfInView();
             attackEnabled = checkIfInView(gameObject.transform.position);
             foreach (var child in GetComponentsInChildren<CircleCollider2D>()) {
                 if (child.gameObject.tag == "AttackRange") {
