@@ -2,6 +2,7 @@
 using UnityEngine;
 
 namespace Assets.Scripts.enemies {
+
     public abstract class Enemy : MonoBehaviour {
         public float hp = 100;
         public float speed = 1f;
@@ -82,6 +83,14 @@ namespace Assets.Scripts.enemies {
 
         public void doDamage(float damage) {
             hp -= damage;
+        }
+
+        public void OnDisable() {
+            EnemySpawn.enemyCounter--;
+        }
+
+        public void OnEnable() {
+            EnemySpawn.enemyCounter++;
         }
     }
 

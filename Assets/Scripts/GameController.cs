@@ -24,8 +24,9 @@ public class GameController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (GameObject.FindGameObjectsWithTag("Enemy").Length == 0 && GameObject.FindGameObjectsWithTag("EnemySpawner").Length == 0)
-            UIController.Instance.WinWave();
+	    if (EnemySpawn.waveEnd) {
+//	        UIController.Instance.WinWave();
+        }            
 	}
 
     public void addGold(float amount) {
