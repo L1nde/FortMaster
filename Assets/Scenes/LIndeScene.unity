@@ -401,7 +401,7 @@ GameObject:
   - component: {fileID: 1055395521}
   m_Layer: 0
   m_Name: EnemySpawn
-  m_TagString: Untagged
+  m_TagString: EnemySpawner
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -420,6 +420,7 @@ MonoBehaviour:
   spawnDelay: 10
   enemyPrefabs:
   - {fileID: 1600820357053968, guid: c87566c463b016d42856178cbac838d5, type: 2}
+  enemyCount: 01000000
 --- !u!4 &1055395522
 Transform:
   m_ObjectHideFlags: 0
@@ -701,6 +702,34 @@ Prefab:
         type: 2}
       propertyPath: m_Text
       value: cost
+      objectReference: {fileID: 0}
+    - target: {fileID: 1376880517496456, guid: 40a7853b41a20de4583caf598d509ddb, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224202626242307478, guid: 40a7853b41a20de4583caf598d509ddb,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: 150.79999
+      objectReference: {fileID: 0}
+    - target: {fileID: 224202626242307478, guid: 40a7853b41a20de4583caf598d509ddb,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: 58.899994
+      objectReference: {fileID: 0}
+    - target: {fileID: 1512311239423722, guid: 40a7853b41a20de4583caf598d509ddb, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224202626242307478, guid: 40a7853b41a20de4583caf598d509ddb,
+        type: 2}
+      propertyPath: m_SizeDelta.y
+      value: 146.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 224202626242307478, guid: 40a7853b41a20de4583caf598d509ddb,
+        type: 2}
+      propertyPath: m_SizeDelta.x
+      value: 429.7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 40a7853b41a20de4583caf598d509ddb, type: 2}

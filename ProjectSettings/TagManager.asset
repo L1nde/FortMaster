@@ -13,6 +13,7 @@ TagManager:
   - Enemy
   - PlayerProjectile
   - SelectedItem
+  - EnemySpawner
   layers:
   - Default
   - TransparentFX

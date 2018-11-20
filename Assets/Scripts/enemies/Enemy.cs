@@ -15,11 +15,13 @@ namespace Assets.Scripts.enemies {
         protected Animator anim;
         protected bool stopMovement = false;
 
+        protected bool attackEnabled = false;
 
         // Use this for initialization
         protected void Start() {
             anim = GetComponent<Animator>();
             rb2d = GetComponent<Rigidbody2D>();
+            attackEnabled = checkIfInView(gameObject.transform.position);
             foreach (var child in GetComponentsInChildren<CircleCollider2D>()) {
                 if (child.gameObject.tag == "AttackRange") {
                     attackRangeCollider = child;
@@ -34,14 +36,19 @@ namespace Assets.Scripts.enemies {
             if (hp <= 0) {
                 Destroy(gameObject);
             }
-
+            attackEnabled = checkIfInView(gameObject.transform.position);
             move();
+        }
+
+        private bool checkIfInView(Vector3 position)
+        {
+            Vector3 screenPoint = Camera.main.WorldToViewportPoint(position);
+            return screenPoint.z > 0 && screenPoint.x > 0 && screenPoint.x < 1 && screenPoint.y > 0 && screenPoint.y < 1;
         }
 
         private void OnDestroy() {
             GameController.instance.addGold(moneyOnDeath);
         }
-
 
         protected Collider2D getTarget() {
             Collider2D[] colliders = new Collider2D[10];
@@ -54,7 +61,7 @@ namespace Assets.Scripts.enemies {
             }
         }
 
-
+        
         protected void move() {
             if (!stopMovement) {
                 rb2d.velocity = new Vector2(speed, rb2d.velocity.y);
