@@ -12,6 +12,7 @@ public class Turret : Placeable {
     private CircleCollider2D attackRangeCollider;
     // Use this for initialization
     void Start () {
+        researched = true;
         anim = GetComponent<Animator>();
         currentReloadTime = reloadTime;
         foreach (var child in GetComponentsInChildren<CircleCollider2D>()) {

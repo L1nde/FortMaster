@@ -12,6 +12,7 @@ public class UIController : MonoBehaviour {
     public GameObject overlay;
     public Button EnableStructureTabButton;
     public Button EnableTurretsTabButton;
+    public Button researchButton;
     public Image WinScreen;
     public Image LoseScreen;
     public Text countdown;
@@ -33,6 +34,10 @@ public class UIController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        if (EnemySpawn.waveEnd)
+            researchButton.gameObject.SetActive(true);
+        else
+            researchButton.gameObject.SetActive(false);
 	}
 
     public void WinWave()

@@ -8,11 +8,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6486205c73a44746a9dfa066aeb5c2a, type: 3}
-  m_Name: Wave0
+  m_Script: {fileID: 11500000, guid: 2158a44aac4e1a84abd7d0bcec965e8b, type: 3}
+  m_Name: RedueCost1
   m_EditorClassIdentifier: 
-  enemies:
-  - enemy: {fileID: 114219937301509240, guid: c87566c463b016d42856178cbac838d5, type: 2}
-    count: 1
-  spawnDelay: 1
-  buildTime: 10
+  prerequisites: []
+  buttonText: Reduce cost by 10
+  block: {fileID: 114443561366279118, guid: 2e0dd580e37ff774e9120e248f34f946, type: 2}
+  xpCost: 10
+  newCost: 40

@@ -18,7 +18,7 @@ public class StructureBlock : Placeable {
 
     // Use this for initialization
     void Start () {
-        
+        researched = true;
         setAttachPoints();
         isTurretAttachPointFree = true;
         canPlace = true;

@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Assets.Scripts;
 using UnityEngine;
 
 public abstract class Placeable : MonoBehaviour {
 
     public float cost;
+    protected bool researched = false;
 
 	void Start () {
 		
@@ -25,6 +27,12 @@ public abstract class Placeable : MonoBehaviour {
     public abstract Attacher[] getAttachPoints();
     public abstract void place(Transform parent);
 
+    public void research(ResearchItem item)
+    {
+        if (item.newCost != -1)
+            cost = item.newCost;
+    }
+
     protected void setSelectedAlpha(float a) {
         Color c = gameObject.GetComponent<SpriteRenderer>().color;
         c.a = a;
@@ -36,5 +44,10 @@ public abstract class Placeable : MonoBehaviour {
         c.g = g;
         c.b = g;
         gameObject.GetComponent<SpriteRenderer>().color = c;
+    }
+
+    internal bool isResearched()
+    {
+        return researched;
     }
 }
