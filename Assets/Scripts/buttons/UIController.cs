@@ -74,10 +74,10 @@ public class UIController : MonoBehaviour {
     }
 
     void OnLevelLoading(Scene scene, LoadSceneMode mode) {
-        if (scene.name == SceneManager.GetActiveScene().name) {
-            overlay.SetActive(true);
-        } else {
+        if (scene.name == "WaveSelection") {
             overlay.SetActive(false);
+        } else {
+            overlay.SetActive(true);
         }
     }
 }
