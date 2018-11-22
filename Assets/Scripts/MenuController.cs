@@ -47,10 +47,9 @@ namespace Assets.Scripts {
         }
 
         public void optionsButton() {
-            anim.SetFloat("speed", -1f);
+            anim.SetFloat("speed", 1f);
             anim.SetBool("traits", false);
             anim.SetBool("playButton", false);
-            anim.SetFloat("speed", 1f);
             anim.SetBool("options", true);
         }
     }
