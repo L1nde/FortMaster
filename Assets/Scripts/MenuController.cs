@@ -43,7 +43,7 @@ namespace Assets.Scripts {
                 WaveController.CurreWaveDetails = SaveController.instance.LoadWave(waveSaveName);
             }
             
-            SceneManager.LoadScene("testmap");
+            SceneManager.LoadScene("LIndeScene");
         }
 
         public void optionsButton() {

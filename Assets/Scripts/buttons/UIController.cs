@@ -26,18 +26,20 @@ public class UIController : MonoBehaviour {
     private List<BlockCreate> turretButtons;
 
     // Use this for initialization
-    void Start () {
-        if (Instance == null)
-        {
+    void Awake()
+    {
+        if (Instance == null) {
             DontDestroyOnLoad(gameObject);
             Instance = this;
         }
-        else if (Instance != this)
-        {
+        else if (Instance != this) {
             Destroy(gameObject);
         }
-
         turretButtons = new List<BlockCreate>();
+    }
+
+    void Start () {
+
         SceneManager.sceneLoaded += OnLevelLoading;
     }
 	
