@@ -24,9 +24,9 @@ public class GameController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	    if (EnemySpawn.waveEnd) {
-//	        UIController.Instance.WinWave();
-        }            
+// 	    if (WaveController.waveOver) {
+// //	        UIController.Instance.WinWave();
+//         }            
 	}
 
     public void addGold(float amount) {
