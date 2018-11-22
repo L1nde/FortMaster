@@ -1,4 +1,6 @@
 ﻿using UnityEngine;
+using Assets.Scripts.enemies;
+using System.Collections.Generic;
 
 namespace Assets.Scripts.waves {
     public class WaveController : MonoBehaviour {
@@ -29,10 +31,12 @@ namespace Assets.Scripts.waves {
             waveOver = isWaveEnded();
             if (waveOver) {
                 if (!nextWaveGenerated){
-                    // Todo
+                    CurreWaveDetails = genNextWave();
+                    SaveController.instance.saveWave(CurreWaveDetails);
                 }
                 if (buildAcc >= buildTime) {
                     spawnController.startWave(CurreWaveDetails);
+                    nextWaveGenerated = false;
                 }
                 else {
                     buildAcc += Time.deltaTime;
@@ -47,8 +51,18 @@ namespace Assets.Scripts.waves {
             }
         }
 
-        private void genNextWave(){
-
+        private WaveDetails genNextWave(){
+            var nextWaveDetails = Instantiate(CurreWaveDetails);
+            nextWaveDetails.spawnDelay = Mathf.Max(nextWaveDetails.spawnDelay - 1, 1); //Todo
+            var lastWaveEnemies = CurreWaveDetails.enemies;
+            var nextWaveEnemies = new List<WaveEnemy>();
+            foreach (var item in lastWaveEnemies)
+            {
+                nextWaveEnemies.Add(new WaveEnemy(item.enemy, item.count + 1));
+            }
+            nextWaveDetails.enemies = nextWaveEnemies;
+            nextWaveGenerated = true;
+            return nextWaveDetails;
         }
 
         private bool isWaveEnded(){

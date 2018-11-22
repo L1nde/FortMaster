@@ -1224,6 +1224,14 @@ MonoBehaviour:
   m_Script: {fileID: 1301386320, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
+  spawnController: {fileID: 1296155280}
+  possibleEnemies:
+  - {fileID: 114219937301509240, guid: c87566c463b016d42856178cbac838d5, type: 2}
+  - {fileID: 114553184666542520, guid: ad02d701c9dee474c8138dd507e6afca, type: 2}
+--- !u!1 &949819944
+GameObject:
+=======
   m_IgnoreReversedGraphics: 1
   m_BlockingObjects: 0
   m_BlockingMask:
@@ -1231,6 +1239,7 @@ MonoBehaviour:
     m_Bits: 4294967295
 --- !u!114 &712043699
 MonoBehaviour:
+>>>>>>> 7a4a875e1d64ac29e8a1c38afd041ba0083c6f13
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 114541990667137392, guid: 40a7853b41a20de4583caf598d509ddb,
     type: 2}
