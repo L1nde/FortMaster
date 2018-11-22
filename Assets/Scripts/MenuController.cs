@@ -16,7 +16,10 @@ namespace Assets.Scripts {
         private string waveSaveName = "null";
 
         public void playButton() {
-            anim.Play("InitialMenu");
+            anim.SetFloat("speed", -1f);
+            anim.SetBool("options", false);
+            anim.SetFloat("speed", 1f);
+            anim.SetBool("playButton", true);
             var saveController = SaveController.instance;
             foreach (var fileInfo in saveController.GetFilePaths()) {
                 var save = Instantiate(saveObject, savesParent.transform);
@@ -28,7 +31,8 @@ namespace Assets.Scripts {
 
         public void loadSave(string waveSaveName) {
             this.waveSaveName = waveSaveName;
-            anim.Play("TraitsMenu");
+            anim.SetFloat("speed", 1f);
+            anim.SetBool("traits", true);
         }
 
         public void startGame() {
@@ -40,6 +44,14 @@ namespace Assets.Scripts {
             }
             
             SceneManager.LoadScene("LindeScene");
+        }
+
+        public void optionsButton() {
+            anim.SetFloat("speed", -1f);
+            anim.SetBool("traits", false);
+            anim.SetBool("playButton", false);
+            anim.SetFloat("speed", 1f);
+            anim.SetBool("options", true);
         }
     }
 
