@@ -43,7 +43,7 @@ public class UIController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (EnemySpawn.waveEnd)
+        if (WaveController.waveOver)
             researchButton.gameObject.SetActive(true);
         else
             researchButton.gameObject.SetActive(false);
