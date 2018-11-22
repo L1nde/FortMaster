@@ -27,7 +27,7 @@ public abstract class Placeable : MonoBehaviour {
     public abstract Attacher[] getAttachPoints();
     public abstract void place(Transform parent);
 
-    public void research(ResearchItem item)
+    public void research()
     {
         if (item.newCost != -1)
             cost = item.newCost;
