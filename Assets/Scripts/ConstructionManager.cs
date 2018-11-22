@@ -31,6 +31,7 @@ public class ConstructionManager : MonoBehaviour {
 
         UIController.Instance.CreateTurretButtons(turrets);
         UIController.Instance.CreateStructureBlockButtons(structureBlocks);
+
         fortBase = new GameObject("FortBase");
         createCore();
         DontDestroyOnLoad(gameObject);

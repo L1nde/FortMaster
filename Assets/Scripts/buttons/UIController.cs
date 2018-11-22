@@ -6,6 +6,8 @@ using Assets.Scripts.waves;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using Assets.Scripts.Research;
+using System;
 
 public class UIController : MonoBehaviour {
 
@@ -22,6 +24,8 @@ public class UIController : MonoBehaviour {
     public GameObject StructureBlockPanel;
     public GameObject TurretPanel;
     public BlockCreate PlaceableBlockPrefab;
+    public ResearchButton researchButtonPrefab;
+    public GameObject researchScreen;
 
     private List<BlockCreate> turretButtons;
 
@@ -38,6 +42,30 @@ public class UIController : MonoBehaviour {
         turretButtons = new List<BlockCreate>();
     }
 
+    public void researchScreenActivation()
+    {
+        researchScreen.SetActive(!researchScreen.activeSelf);
+    }
+
+    public void createResearchButton(ResearchBlock item)
+    {
+        instantiateResearchButton(item.researchButtonText, item.xpCost, item.block);
+    }
+
+    public void createResearchButton(ResearchTurret item)
+    {
+        instantiateResearchButton(item.researchButtonText, item.xpCost, item.block);
+    }
+
+    private void instantiateResearchButton(string text, float cost, UnityEngine.Object data)
+    {
+        ResearchButton button = Instantiate(researchButtonPrefab, researchScreen.transform);
+        button.setResearchText(text);
+        button.setCostText(cost);
+        button.setData(data);
+        button.setCost(cost);
+    }
+
     void Start () {
 
         SceneManager.sceneLoaded += OnLevelLoading;
@@ -50,6 +78,23 @@ public class UIController : MonoBehaviour {
         else
             researchButton.gameObject.SetActive(false);
 	}
+
+    public void CreateTurretButton(TurretData turret)
+    {
+        PlaceableBlockPrefab.cost = turret.cost;
+        PlaceableBlockPrefab.name = turret.name;
+        BlockCreate create = Instantiate(PlaceableBlockPrefab, TurretPanel.transform);
+        create.transform.position = create.transform.position;
+        turretButtons.Add(create);
+    }
+
+    public void CreateStructureBlockButton(StructureBlockData block)
+    {
+        PlaceableBlockPrefab.cost = block.cost;
+        PlaceableBlockPrefab.name = block.name;
+        BlockCreate structureBlock = Instantiate(PlaceableBlockPrefab, StructureBlockPanel.transform);
+        turretButtons.Add(structureBlock);
+    }
 
     public void CreateTurretButtons(List<TurretData> turrets)
     {
