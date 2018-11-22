@@ -29,8 +29,7 @@ public abstract class Placeable : MonoBehaviour {
 
     public void research()
     {
-        if (item.newCost != -1)
-            cost = item.newCost;
+
     }
 
     protected void setSelectedAlpha(float a) {

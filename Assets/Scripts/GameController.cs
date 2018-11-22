@@ -14,9 +14,6 @@ public class GameController : MonoBehaviour {
     public float xp;
     public Text xpText;
 
-    public ResearchPlaceable test;
-    private List<ResearchPlaceable> researchedPlaceables = new List<ResearchPlaceable>();
-
     // Use this for initialization
     void Start() {
         if (instance == null)
@@ -31,19 +28,13 @@ public class GameController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        UIController.Instance.instantiateButton(test);
-        if (EnemySpawn.waveEnd) {
+
 //	        UIController.Instance.WinWave();
         }            
 // 	    if (WaveController.waveOver) {
 // //	        UIController.Instance.WinWave();
 //         }            
 	}
-
-    public void addResearchedPlaceable(ResearchPlaceable item)
-    {
-        UIController.Instance.instantiateButton(item);
-    }
 
     public void addGold(float amount) {
         gold += amount;
