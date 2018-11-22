@@ -35,7 +35,6 @@ namespace Assets.Scripts {
         }
 
         public void loadSave(string waveSaveName) {
-            Debug.Log("Loaded wave " + waveSaveName);
             this.waveSaveName = waveSaveName;
             anim.SetFloat("speed", 1f);
             anim.SetBool("traits", true);
@@ -48,7 +47,6 @@ namespace Assets.Scripts {
             }
             else {
                 WaveController.CurreWaveDetails = SaveController.instance.LoadWave(waveSaveName);
-                Debug.Log(WaveController.CurreWaveDetails.enemies[0].count);
             }
             
             SceneManager.LoadScene("LIndeScene");
