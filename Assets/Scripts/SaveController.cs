@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
@@ -29,9 +30,23 @@ public class SaveController : MonoBehaviour {
         string folderPath = Path.Combine(Application.persistentDataPath, folderName);
         if (!Directory.Exists(folderPath))
             Directory.CreateDirectory(folderPath);
+        var files = GetFilePaths().OrderBy(f => f.Name);
+        if (files.Count() != 0){
+            FileInfo lastFile = files.Last();
+            saveFileNr = int.Parse(lastFile.Name.Substring(0, lastFile.Name.Length - 4));
+        } else {
+            saveFileNr = 0;
+        }
+        
     }
 
-    public void SaveWave(WaveDetails waveDetails, int waveNr) {
+    public void saveWave(WaveDetails waveDetails){
+        saveFileNr++;
+        saveWave(waveDetails, saveFileNr);
+        
+    }
+
+    public void saveWave(WaveDetails waveDetails, int waveNr) {
         var wave = new WaveSaveObject(waveDetails);
         string folderPath = Path.Combine(Application.persistentDataPath, folderName);
         string dataPath = Path.Combine(folderPath, waveNr + fileExtension);
@@ -59,7 +74,7 @@ public class SaveController : MonoBehaviour {
     }
 
 
-    WaveDetails convertToWaveDetails(WaveSaveObject waveSaveObject) {
+    private WaveDetails convertToWaveDetails(WaveSaveObject waveSaveObject) {
         var waveDetails = Instantiate(sampleWaveDetails);
         waveDetails.buildTime = waveSaveObject.buildTime;
         waveDetails.spawnDelay = waveSaveObject.spawnDelay;
@@ -69,5 +84,12 @@ public class SaveController : MonoBehaviour {
         }
 
         return waveDetails;
+    }
+
+    public void deleteAll(){
+        foreach (var item in GetFilePaths())
+        {
+            File.Delete(item.FullName);
+        }
     }
 }

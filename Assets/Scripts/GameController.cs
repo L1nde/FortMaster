@@ -35,6 +35,9 @@ public class GameController : MonoBehaviour {
         if (EnemySpawn.waveEnd) {
 //	        UIController.Instance.WinWave();
         }            
+// 	    if (WaveController.waveOver) {
+// //	        UIController.Instance.WinWave();
+//         }            
 	}
 
     public void addResearchedPlaceable(ResearchPlaceable item)

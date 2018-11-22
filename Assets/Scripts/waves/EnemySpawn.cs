@@ -6,8 +6,6 @@ using UnityEngine.UI;
 
 public class EnemySpawn : MonoBehaviour {
     public static int enemyCounter;
-    public static bool waveEnd = true;
-
     private float spawnDelay = 1f;
     private bool started = false;
 
@@ -38,12 +36,10 @@ public class EnemySpawn : MonoBehaviour {
 
             spawnAcc += Time.deltaTime;
         }
-        else if (!waveEnd) {
-            if (enemyCounter == 0) {
-                GameController.instance.addXP(10f);
-                waveEnd = true;
-            }
-        }
+    }
+
+    public bool ended(){
+        return !started;
     }
 
     public void startWave(WaveDetails wave) {
@@ -51,6 +47,5 @@ public class EnemySpawn : MonoBehaviour {
         this.spawnAcc = 0f;
         this.started = true;
         this.spawnDelay = wave.spawnDelay;
-        waveEnd = false;
     }
 }
