@@ -39,7 +39,7 @@ namespace Assets.Scripts {
                 WaveController.CurreWaveDetails = SaveController.instance.LoadWave(waveSaveName);
             }
             
-            SceneManager.LoadScene("LindeScene");
+            SceneManager.LoadScene("testmap");
         }
     }
 

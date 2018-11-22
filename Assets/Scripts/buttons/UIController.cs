@@ -1,5 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Assets.Scripts;
+using Assets.Scripts.Turrets;
 using Assets.Scripts.waves;
 using UnityEngine;
 using UnityEngine.UI;
@@ -17,6 +19,11 @@ public class UIController : MonoBehaviour {
     public Image LoseScreen;
     public Text countdown;
     public GameObject countdownPanel;
+    public GameObject StructureBlockPanel;
+    public GameObject TurretPanel;
+    public BlockCreate PlaceableBlockPrefab;
+
+    private List<BlockCreate> turretButtons;
 
     // Use this for initialization
     void Start () {
@@ -29,6 +36,8 @@ public class UIController : MonoBehaviour {
         {
             Destroy(gameObject);
         }
+
+        turretButtons = new List<BlockCreate>();
         SceneManager.sceneLoaded += OnLevelLoading;
     }
 	
@@ -39,6 +48,32 @@ public class UIController : MonoBehaviour {
         else
             researchButton.gameObject.SetActive(false);
 	}
+
+    public void CreateTurretButtons(List<TurretData> turrets)
+    {
+        int x = 0;
+        foreach (TurretData t in turrets)
+        {
+            PlaceableBlockPrefab.cost = t.cost;
+            PlaceableBlockPrefab.name = t.name;
+            BlockCreate turret = Instantiate(PlaceableBlockPrefab, TurretPanel.transform);
+            turret.transform.position = turret.transform.position + new Vector3(x * 50,0,0);
+            turretButtons.Add(turret);
+            x += 1;
+        }
+    }
+
+    public void CreateStructureBlockButtons(List<StructureBlockData> sblocks) {
+        int x = 0;
+        foreach (StructureBlockData sb in sblocks) {
+            PlaceableBlockPrefab.cost = sb.cost;
+            PlaceableBlockPrefab.name = sb.name;
+            BlockCreate structureBlock = Instantiate(PlaceableBlockPrefab, StructureBlockPanel.transform);
+            //structureBlock.transform.position = structureBlock.transform.position + new Vector3(x * 50, 0, 0);
+            turretButtons.Add(structureBlock);
+            x += 1;
+        }
+    }
 
     public void WinWave()
     {

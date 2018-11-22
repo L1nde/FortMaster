@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Animations;
 using UnityEngine;
 
 public class Turret : Placeable {
@@ -10,10 +11,14 @@ public class Turret : Placeable {
     private Animator anim;
     private bool isEnabled = false;
     private CircleCollider2D attackRangeCollider;
-    // Use this for initialization
+
+    void Awake()
+    {
+        anim = GetComponent<Animator>();
+    }
+
     void Start () {
         researched = true;
-        anim = GetComponent<Animator>();
         currentReloadTime = reloadTime;
         foreach (var child in GetComponentsInChildren<CircleCollider2D>()) {
                 if (child.gameObject.tag == "AttackRange") {
@@ -123,6 +128,9 @@ public class Turret : Placeable {
         return o.transform.GetComponentInParent<StructureBlock>();
     }
 
-
+    public void setAnimController(AnimatorController controller)
+    {
+        anim.runtimeAnimatorController = controller;
+    }
 
 }
