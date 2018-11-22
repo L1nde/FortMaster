@@ -24,18 +24,20 @@ namespace Assets.Scripts {
             foreach (var fileInfo in saveController.GetFilePaths()) {
                 var save = Instantiate(saveObject, savesParent.transform);
                 save.GetComponentInChildren<Text>().text = "Wave " + fileInfo.Name.Substring(0, fileInfo.Name.Length - 4);
-
+                save.GetComponentInChildren<Button>().onClick.AddListener(() => loadSave(fileInfo.Name));
 
             }
         }
 
         public void loadSave(string waveSaveName) {
+            Debug.Log("Loaded wave " + waveSaveName);
             this.waveSaveName = waveSaveName;
             anim.SetFloat("speed", 1f);
             anim.SetBool("traits", true);
         }
 
         public void startGame() {
+            
             if (waveSaveName == "null") {
                 WaveController.CurreWaveDetails = waveZero;
             }

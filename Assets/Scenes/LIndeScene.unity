@@ -1464,6 +1464,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnController: {fileID: 1296155280}
+  possibleEnemies:
+  - {fileID: 114219937301509240, guid: c87566c463b016d42856178cbac838d5, type: 2}
+  - {fileID: 114553184666542520, guid: ad02d701c9dee474c8138dd507e6afca, type: 2}
 --- !u!1 &949819944
 GameObject:
   m_ObjectHideFlags: 0
