@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 114250670259248198}
   - component: {fileID: 50288111695739746}
   m_Layer: 0
-  m_Name: crossbowturret_0
+  m_Name: turretPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -1,5 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using Assets.Scripts;
+using Assets.Scripts.Turrets;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -9,7 +12,13 @@ public class ConstructionManager : MonoBehaviour {
 
     private GameObject fortBase;
     private Placeable selected;
+
+    public List<TurretData> turrets;
+    public List<StructureBlockData> structureBlocks;
     public Core core;
+
+    public Turret turretPrefab;
+    public StructureBlock structureBlockPrefab;
 
 
     void Start()
@@ -20,6 +29,8 @@ public class ConstructionManager : MonoBehaviour {
         else if (instance != this)
             Destroy(gameObject);
 
+        UIController.Instance.CreateTurretButtons(turrets);
+        UIController.Instance.CreateStructureBlockButtons(structureBlocks);
         fortBase = new GameObject("FortBase");
         createCore();
         DontDestroyOnLoad(gameObject);
@@ -33,6 +44,42 @@ public class ConstructionManager : MonoBehaviour {
 
     private void createCore() {
         Core c = Instantiate(core, fortBase.transform);
+    }
+
+    public void initBlock(String name) {
+        foreach (TurretData t in turrets) {
+            if (t.name == name) {
+                initTurret(t);
+                return;
+            }
+        }
+        foreach (StructureBlockData sb in structureBlocks) {
+            if (sb.name == name) {
+                initStructureBlock(sb);
+                return;
+            }
+        }
+
+    }
+
+    private void initStructureBlock(StructureBlockData sbd)
+    {
+        structureBlockPrefab.cost = sbd.cost;
+        structureBlockPrefab.jointBreakTorque = sbd.jointBreakTorque;
+        structureBlockPrefab.hp = sbd.hp;
+        structureBlockPrefab.GetComponent<SpriteRenderer>().sprite = sbd.sprite;
+        Select(Instantiate(structureBlockPrefab));
+    }
+
+    private void initTurret(TurretData td)
+    {
+        turretPrefab.cost = td.cost;
+        turretPrefab.attackRange = td.attackRange;
+        turretPrefab.projectile = td.projectile;
+        turretPrefab.reloadTime = td.reloadTime;
+        Turret t = Instantiate(turretPrefab);
+        t.setAnimController(td.aniController);
+        Select(t);
     }
 
     public void PlaceBlock() {

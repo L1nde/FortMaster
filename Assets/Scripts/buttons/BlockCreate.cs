@@ -1,18 +1,22 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class BlockCreate : MonoBehaviour {
+public class BlockCreate : MonoBehaviour
+{
 
-    public Placeable block;
+    public int cost;
+    public String name;
 
 	// Use this for initialization
 	void Start () {
         initTriggers();
-        transform.Find("costText").GetComponent<Text>().text = block.cost + "$";
+        transform.Find("costText").GetComponent<Text>().text = cost + "$";
+	    transform.Find("Text").GetComponent<Text>().text = name;
     }
 
     private void initTriggers()
@@ -32,13 +36,13 @@ public class BlockCreate : MonoBehaviour {
 	
     void OnPointerDown() {
         // sets the selected block in ConstructionManager
-        if (GameController.instance.canAfford(block.cost))
-            ConstructionManager.instance.Select(Instantiate(block).GetComponent<Placeable>());
+        if (GameController.instance.canAfford(cost))
+            ConstructionManager.instance.initBlock(name);
     }
 
     void OnPointerUp() {
         ConstructionManager.instance.PlaceBlock();
-        if (block.GetComponent<MonoBehaviour>().GetType().Name == "Core")
+        if (name == "Core")
             Destroy(gameObject);
     }
 

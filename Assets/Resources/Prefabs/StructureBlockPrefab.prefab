@@ -71,7 +71,7 @@ GameObject:
   - component: {fileID: 50528165806562186}
   - component: {fileID: 114443561366279118}
   m_Layer: 11
-  m_Name: woodCrate01
+  m_Name: StructureBlockPrefab
   m_TagString: StructureBlock
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -294,7 +294,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cost: 50
   hp: 100
-  jointBreakTorque: 100000
+  jointBreakTorque: 10000
 --- !u!212 &212518249846193314
 SpriteRenderer:
   m_ObjectHideFlags: 1
