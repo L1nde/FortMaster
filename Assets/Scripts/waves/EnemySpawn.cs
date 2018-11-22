@@ -38,8 +38,9 @@ public class EnemySpawn : MonoBehaviour {
 
             spawnAcc += Time.deltaTime;
         }
-        else {
+        else if (!waveEnd) {
             if (enemyCounter == 0) {
+                GameController.instance.addXP(10f);
                 waveEnd = true;
             }
         }
