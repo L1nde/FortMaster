@@ -30,7 +30,7 @@ public class GameController : MonoBehaviour {
 	void Update () {
 
 //	        UIController.Instance.WinWave();
-        }            
+       
 // 	    if (WaveController.waveOver) {
 // //	        UIController.Instance.WinWave();
 //         }            
