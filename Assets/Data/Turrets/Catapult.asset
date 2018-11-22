@@ -15,6 +15,7 @@ MonoBehaviour:
   cost: 100
   reloadTime: 2
   attackRange: 15
+  minxRange: 5
   projectile: {fileID: 114116376057509874, guid: 4ab3a579717c9d146bd0ddefb58d753c,
     type: 2}
   aniController: {fileID: 9100000, guid: 653ee9d5f46f9df44944c07bdd97f847, type: 2}
