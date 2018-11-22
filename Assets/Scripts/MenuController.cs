@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Assets.Scripts.waves;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -14,17 +15,21 @@ namespace Assets.Scripts {
         public Button play;
         public Animator anim;
         private string waveSaveName = "null";
+        private List<GameObject> saves = new List<GameObject>();
 
         public void playButton() {
             anim.SetFloat("speed", -1f);
             anim.SetBool("options", false);
             anim.SetFloat("speed", 1f);
             anim.SetBool("playButton", true);
-            var saveController = SaveController.instance;
-            foreach (var fileInfo in saveController.GetFilePaths()) {
+            foreach (var o in saves) {
+                Destroy(o);
+            }
+            foreach (var fileInfo in SaveController.GetFilePaths()) {
                 var save = Instantiate(saveObject, savesParent.transform);
                 save.GetComponentInChildren<Text>().text = "Wave " + fileInfo.Name.Substring(0, fileInfo.Name.Length - 4);
                 save.GetComponentInChildren<Button>().onClick.AddListener(() => loadSave(fileInfo.Name));
+                saves.Add(save);
 
             }
         }
@@ -43,6 +48,7 @@ namespace Assets.Scripts {
             }
             else {
                 WaveController.CurreWaveDetails = SaveController.instance.LoadWave(waveSaveName);
+                Debug.Log(WaveController.CurreWaveDetails.enemies[0].count);
             }
             
             SceneManager.LoadScene("LIndeScene");

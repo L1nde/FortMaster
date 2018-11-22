@@ -15,7 +15,7 @@ namespace Assets.Scripts.waves {
         // Use this for initialization
         void Start () {
             if (instance == null) {
-                DontDestroyOnLoad(gameObject);
+//                DontDestroyOnLoad(gameObject);
                 instance = this;
             } else if (instance != this) {
                 Destroy(gameObject);
