@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 212168223136147920}
   - component: {fileID: 58383161467915042}
   - component: {fileID: 50504290966827836}
-  - component: {fileID: 114591867546780856}
+  - component: {fileID: 114915687652843784}
   m_Layer: 12
   m_Name: PlayerArrow
   m_TagString: PlayerProjectile
@@ -78,7 +78,7 @@ CircleCollider2D:
   m_Offset: {x: 0.17290214, y: 0}
   serializedVersion: 2
   m_Radius: 0.01709786
---- !u!114 &114591867546780856
+--- !u!114 &114915687652843784
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -86,14 +86,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 1379323979501664}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bd4e20b540d38ce419d61a30c3841269, type: 3}
+  m_Script: {fileID: 11500000, guid: a0724cc8dd462fc409060ad6929612d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   shootingAngleOffset: 10
   damage: 10
-  speed: 8
-  noGravityTime: 0.08
+  speed: 1
+  noGravityTime: 0
   accuracySpread: 0.8
+  directionOffset: 0
+  posOffset: {x: 0, y: 0}
 --- !u!212 &212168223136147920
 SpriteRenderer:
   m_ObjectHideFlags: 1

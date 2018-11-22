@@ -53,27 +53,23 @@ public class UIController : MonoBehaviour {
 
     public void CreateTurretButtons(List<TurretData> turrets)
     {
-        int x = 0;
         foreach (TurretData t in turrets)
         {
             PlaceableBlockPrefab.cost = t.cost;
             PlaceableBlockPrefab.name = t.name;
             BlockCreate turret = Instantiate(PlaceableBlockPrefab, TurretPanel.transform);
-            turret.transform.position = turret.transform.position + new Vector3(x * 50,0,0);
+            turret.transform.position = turret.transform.position;
             turretButtons.Add(turret);
-            x += 1;
         }
     }
 
     public void CreateStructureBlockButtons(List<StructureBlockData> sblocks) {
-        int x = 0;
+
         foreach (StructureBlockData sb in sblocks) {
             PlaceableBlockPrefab.cost = sb.cost;
             PlaceableBlockPrefab.name = sb.name;
             BlockCreate structureBlock = Instantiate(PlaceableBlockPrefab, StructureBlockPanel.transform);
-            //structureBlock.transform.position = structureBlock.transform.position + new Vector3(x * 50, 0, 0);
             turretButtons.Add(structureBlock);
-            x += 1;
         }
     }
 

@@ -7,10 +7,12 @@ public class Turret : Placeable {
     public float attackRange;
     public PlayerProjectile projectile;
     public float reloadTime;
+    public float minxRange;
     private float currentReloadTime;
     private Animator anim;
     private bool isEnabled = false;
     private CircleCollider2D attackRangeCollider;
+
 
     void Awake()
     {
@@ -41,10 +43,12 @@ public class Turret : Placeable {
     private void fire() {
         Collider2D target = getTarget();
         if (target != null && checkIfInView(target.gameObject.transform.position)){
-            anim.Play("Fire");
-            PlayerProjectile p = Instantiate(projectile);
-            p.init(transform.rotation.eulerAngles.z, transform.position, new Vector2(target.transform.position.x, target.transform.position.y - target.transform.localScale.y / 2));
-            transform.rotation = p.transform.rotation;
+            if (minxRange < Mathf.Abs(transform.position.x - target.transform.position.x)) {
+                anim.Play("Fire");
+                PlayerProjectile p = Instantiate(projectile);
+                p.init(transform.rotation.eulerAngles.z, transform.position, new Vector2(target.transform.position.x, target.transform.position.y - target.transform.localScale.y / 2));
+                transform.rotation = p.transform.rotation;
+            }
         }
     }
 

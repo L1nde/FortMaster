@@ -5,6 +5,8 @@ namespace Assets.Scripts.enemies.ammo {
         public float shootingAngleOffset = 10f;
 
         public float damage = 10f;
+        public float directionOffset;
+        public Vector3 posOffset;
 
         protected Rigidbody2D rb2d;
 
@@ -28,7 +30,7 @@ namespace Assets.Scripts.enemies.ammo {
         }
 
         private Quaternion LookAt2D(Vector2 forward) {
-            return Quaternion.Euler(0, 0, Mathf.Atan2(forward.y, forward.x) * Mathf.Rad2Deg);
+            return Quaternion.Euler(0, 0, Mathf.Atan2(forward.y, forward.x) * Mathf.Rad2Deg - directionOffset);
         }
 
         private void OnTriggerEnter2D(Collider2D collision) {
@@ -73,8 +75,9 @@ namespace Assets.Scripts.enemies.ammo {
         }
 
         public void shootProjectile(Vector3 target) {
+            transform.position += posOffset;
             Rigidbody2D body = GetComponent<Rigidbody2D>();
-            float initialAngle = calculateAngle(target);
+            float initialAngle = calculateAngle(target) + directionOffset;
             float gravity = Physics.gravity.magnitude;
             // Selected angle in radians
             float angle = initialAngle * Mathf.Deg2Rad;
@@ -97,7 +100,6 @@ namespace Assets.Scripts.enemies.ammo {
             if (target.x - transform.position.x < 0f) {
                 finalVelocity = new Vector3(-finalVelocity.x, finalVelocity.y);
             }
-
             body.AddForce(finalVelocity * body.mass, ForceMode2D.Impulse);
 
             transform.rotation = LookAt2D(body.velocity);

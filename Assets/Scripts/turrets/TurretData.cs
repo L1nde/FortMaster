@@ -15,6 +15,7 @@ namespace Assets.Scripts.Turrets
         public int cost;
         public float reloadTime;
         public float attackRange;
+        public float minxRange;
         public PlayerProjectile projectile;
         public AnimatorController aniController;
     }

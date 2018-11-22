@@ -10,6 +10,7 @@ public class PlayerProjectile : Projectile {
     public float speed;
     public float noGravityTime;
     public float accuracySpread = 0.8f;
+    public bool stayStuck;
     private bool dead;
     private Quaternion lastRot;
     // Use this for initialization
@@ -25,7 +26,7 @@ public class PlayerProjectile : Projectile {
 
         dead = true;
         Rigidbody2D rb = collision.gameObject.GetComponent<Rigidbody2D>();
-        if (rb != null)
+        if (rb != null && stayStuck)
             CreateJoint(rb);
         //Destroy(GetComponent<Rigidbody2D>());
         Destroy(gameObject, 1);
