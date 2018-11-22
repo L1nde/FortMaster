@@ -73,12 +73,12 @@ public class SaveController : MonoBehaviour {
             waveEnemies.Add(new WaveEnemy(Resources.Load<Enemy>("Prefabs/" + data.Key), data.Value));
         }
 
+        waveDetails.enemies = waveEnemies;
         return waveDetails;
     }
 
     public void deleteAll() {
         foreach (var item in GetFilePaths()) {
-            Debug.Log(item.Name);
             File.Delete(item.FullName);
         }
         recalculateSaveNr();
