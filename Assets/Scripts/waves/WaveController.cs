@@ -74,6 +74,7 @@ namespace Assets.Scripts.waves {
             }
 
             currentWaveDetails.fortObjects = placeableSaveObjects;
+            currentWaveDetails.terrainGenObject = new TerrainGenObject(MapGeneration.instance.maxX, MapGeneration.instance.maxY, MapGeneration.instance.minX, MapGeneration.instance.minY, MapGeneration.instance.seed);
             SaveController.instance.saveWave(currentWaveDetails, currentWaveDetails.waveNr);
         }
 

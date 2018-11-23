@@ -10,6 +10,7 @@ namespace Assets.Scripts.waves {
         public int waveNr;
         public float gold;
         public List<PlaceableSaveObject> fortObjects;
+        public TerrainGenObject terrainGenObject;
 
 
         public WaveDetails(float buildTime, List<PlaceableSaveObject> fortObjects, float gold, float spawnDelay, int waveNr, float waveScore) {

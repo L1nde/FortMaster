@@ -4,8 +4,8 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 
 public class MapGeneration : MonoBehaviour {
-
     public static MapGeneration instance;
+
     // Width and height of the texture in pixels.
     // -30 x 30
     // -17 y -7
@@ -21,28 +21,35 @@ public class MapGeneration : MonoBehaviour {
 
     public int seed;
 
-    public void Start()
-    {
+    public void Start() {
         if (instance == null)
             instance = this;
         else if (instance != this)
             Destroy(gameObject);
+        if (GameController.CurrentWaveDetails.terrainGenObject != null) {
+            var terrainGenObject = GameController.CurrentWaveDetails.terrainGenObject;
+            seed = terrainGenObject.seed;
+            minX = terrainGenObject.minX;
+            maxX = terrainGenObject.maxX;
+            minY = terrainGenObject.minY;
+            maxY = terrainGenObject.maxY;
+        }
+        else {
+            // Generate seed
+            seed = generateSeed();
+        }
 
-        // Generate seed
-        seed = generateSeed();
 
         // Generate map
         generateMap(this.seed);
     }
 
-    public int generateSeed()
-    {
+    public int generateSeed() {
         System.Random rnd = new System.Random();
         return rnd.Next(0, 100000);
     }
 
-    public void generateMap(int seed)
-    {
+    public void generateMap(int seed) {
         this.seed = seed;
         // Calculate width and height
         int width = Mathf.Abs((minX - maxX));
@@ -54,25 +61,20 @@ public class MapGeneration : MonoBehaviour {
         renderMap(generatedMap);
     }
 
-    private int[,] generateArray(int width, int height)
-    {
+    private int[,] generateArray(int width, int height) {
         int[,] map = new int[width, height];
-        for (int x = 0; x < map.GetUpperBound(0); x++)
-        {
-            for (int y = 0; y < map.GetUpperBound(1); y++)
-            {
+        for (int x = 0; x < map.GetUpperBound(0); x++) {
+            for (int y = 0; y < map.GetUpperBound(1); y++) {
                 map[x, y] = 0;
             }
         }
+
         return map;
     }
 
-    private void renderMap(int[,] map)
-    {
-        for (int x = 0; x < map.GetUpperBound(0); x++)
-        {
-            for (int y = 0; y < map.GetUpperBound(1); y++)
-            {
+    private void renderMap(int[,] map) {
+        for (int x = 0; x < map.GetUpperBound(0); x++) {
+            for (int y = 0; y < map.GetUpperBound(1); y++) {
                 if (map[x, y] == 1)
                     tilemap.SetTile(new Vector3Int(minX + x, minY + y, 0), tilebase[0]);
                 else if (map[x, y] == 2)
@@ -83,8 +85,7 @@ public class MapGeneration : MonoBehaviour {
         }
     }
 
-    private int[,] randomizeMap(int[,] map, int seed, int minSectionWidth)
-    {
+    private int[,] randomizeMap(int[,] map, int seed, int minSectionWidth) {
         //Seed our random
         System.Random rand = new System.Random(seed.GetHashCode());
         Random.InitState(seed + 100);
@@ -99,30 +100,27 @@ public class MapGeneration : MonoBehaviour {
 
         bool lastPlus = false;
         //Work through the array width
-        for (int x = 0; x <= map.GetUpperBound(0); x++)
-        {
+        for (int x = 0; x <= map.GetUpperBound(0); x++) {
             //Determine the next move
             nextMove = rand.Next(2);
             //Only change the height if we have used the current height more than the minimum required section width
-            if (nextMove == 0 && lastHeight > 0 && sectionWidth > minSectionWidth)
-            {
+            if (nextMove == 0 && lastHeight > 0 && sectionWidth > minSectionWidth) {
                 map[x, lastHeight] = 2;
                 lastHeight--;
                 sectionWidth = 0;
             }
-            else if (nextMove == 1 && lastHeight < map.GetUpperBound(1) && sectionWidth > minSectionWidth)
-            {
+            else if (nextMove == 1 && lastHeight < map.GetUpperBound(1) && sectionWidth > minSectionWidth) {
                 map[x, lastHeight] = 3;
                 lastHeight++;
                 sectionWidth = 0;
                 lastPlus = true;
             }
+
             //Increment the section width
             sectionWidth++;
 
             //Work our way from the height down to 0
-            for (int y = lastHeight; y >= 0; y--)
-            {
+            for (int y = lastHeight; y >= 0; y--) {
                 map[x, y] = 1;
             }
 
