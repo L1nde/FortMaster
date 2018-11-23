@@ -9,6 +9,13 @@ using Assets.Scripts.waves;
 using UnityEditor;
 using UnityEngine;
 
+// Salvestama peabki need kõik neli asja + MapGeneration.instance.seed
+//MapGeneration.instance.minX = waveDetails.mapMinX;
+//MapGeneration.instance.maxX = waveDetails.mapMaxX;
+//MapGeneration.instance.minY = waveDetails.mapMinY;
+//MapGeneration.instance.maxY = waveDetails.mapMaxY;
+//MapGeneration.instance.generateMap(waveDetails.seed);
+
 public class SaveController : MonoBehaviour {
     public static SaveController instance;
     public WaveDetails sampleWaveDetails;
@@ -37,11 +44,13 @@ public class SaveController : MonoBehaviour {
         saveWave(waveDetails, saveFileNr);
     }
 
-    public void saveWave(WaveDetails waveDetails, int waveNr) {
+    public void saveWave(WaveDetails waveDetails, int waveNr)
+    {
         string folderPath = Path.Combine(Application.persistentDataPath, folderName);
         string dataPath = Path.Combine(folderPath, waveNr + fileExtension);
         BinaryFormatter binaryFormatter = new BinaryFormatter();
-        using (FileStream fileStream = File.Open(dataPath, FileMode.Create)) {
+        using (FileStream fileStream = File.Open(dataPath, FileMode.Create))
+        {
             binaryFormatter.Serialize(fileStream, waveDetails.ToWaveSaveObject());
         }
     }
