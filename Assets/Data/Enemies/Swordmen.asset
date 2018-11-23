@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebc2a87ce6e5b8744a634d540ac2f7b4, type: 3}
+  m_Name: Swordmen
+  m_EditorClassIdentifier: 
+  hp: 100
+  speed: 1
+  attackDelay: 1
+  attackRange: 10
+  moneyOnDeath: 0
+  enemyScore: 0
+  minLevel: 0
+  enemyPrefab: {fileID: 114553184666542520, guid: ad02d701c9dee474c8138dd507e6afca,
+    type: 2}
+  meeleDamage: 10

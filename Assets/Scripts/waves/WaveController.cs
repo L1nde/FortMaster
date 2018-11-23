@@ -8,6 +8,7 @@ namespace Assets.Scripts.waves {
         public static WaveController instance;
         public static bool waveOver = true;
         public SpawnController spawnController;
+
         private float buildTime = 30f;
         private float buildAcc;
         private bool nextWaveGenerated = true;
@@ -28,6 +29,7 @@ namespace Assets.Scripts.waves {
         }
 
         void Update(){
+            
             waveOver = isWaveEnded();
             if (waveOver) {
                 if (!nextWaveGenerated){
@@ -53,20 +55,15 @@ namespace Assets.Scripts.waves {
 
         private WaveDetails genNextWave(){
             var nextWaveDetails = Instantiate(CurreWaveDetails);
-            nextWaveDetails.spawnDelay = Mathf.Max(nextWaveDetails.spawnDelay - 1, 1); //Todo
-            var lastWaveEnemies = CurreWaveDetails.enemies;
-            var nextWaveEnemies = new List<WaveEnemy>();
-            foreach (var item in lastWaveEnemies)
-            {
-                nextWaveEnemies.Add(new WaveEnemy(item.enemy, item.count + 1));
-            }
-            nextWaveDetails.enemies = nextWaveEnemies;
+            nextWaveDetails.spawnDelay = Mathf.Max(nextWaveDetails.spawnDelay - 1, 1); //Todo balancing
+            nextWaveDetails.buildTime = nextWaveDetails.buildTime;
+            nextWaveDetails.waveScore += 10f;
             nextWaveGenerated = true;
             return nextWaveDetails;
         }
 
         private bool isWaveEnded(){
-            return spawnController.allEnemiesSpawned() && EnemySpawn.enemyCounter == 0;
+            return spawnController.allEnemiesSpawned() && SpawnController.enemyCounter == 0;
         }
 
     }

@@ -38,12 +38,11 @@ public class SaveController : MonoBehaviour {
     }
 
     public void saveWave(WaveDetails waveDetails, int waveNr) {
-        var wave = new WaveSaveObject(waveDetails);
         string folderPath = Path.Combine(Application.persistentDataPath, folderName);
         string dataPath = Path.Combine(folderPath, waveNr + fileExtension);
         BinaryFormatter binaryFormatter = new BinaryFormatter();
         using (FileStream fileStream = File.Open(dataPath, FileMode.OpenOrCreate)) {
-            binaryFormatter.Serialize(fileStream, wave);
+            binaryFormatter.Serialize(fileStream, waveDetails);
         }
     }
 
@@ -53,7 +52,7 @@ public class SaveController : MonoBehaviour {
         BinaryFormatter binaryFormatter = new BinaryFormatter();
 
         using (FileStream fileStream = File.Open(dataPath, FileMode.Open)) {
-            return convertToWaveDetails((WaveSaveObject) binaryFormatter.Deserialize(fileStream));
+            return (WaveDetails) binaryFormatter.Deserialize(fileStream);
         }
     }
 
@@ -64,18 +63,18 @@ public class SaveController : MonoBehaviour {
     }
 
 
-    private WaveDetails convertToWaveDetails(WaveSaveObject waveSaveObject) {
-        var waveDetails = Instantiate(sampleWaveDetails);
-        waveDetails.buildTime = waveSaveObject.buildTime;
-        waveDetails.spawnDelay = waveSaveObject.spawnDelay;
-        var waveEnemies = new List<WaveEnemy>();
-        foreach (var data in waveSaveObject.enemies) {
-            waveEnemies.Add(new WaveEnemy(Resources.Load<Enemy>("Prefabs/" + data.Key), data.Value));
-        }
-
-        waveDetails.enemies = waveEnemies;
-        return waveDetails;
-    }
+//    private WaveDetails convertToWaveDetails(WaveSaveObject waveSaveObject) {
+//        var waveDetails = Instantiate(sampleWaveDetails);
+//        waveDetails.buildTime = waveSaveObject.buildTime;
+//        waveDetails.spawnDelay = waveSaveObject.spawnDelay;
+//        var waveEnemies = new List<WaveEnemy>();
+//        foreach (var data in waveSaveObject.enemies) {
+//            waveEnemies.Add(new WaveEnemy(Resources.Load<Enemy>("Prefabs/" + data.Key), data.Value));
+//        }
+//
+//        waveDetails.enemies = waveEnemies;
+//        return waveDetails;
+//    }
 
     public void deleteAll() {
         foreach (var item in GetFilePaths()) {

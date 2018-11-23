@@ -1,16 +1,14 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using Assets.Scripts.enemies;
 using Assets.Scripts.waves;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class EnemySpawn : MonoBehaviour {
-    public static int enemyCounter;
     private float spawnDelay = 1f;
-    private bool started = false;
-
     private float spawnAcc = 0f;
-    private List<WaveEnemy> enemies;
     
 
     // Use this for initialization
@@ -18,34 +16,27 @@ public class EnemySpawn : MonoBehaviour {
     }
 
     // Update is called once per frame
-    void Update() {
-        if (started) {
-            if (spawnAcc > spawnDelay) {
-                if (enemies.Count == 0) {
-                    started = false;
-                    return;
-                }
-                spawnAcc = 0f;
-                int i = Random.Range(0, enemies.Count);
-                Instantiate(enemies[i].enemy, transform.position, transform.rotation, transform);
-                enemies[i].count--;
-                if (enemies[i].count <= 0) {
-                    enemies.RemoveAt(i);
-                }
-            }
-
+    void Update() { 
+        if (spawnAcc < spawnDelay) {
             spawnAcc += Time.deltaTime;
         }
     }
 
-    public bool ended(){
-        return !started;
+    public bool ready() {
+        return spawnAcc >= spawnDelay;
     }
 
-    public void startWave(WaveDetails wave) {
-        this.enemies = wave.enemies;
-        this.spawnAcc = 0f;
-        this.started = true;
+
+    public bool spawn(Enemy enemy) {
+        if (spawnAcc >= spawnDelay) {
+            this.spawnAcc = 0f;
+            Instantiate(enemy, transform.position, transform.rotation, transform);
+            return true;
+        }
+        return false;
+    }
+
+    public void setUp(WaveDetails wave) {
         this.spawnDelay = wave.spawnDelay;
     }
 }

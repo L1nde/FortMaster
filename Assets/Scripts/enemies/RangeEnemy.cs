@@ -42,5 +42,16 @@ namespace Assets.Scripts.enemies {
 
             attackAcc += Time.deltaTime;
         }
+
+        public override void attachData(EnemyData data) {
+            RangeEnemyData rangeEnemyData = (RangeEnemyData) data;
+            accuracySpread = rangeEnemyData.AccuracySpread;
+            projectilePrefab = rangeEnemyData.ProjectilePrefab;
+            hp = rangeEnemyData.hp;
+            speed = rangeEnemyData.speed;
+            attackDelay = rangeEnemyData.attackDelay;
+            attackRange = rangeEnemyData.attackRange;
+            moneyOnDeath = rangeEnemyData.moneyOnDeath;
+        }
     }
 }

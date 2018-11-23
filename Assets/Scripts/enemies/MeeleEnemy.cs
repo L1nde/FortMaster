@@ -34,5 +34,15 @@ namespace Assets.Scripts.enemies {
 
             attackAcc += Time.deltaTime;
         }
+
+        public override void attachData(EnemyData data) {
+            MeeleEnemyData meeleEnemyData = (MeeleEnemyData)data;
+            damage = meeleEnemyData.meeleDamage;
+            hp = meeleEnemyData.hp;
+            speed = meeleEnemyData.speed;
+            attackDelay = meeleEnemyData.attackDelay;
+            attackRange = meeleEnemyData.attackRange;
+            moneyOnDeath = meeleEnemyData.moneyOnDeath;
+        }
     }
 }
