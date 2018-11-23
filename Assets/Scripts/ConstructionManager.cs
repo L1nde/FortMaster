@@ -31,6 +31,7 @@ public class ConstructionManager : MonoBehaviour {
         UIController.Instance.CreateTurretButtons(turrets);
         UIController.Instance.CreateStructureBlockButtons(structureBlocks);
         fortBase = new GameObject("FortBase");
+        fortBase.tag = "FortBase";
         createCore();
         DontDestroyOnLoad(gameObject);
         
@@ -68,6 +69,7 @@ public class ConstructionManager : MonoBehaviour {
         structureBlockPrefab.jointBreakTorque = sbd.jointBreakTorque;
         structureBlockPrefab.hp = sbd.hp;
         structureBlockPrefab.GetComponent<SpriteRenderer>().sprite = sbd.sprite;
+        structureBlockPrefab.placeSound = sbd.placeSoundGroup;
         Select(Instantiate(structureBlockPrefab));
     }
 

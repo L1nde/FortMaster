@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 58982010662091142}
   - component: {fileID: 50492560020670846}
   - component: {fileID: 114391454512516862}
+  - component: {fileID: 114565037751510958}
   m_Layer: 12
   m_Name: Cannonball
   m_TagString: PlayerProjectile
@@ -97,6 +98,21 @@ MonoBehaviour:
   noGravityTime: 0
   accuracySpread: 0.5
   stayStuck: 0
+--- !u!114 &114565037751510958
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1993212440550644}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bba55a4d2b255a745aead88acf711179, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectToSpawn: {fileID: 1863265689141352, guid: dc339409c3d7efd4e886ac951617a90a,
+    type: 2}
+  rotationOffset: -90
+  posOffset: {x: 0.25, y: 0, z: 0}
 --- !u!212 &212473035229515254
 SpriteRenderer:
   m_ObjectHideFlags: 1
