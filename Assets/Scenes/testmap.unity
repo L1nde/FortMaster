@@ -291,6 +291,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c7fb9c33ee4c004bb4c404bb50efbf9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemiesData: []
 --- !u!1 &106124468
 GameObject:
   m_ObjectHideFlags: 0
@@ -972,6 +973,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1603e4c6c24b684385b3cbafd725a07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  researchedBlocks: []
+  researchedTurrets: []
   possibleBlocks:
   - {fileID: 11400000, guid: 9e60c67da2bef0744b1bc06036e8bf1c, type: 2}
   possibleTurrets:
@@ -2021,8 +2024,6 @@ MonoBehaviour:
   goldText: {fileID: 448454846}
   xp: 0
   xpText: {fileID: 0}
-  researchedBlocks: []
-  researchedTurrets: []
 --- !u!4 &1422851439
 Transform:
   m_ObjectHideFlags: 0

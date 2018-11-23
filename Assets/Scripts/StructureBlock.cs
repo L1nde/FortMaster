@@ -7,6 +7,7 @@ public class StructureBlock : Placeable {
 
     public float hp;
     public float jointBreakTorque;
+    public AudioClipGroup placeSound;
 
     protected Attacher[] AttachPoints;
     private GameObject turretAttachPoint;
@@ -15,6 +16,7 @@ public class StructureBlock : Placeable {
     private bool isTurretAttachPointFree;
     protected bool canPlace;
     protected bool isPlaced;
+
 
     // Use this for initialization
     void Start () {
@@ -66,6 +68,7 @@ public class StructureBlock : Placeable {
             CreateJoints();
             transform.parent = parent;
             isPlaced = true;
+            placeSound.play();
         } else {
             DestroySelf();
         }

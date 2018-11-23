@@ -12,6 +12,7 @@ namespace Assets.Scripts {
         public float hp;
         public Sprite sprite;
         public float jointBreakTorque;
+        public AudioClipGroup placeSoundGroup;
 
     }
 }
