@@ -27,6 +27,8 @@ namespace Assets.Scripts.waves {
         }
 
         public void startWave(WaveDetails waveDetails) {
+            if (UIController.Instance.researchScreen.activeSelf)
+                UIController.Instance.researchScreen.SetActive(false);
             foreach (var spawn in spawns) {
                 spawn.startWave(Instantiate(waveDetails));
             }
