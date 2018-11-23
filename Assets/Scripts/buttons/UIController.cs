@@ -27,7 +27,7 @@ public class UIController : MonoBehaviour {
     public ResearchButton researchButtonPrefab;
     public GameObject researchScreen;
 
-    private List<BlockCreate> turretButtons;
+    private List<BlockCreate> placeableItemButtons;
 
     // Use this for initialization
     void Awake()
@@ -39,7 +39,7 @@ public class UIController : MonoBehaviour {
         else if (Instance != this) {
             Destroy(gameObject);
         }
-        turretButtons = new List<BlockCreate>();
+        placeableItemButtons = new List<BlockCreate>();
     }
 
     public void researchScreenActivation()
@@ -85,7 +85,7 @@ public class UIController : MonoBehaviour {
         PlaceableBlockPrefab.name = turret.name;
         BlockCreate create = Instantiate(PlaceableBlockPrefab, TurretPanel.transform);
         create.transform.position = create.transform.position;
-        turretButtons.Add(create);
+        placeableItemButtons.Add(create);
     }
 
     public void CreateStructureBlockButton(StructureBlockData block)
@@ -93,28 +93,32 @@ public class UIController : MonoBehaviour {
         PlaceableBlockPrefab.cost = block.cost;
         PlaceableBlockPrefab.name = block.name;
         BlockCreate structureBlock = Instantiate(PlaceableBlockPrefab, StructureBlockPanel.transform);
-        turretButtons.Add(structureBlock);
+        placeableItemButtons.Add(structureBlock);
     }
 
-    public void CreateTurretButtons(List<TurretData> turrets)
-    {
+    public void CreateTurretButtons(List<TurretData> turrets) {
+        foreach (Transform child in TurretPanel.transform) 
+            Destroy(child.gameObject);
+        
         foreach (TurretData t in turrets)
         {
             PlaceableBlockPrefab.cost = t.cost;
             PlaceableBlockPrefab.name = t.name;
             BlockCreate turret = Instantiate(PlaceableBlockPrefab, TurretPanel.transform);
             turret.transform.position = turret.transform.position;
-            turretButtons.Add(turret);
+            placeableItemButtons.Add(turret);
         }
     }
 
     public void CreateStructureBlockButtons(List<StructureBlockData> sblocks) {
-
+        foreach (Transform child in StructureBlockPanel.transform) 
+            Destroy(child.gameObject);
+        
         foreach (StructureBlockData sb in sblocks) {
             PlaceableBlockPrefab.cost = sb.cost;
             PlaceableBlockPrefab.name = sb.name;
             BlockCreate structureBlock = Instantiate(PlaceableBlockPrefab, StructureBlockPanel.transform);
-            turretButtons.Add(structureBlock);
+            placeableItemButtons.Add(structureBlock);
         }
     }
 
@@ -163,4 +167,6 @@ public class UIController : MonoBehaviour {
             overlay.SetActive(true);
         }
     }
+
+
 }
