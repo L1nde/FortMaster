@@ -14,9 +14,6 @@ public class GameController : MonoBehaviour {
     public float xp;
     public Text xpText;
 
-    public List<ResearchBlock> researchedBlocks = new List<ResearchBlock>();
-    public List<ResearchTurret> researchedTurrets = new List<ResearchTurret>();
-
     // Use this for initialization
     void Start() {
         if (instance == null)

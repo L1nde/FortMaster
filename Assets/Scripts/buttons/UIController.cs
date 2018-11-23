@@ -49,20 +49,20 @@ public class UIController : MonoBehaviour {
 
     public void createResearchButton(ResearchBlock item)
     {
-        instantiateResearchButton(item.researchButtonText, item.xpCost, item.block);
+        instantiateResearchButton(item.researchButtonText, item.xpCost, item);
     }
 
     public void createResearchButton(ResearchTurret item)
     {
-        instantiateResearchButton(item.researchButtonText, item.xpCost, item.block);
+        instantiateResearchButton(item.researchButtonText, item.xpCost, item);
     }
 
-    private void instantiateResearchButton(string text, float cost, UnityEngine.Object data)
+    private void instantiateResearchButton(string text, float cost, UnityEngine.Object item)
     {
         ResearchButton button = Instantiate(researchButtonPrefab, researchScreen.transform);
         button.setResearchText(text);
         button.setCostText(cost);
-        button.setData(data);
+        button.setItem(item);
         button.setCost(cost);
     }
 

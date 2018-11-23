@@ -23,9 +23,9 @@ public class ResearchButton : MonoBehaviour {
         costText.text = cost.ToString();
     }
 
-    internal void setData(UnityEngine.Object data)
+    internal void setItem(UnityEngine.Object item)
     {
-        researchable = data;
+        researchable = item;
     }
 
     internal void setCost(float cost)
@@ -37,16 +37,21 @@ public class ResearchButton : MonoBehaviour {
     {
         if (GameController.instance.canAffordResearch(cost))
         {
-            // TODO for prerequisities update available researches and done researches
-            if (researchable is StructureBlockData)
+            if (researchable is ResearchBlock)
             {
-                ConstructionManager.instance.structureBlocks.Add((StructureBlockData)researchable);
-                UIController.Instance.CreateStructureBlockButton((StructureBlockData)researchable);
+                ResearchBlock item = (ResearchBlock)researchable;
+                ConstructionManager.instance.structureBlocks.Add(item.block);
+                UIController.Instance.CreateStructureBlockButton(item.block);
+                ResearchController.instance.possibleBlocks.Remove(item);
+                ResearchController.instance.researchedBlocks.Add(item);
             }
-            else if (researchable is TurretData)
+            else if (researchable is ResearchTurret)
             {
-                ConstructionManager.instance.turrets.Add((TurretData)researchable);
-                UIController.Instance.CreateTurretButton((TurretData)researchable);
+                ResearchTurret item = (ResearchTurret)researchable;
+                ConstructionManager.instance.turrets.Add(item.block);
+                UIController.Instance.CreateTurretButton(item.block);
+                ResearchController.instance.possibleTurrets.Remove(item);
+                ResearchController.instance.researchedTurrets.Add(item);
             }
             else
                 return;

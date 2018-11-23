@@ -7,8 +7,8 @@ using UnityEngine.UI;
 public class ResearchController : MonoBehaviour {
     public static ResearchController instance = null;
 
-    private List<ResearchBlock> researchedBlocks = new List<ResearchBlock>();
-    private List<ResearchTurret> researchedTurrets = new List<ResearchTurret>();
+    public List<ResearchBlock> researchedBlocks = new List<ResearchBlock>();
+    public List<ResearchTurret> researchedTurrets = new List<ResearchTurret>();
 
     public List<ResearchBlock> possibleBlocks = new List<ResearchBlock>();
     public List<ResearchTurret> possibleTurrets = new List<ResearchTurret>();
@@ -24,8 +24,24 @@ public class ResearchController : MonoBehaviour {
 
         DontDestroyOnLoad(gameObject);
 
-        // TODO check if buttons already exist
+        generateButtons();
+    }
+
+    public void generateButtons()
+    {
+        clearButtons();
         initializeButtons();
+    }
+
+    private void clearButtons()
+    {
+        GameObject screen = UIController.Instance.researchScreen;
+        for (var i = screen.transform.childCount - 1; i >= 0; i--)
+        {
+            var child = screen.transform.GetChild(i);
+            child.transform.parent = null;
+            Destroy(child);
+        }
     }
 
     private void initializeButtons()
