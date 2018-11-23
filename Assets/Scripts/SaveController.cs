@@ -9,6 +9,13 @@ using Assets.Scripts.waves;
 using UnityEditor;
 using UnityEngine;
 
+// Salvestama peabki need kõik neli asja + MapGeneration.instance.seed
+//MapGeneration.instance.minX = waveDetails.mapMinX;
+//MapGeneration.instance.maxX = waveDetails.mapMaxX;
+//MapGeneration.instance.minY = waveDetails.mapMinY;
+//MapGeneration.instance.maxY = waveDetails.mapMaxY;
+//MapGeneration.instance.generateMap(waveDetails.seed);
+
 public class SaveController : MonoBehaviour {
     public static SaveController instance;
     public WaveDetails sampleWaveDetails;
@@ -37,13 +44,14 @@ public class SaveController : MonoBehaviour {
         saveWave(waveDetails, saveFileNr);
     }
 
-    public void saveWave(WaveDetails waveDetails, int waveNr) {
-        var wave = new WaveSaveObject(waveDetails);
+    public void saveWave(WaveDetails waveDetails, int waveNr)
+    {
         string folderPath = Path.Combine(Application.persistentDataPath, folderName);
         string dataPath = Path.Combine(folderPath, waveNr + fileExtension);
         BinaryFormatter binaryFormatter = new BinaryFormatter();
-        using (FileStream fileStream = File.Open(dataPath, FileMode.OpenOrCreate)) {
-            binaryFormatter.Serialize(fileStream, wave);
+        using (FileStream fileStream = File.Open(dataPath, FileMode.Create))
+        {
+            binaryFormatter.Serialize(fileStream, waveDetails.ToWaveSaveObject());
         }
     }
 
@@ -53,7 +61,7 @@ public class SaveController : MonoBehaviour {
         BinaryFormatter binaryFormatter = new BinaryFormatter();
 
         using (FileStream fileStream = File.Open(dataPath, FileMode.Open)) {
-            return convertToWaveDetails((WaveSaveObject) binaryFormatter.Deserialize(fileStream));
+            return Instantiate(sampleWaveDetails).ToWaveDetails((WaveSaveObject) binaryFormatter.Deserialize(fileStream));
         }
     }
 
@@ -61,28 +69,6 @@ public class SaveController : MonoBehaviour {
         string folderPath = Path.Combine(Application.persistentDataPath, folderName);
         var directoryInfo = new DirectoryInfo(folderPath);
         return directoryInfo.GetFiles();
-    }
-
-
-    private WaveDetails convertToWaveDetails(WaveSaveObject waveSaveObject) {
-        var waveDetails = Instantiate(sampleWaveDetails);
-        waveDetails.buildTime = waveSaveObject.buildTime;
-        waveDetails.spawnDelay = waveSaveObject.spawnDelay;
-        var waveEnemies = new List<WaveEnemy>();
-        foreach (var data in waveSaveObject.enemies) {
-            waveEnemies.Add(new WaveEnemy(Resources.Load<Enemy>("Prefabs/" + data.Key), data.Value));
-        }
-
-        waveDetails.enemies = waveEnemies;
-
-        // Salvestama peabki need kõik neli asja + MapGeneration.instance.seed
-        //MapGeneration.instance.minX = waveDetails.mapMinX;
-        //MapGeneration.instance.maxX = waveDetails.mapMaxX;
-        //MapGeneration.instance.minY = waveDetails.mapMinY;
-        //MapGeneration.instance.maxY = waveDetails.mapMaxY;
-        //MapGeneration.instance.generateMap(waveDetails.seed);
-
-        return waveDetails;
     }
 
     public void deleteAll() {

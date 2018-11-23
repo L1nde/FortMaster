@@ -1,22 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using Assets.Scripts.waves;
-
-namespace Assets.Scripts {
+﻿namespace Assets.Scripts.waves {
     [System.Serializable]
     public class WaveSaveObject {
-
-        public List<KeyValuePair<string, float>> enemies = new List<KeyValuePair<string, float>>();
+        public float waveScore;
         public float spawnDelay = 5;
         public float buildTime = 30f;
+        public int waveNr = 0;
 
         public WaveSaveObject(WaveDetails waveDetails) {
+            this.waveScore = waveDetails.waveScore;
             this.spawnDelay = waveDetails.spawnDelay;
             this.buildTime = waveDetails.buildTime;
-            foreach (var waveEnemy in waveDetails.enemies) {
-                enemies.Add(waveEnemy.ToPair());
-            }
+            this.waveNr = waveDetails.waveNr;
         }
     }
 }

@@ -44,7 +44,6 @@ public class MapGeneration : MonoBehaviour {
     public void generateMap(int seed)
     {
         this.seed = seed;
-        Debug.Log(seed);
         // Calculate width and height
         int width = Mathf.Abs((minX - maxX));
         int height = Mathf.Abs((minY - maxY));

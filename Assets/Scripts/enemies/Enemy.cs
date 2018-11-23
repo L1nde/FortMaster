@@ -1,4 +1,6 @@
 ﻿using Assets.Scripts.enemies.ammo;
+using Assets.Scripts.waves;
+using Boo.Lang.Runtime;
 using UnityEngine;
 
 namespace Assets.Scripts.enemies {
@@ -81,16 +83,19 @@ namespace Assets.Scripts.enemies {
 
         public abstract void attack();
 
+        public abstract void attachData(EnemyData data);
+
+
         public void doDamage(float damage) {
             hp -= damage;
         }
 
         public void OnDisable() {
-            EnemySpawn.enemyCounter--;
+            SpawnController.enemyCounter--;
         }
 
         public void OnEnable() {
-            EnemySpawn.enemyCounter++;
+            SpawnController.enemyCounter++;
         }
     }
 
