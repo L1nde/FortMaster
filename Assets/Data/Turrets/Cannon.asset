@@ -9,13 +9,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 399352c352c0eae4786cc2f8c8336924, type: 3}
-  m_Name: CrossbowTurret
+  m_Name: Cannon
   m_EditorClassIdentifier: 
-  name: Crossbow
-  cost: 75
-  reloadTime: 1
-  attackRange: 10
+  name: Cannon
+  cost: 250
+  reloadTime: 2
+  attackRange: 30
   minxRange: 0
-  projectile: {fileID: 114915687652843784, guid: ed1a42e6fcae41e41ae07f0d1ad5a439,
+  projectile: {fileID: 114391454512516862, guid: db725d332a240aa4fba173d6063e9a5b,
     type: 2}
-  aniController: {fileID: 9100000, guid: d1ceabf14d83ab44aadb0a42145ab6ca, type: 2}
+  aniController: {fileID: 9100000, guid: 31fda4ceca0f2454e9327e1b0bf5d394, type: 2}

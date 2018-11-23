@@ -54,6 +54,7 @@ MonoBehaviour:
   turrets:
   - {fileID: 11400000, guid: b4edf7bcb2e942341bf39c49f87fc4a0, type: 2}
   - {fileID: 11400000, guid: 3eb884d1bece26943bd9202044e3b875, type: 2}
+  - {fileID: 11400000, guid: 134eee0782987aa4a93e599d875958cb, type: 2}
   structureBlocks:
   - {fileID: 11400000, guid: 1c425b823f7da19448c2d8080cecd418, type: 2}
   - {fileID: 11400000, guid: 75ddd51d274e781478ea40ba52739989, type: 2}
