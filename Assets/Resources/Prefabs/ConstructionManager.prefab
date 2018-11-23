@@ -54,8 +54,10 @@ MonoBehaviour:
   turrets:
   - {fileID: 11400000, guid: b4edf7bcb2e942341bf39c49f87fc4a0, type: 2}
   - {fileID: 11400000, guid: 3eb884d1bece26943bd9202044e3b875, type: 2}
+  - {fileID: 11400000, guid: 134eee0782987aa4a93e599d875958cb, type: 2}
   structureBlocks:
   - {fileID: 11400000, guid: 1c425b823f7da19448c2d8080cecd418, type: 2}
+  - {fileID: 11400000, guid: 75ddd51d274e781478ea40ba52739989, type: 2}
   core: {fileID: 114032881147662446, guid: 222b75e186aa8ba4e8621f30e7e94195, type: 2}
   turretPrefab: {fileID: 114250670259248198, guid: 6aa169c6335c3c24780864355ad093e7,
     type: 2}

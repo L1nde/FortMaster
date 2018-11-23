@@ -12,6 +12,7 @@ namespace Assets.Scripts.waves {
         private float buildTime = 30f;
         private float buildAcc;
         private bool nextWaveGenerated = true;
+        private bool waveCheck = true;
 
         // Use this for initialization
         void Start () {
@@ -39,6 +40,7 @@ namespace Assets.Scripts.waves {
                 if (buildAcc >= buildTime) {
                     spawnController.startWave(CurreWaveDetails);
                     nextWaveGenerated = false;
+                    waveCheck = true;
                 }
                 else {
                     buildAcc += Time.deltaTime;
@@ -50,6 +52,13 @@ namespace Assets.Scripts.waves {
                 UIController.Instance.hideCountdown();
                 buildTime = CurreWaveDetails.buildTime;
                 buildAcc = 0f;
+            }
+
+            // TODO fix this, currently it adds 10-20xp at the beginning of the first wave.
+            if (waveOver && waveCheck)
+            {
+                GameController.instance.addXP(10f);
+                waveCheck = false;
             }
         }
 

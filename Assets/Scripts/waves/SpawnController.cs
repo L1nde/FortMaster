@@ -70,12 +70,13 @@ namespace Assets.Scripts.waves {
         }
 
         public void startWave(WaveDetails waveDetails) {
-            started = true;
+
+			if (UIController.Instance.researchScreen.activeSelf)
+                UIController.Instance.researchScreen.SetActive(false);			started = true;
             currentWaveScore = 0f;
             waveNr = waveDetails.waveNr;
             maxScore = waveDetails.waveScore;
-            calculateScoreSum();
-            foreach (var spawn in spawns) {
+            calculateScoreSum();            foreach (var spawn in spawns) {
                 spawn.setUp(waveDetails);
             }
         }

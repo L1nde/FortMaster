@@ -340,7 +340,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cost: 0
-  hp: 100
+  hp: 1000
   jointBreakTorque: 100000
 --- !u!114 &114072998964151764
 MonoBehaviour:

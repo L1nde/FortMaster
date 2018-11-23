@@ -9,13 +9,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 399352c352c0eae4786cc2f8c8336924, type: 3}
-  m_Name: Catapult
+  m_Name: Cannon
   m_EditorClassIdentifier: 
-  name: Catapult
-  cost: 100
+  name: Cannon
+  cost: 250
   reloadTime: 2
-  attackRange: 15
-  minxRange: 5
-  projectile: {fileID: 114116376057509874, guid: 4ab3a579717c9d146bd0ddefb58d753c,
+  attackRange: 30
+  minxRange: 0
+  projectile: {fileID: 114391454512516862, guid: db725d332a240aa4fba173d6063e9a5b,
     type: 2}
-  aniController: {fileID: 9100000, guid: 653ee9d5f46f9df44944c07bdd97f847, type: 2}
+  aniController: {fileID: 9100000, guid: 31fda4ceca0f2454e9327e1b0bf5d394, type: 2}
