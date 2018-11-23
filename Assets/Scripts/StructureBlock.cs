@@ -65,8 +65,8 @@ public class StructureBlock : Placeable {
         if (canPlace && GameController.instance.canAfford(cost)) {
             GameController.instance.removeGold(cost);
             disableDragMode();
-            transform.parent = parent;
             CreateJoints();
+            transform.parent = parent;
             isPlaced = true;
             placeSound.play();
         } else {
