@@ -21,17 +21,15 @@ public class ConstructionManager : MonoBehaviour {
     public StructureBlock structureBlockPrefab;
 
 
-    void Start()
-    {
+    void Start() {
         if (instance == null)
             instance = this;
 
-        else if (instance != this)
+        else if (instance != this) 
             Destroy(gameObject);
 
         UIController.Instance.CreateTurretButtons(turrets);
         UIController.Instance.CreateStructureBlockButtons(structureBlocks);
-
         fortBase = new GameObject("FortBase");
         createCore();
         DontDestroyOnLoad(gameObject);
@@ -42,6 +40,7 @@ public class ConstructionManager : MonoBehaviour {
         if (isAnythingSelected())
             selected.move();
 	}
+
 
     private void createCore() {
         Core c = Instantiate(core, fortBase.transform);
@@ -107,6 +106,8 @@ public class ConstructionManager : MonoBehaviour {
 
     public Attacher getClosestStructureAttacherInRange(Vector3 pos, float range)
     {
+        if (fortBase == null)
+            findFortBase();
         Placeable[] blocks = fortBase.GetComponentsInChildren<StructureBlock>();
         range = Mathf.Pow(range, 2);
         Attacher closest = null;
@@ -123,6 +124,13 @@ public class ConstructionManager : MonoBehaviour {
             }
         }
         return closest;
+    }
+
+    private void findFortBase() {
+        fortBase = GameObject.FindGameObjectWithTag("FortBase");
+        if (fortBase == null) {
+            fortBase = new GameObject("FortBase");
+        } 
     }
 
     public GameObject getClosestTurretAttacherInRange(Vector3 pos, float range) {
