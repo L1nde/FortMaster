@@ -7,6 +7,7 @@ using UnityEngine;
 public abstract class Placeable : MonoBehaviour {
 
     public float cost;
+    public string name;
     protected bool researched = false;
 
 	void Start () {

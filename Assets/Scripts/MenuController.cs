@@ -11,7 +11,7 @@ namespace Assets.Scripts {
 
         public GameObject saveObject;
         public GameObject savesParent;
-        public WaveDetails waveZero;
+        public BaseWaveDetails waveZero;
         public Button play;
         public Animator anim;
         private string waveSaveName = "null";
@@ -43,13 +43,14 @@ namespace Assets.Scripts {
         public void startGame() {
             
             if (waveSaveName == "null") {
-                WaveController.CurreWaveDetails = waveZero;
+                GameController.CurrentWaveDetails = waveZero.ToWaveDetails();
             }
             else {
-                WaveController.CurreWaveDetails = SaveController.instance.LoadWave(waveSaveName);
+                GameController.CurrentWaveDetails = SaveController.instance.LoadWave(waveSaveName);
             }
             
             SceneManager.LoadScene("LIndeScene");
+            
         }
 
         public void optionsButton() {

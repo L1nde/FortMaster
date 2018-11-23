@@ -42,7 +42,7 @@ public class SaveController : MonoBehaviour {
         string dataPath = Path.Combine(folderPath, waveNr + fileExtension);
         BinaryFormatter binaryFormatter = new BinaryFormatter();
         using (FileStream fileStream = File.Open(dataPath, FileMode.Create)) {
-            binaryFormatter.Serialize(fileStream, waveDetails.ToWaveSaveObject());
+            binaryFormatter.Serialize(fileStream, waveDetails);
         }
     }
 
@@ -52,7 +52,7 @@ public class SaveController : MonoBehaviour {
         BinaryFormatter binaryFormatter = new BinaryFormatter();
 
         using (FileStream fileStream = File.Open(dataPath, FileMode.Open)) {
-            return Instantiate(sampleWaveDetails).ToWaveDetails((WaveSaveObject) binaryFormatter.Deserialize(fileStream));
+            return (WaveDetails) binaryFormatter.Deserialize(fileStream);
         }
     }
 

@@ -51,6 +51,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2e14b91bdd6dbb408254622fc40b3eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fortBase: {fileID: 1431173861981428, guid: 49ec31e317b6bc341a1c8f97f8ec2259, type: 2}
   turrets:
   - {fileID: 11400000, guid: b4edf7bcb2e942341bf39c49f87fc4a0, type: 2}
   structureBlocks:

@@ -14,6 +14,7 @@ public class Core : StructureBlock
         setAttachPoints();
         canPlace = true;
         isPlaced = false;
+        name = "Core";
     }
 
     // Update is called once per frame

@@ -1,40 +1,52 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using Assets.Scripts.Research;
+using Assets.Scripts.waves;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class GameController : MonoBehaviour {
 
     public static GameController instance = null;
+    public static WaveDetails CurrentWaveDetails;
 
     public float gold;
     public Text goldText;
+    public WaveController waveController;
+    
 
     public float xp;
     public Text xpText;
 
     // Use this for initialization
     void Start() {
+        loadSave();
         if (instance == null)
             instance = this;
 
         else if (instance != this)
             Destroy(gameObject);
 
-        DontDestroyOnLoad(gameObject);
+//        DontDestroyOnLoad(gameObject);
         updateGoldText();
+        
+
+    }
+
+    void OnEnable() {
+        
     }
 	
 	// Update is called once per frame
-	void Update () {
-
-//	        UIController.Instance.WinWave();
-       
-// 	    if (WaveController.waveOver) {
-// //	        UIController.Instance.WinWave();
-//         }            
+	void Update () {         
 	}
+
+
+    public void loadSave() {
+        if (CurrentWaveDetails.fortObjects != null) {
+//            ConstructionManager.instance.spawnBuildings(CurrentWaveDetails.fortObjects);
+        }
+    }
 
     public void addGold(float amount) {
         gold += amount;
