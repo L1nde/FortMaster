@@ -74,6 +74,14 @@ public class SaveController : MonoBehaviour {
         }
 
         waveDetails.enemies = waveEnemies;
+
+        // Salvestama peabki need kõik neli asja + MapGeneration.instance.seed
+        //MapGeneration.instance.minX = waveDetails.mapMinX;
+        //MapGeneration.instance.maxX = waveDetails.mapMaxX;
+        //MapGeneration.instance.minY = waveDetails.mapMinY;
+        //MapGeneration.instance.maxY = waveDetails.mapMaxY;
+        //MapGeneration.instance.generateMap(waveDetails.seed);
+
         return waveDetails;
     }
 

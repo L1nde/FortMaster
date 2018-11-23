@@ -5,6 +5,7 @@ using UnityEngine.Tilemaps;
 
 public class MapGeneration : MonoBehaviour {
 
+    public static MapGeneration instance;
     // Width and height of the texture in pixels.
     // -30 x 30
     // -17 y -7
@@ -18,16 +19,43 @@ public class MapGeneration : MonoBehaviour {
     public Tilemap tilemap;
     public List<TileBase> tilebase = new List<TileBase>();
 
+    public int seed;
+
     public void Start()
     {
+        if (instance == null)
+            instance = this;
+        else if (instance != this)
+            Destroy(gameObject);
+
+        // Generate seed
+        seed = generateSeed();
+
+        // Generate map
+        generateMap(this.seed);
+    }
+
+    public int generateSeed()
+    {
+        System.Random rnd = new System.Random();
+        return rnd.Next(0, 100000);
+    }
+
+    public void generateMap(int seed)
+    {
+        this.seed = seed;
+        Debug.Log(seed);
+        // Calculate width and height
         int width = Mathf.Abs((minX - maxX));
         int height = Mathf.Abs((minY - maxY));
+
+        // Generate and render map
         int[,] emptyMap = generateArray(width, height);
-        int[,] generatedMap = randomizeMap(emptyMap, 1, 10);
+        int[,] generatedMap = randomizeMap(emptyMap, seed, 5);
         renderMap(generatedMap);
     }
 
-    public int[,] generateArray(int width, int height)
+    private int[,] generateArray(int width, int height)
     {
         int[,] map = new int[width, height];
         for (int x = 0; x < map.GetUpperBound(0); x++)
@@ -40,7 +68,7 @@ public class MapGeneration : MonoBehaviour {
         return map;
     }
 
-    public void renderMap(int[,] map)
+    private void renderMap(int[,] map)
     {
         for (int x = 0; x < map.GetUpperBound(0); x++)
         {
@@ -56,10 +84,11 @@ public class MapGeneration : MonoBehaviour {
         }
     }
 
-    public int[,] randomizeMap(int[,] map, float seed, int minSectionWidth)
+    private int[,] randomizeMap(int[,] map, int seed, int minSectionWidth)
     {
         //Seed our random
         System.Random rand = new System.Random(seed.GetHashCode());
+        Random.InitState(seed + 100);
 
         //Determine the start position
         int lastHeight = Random.Range(0, map.GetUpperBound(1));
@@ -74,7 +103,6 @@ public class MapGeneration : MonoBehaviour {
         {
             //Determine the next move
             nextMove = rand.Next(2);
-
             //Only change the height if we have used the current height more than the minimum required section width
             if (nextMove == 0 && lastHeight > 0 && sectionWidth > minSectionWidth)
             {
