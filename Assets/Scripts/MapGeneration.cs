@@ -97,6 +97,7 @@ public class MapGeneration : MonoBehaviour {
         //Used to keep track of the current sections width
         int sectionWidth = 0;
 
+        bool lastPlus = false;
         //Work through the array width
         for (int x = 0; x <= map.GetUpperBound(0); x++)
         {
@@ -114,6 +115,7 @@ public class MapGeneration : MonoBehaviour {
                 map[x, lastHeight] = 3;
                 lastHeight++;
                 sectionWidth = 0;
+                lastPlus = true;
             }
             //Increment the section width
             sectionWidth++;
@@ -123,6 +125,10 @@ public class MapGeneration : MonoBehaviour {
             {
                 map[x, y] = 1;
             }
+
+            if (sectionWidth == 1 && lastPlus)
+                map[x, lastHeight] = 3;
+            lastPlus = false;
         }
 
         //Return the modified map

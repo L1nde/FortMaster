@@ -719,10 +719,10 @@ RectTransform:
   m_Father: {fileID: 1376860225}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 12.921665, y: -20}
+  m_SizeDelta: {x: 25.84333, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &345985971
 CanvasRenderer:
@@ -965,10 +965,10 @@ RectTransform:
   m_Father: {fileID: 1376860225}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 54.264996, y: -20}
+  m_SizeDelta: {x: 56.84333, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &429248140
 MonoBehaviour:
@@ -2317,7 +2317,7 @@ GameObject:
   - component: {fileID: 1370260162}
   m_Layer: 0
   m_Name: Tilemap
-  m_TagString: Untagged
+  m_TagString: Terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2367,8 +2367,8 @@ TilemapRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -376074033
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
@@ -2457,10 +2457,10 @@ RectTransform:
   m_Father: {fileID: 967689410}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 222.53, y: -20}
+  m_SizeDelta: {x: 82.68666, y: 40}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &1376860226
 MonoBehaviour:
@@ -2589,10 +2589,10 @@ RectTransform:
   m_Father: {fileID: 967689410}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 69.92167, y: -20}
+  m_SizeDelta: {x: 139.84334, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1627452388
 MonoBehaviour:
@@ -2870,6 +2870,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 9d82b66d924deeb4090627511f4238be, type: 2}
   - {fileID: 11400000, guid: caa08f78e45c8954a882721c4b404994, type: 2}
   - {fileID: 11400000, guid: b004b0630707bb4488b91dae3528c152, type: 2}
+  seed: 0
 --- !u!1 &2064539027
 GameObject:
   m_ObjectHideFlags: 0
