@@ -44,7 +44,7 @@ namespace Assets.Scripts.waves {
         private float calculateScoreSum() {
             float scoreSum = 0f;
             foreach (var enemyData in enemiesData) {
-                if (enemyData.minLevel >= waveNr && maxScore - currentWaveScore >= enemyData.enemyScore) {
+                if (enemyData.minLevel <= waveNr && maxScore - currentWaveScore >= enemyData.enemyScore) {
                     scoreSum += enemyData.enemyScore;
                 } 
             }
@@ -57,7 +57,7 @@ namespace Assets.Scripts.waves {
             float s = 0f;
             for (var i = 0; i < enemiesData.Length; i++) {
                 var enemyData = enemiesData[i];
-                if (enemyData.minLevel >= waveNr && maxScore - currentWaveScore >= enemyData.enemyScore) {
+                if (enemyData.minLevel <= waveNr && maxScore - currentWaveScore >= enemyData.enemyScore) {
                     s += 1 - enemyData.enemyScore / scoreSum;
                     if (s >= r) {
                         return i;
@@ -70,13 +70,13 @@ namespace Assets.Scripts.waves {
         }
 
         public void startWave(WaveDetails waveDetails) {
-
 			if (UIController.Instance.researchScreen.activeSelf)
-                UIController.Instance.researchScreen.SetActive(false);			started = true;
+                UIController.Instance.researchScreen.SetActive(false);
+            started = true;
             currentWaveScore = 0f;
             waveNr = waveDetails.waveNr;
             maxScore = waveDetails.waveScore;
-            calculateScoreSum();            foreach (var spawn in spawns) {
+            foreach (var spawn in spawns) {
                 spawn.setUp(waveDetails);
             }
         }

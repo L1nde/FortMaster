@@ -35,7 +35,7 @@ namespace Assets.Scripts.waves {
             if (waveOver) {
                 if (!nextWaveGenerated){
                     CurreWaveDetails = genNextWave();
-                    SaveController.instance.saveWave(CurreWaveDetails);
+                    SaveController.instance.saveWave(CurreWaveDetails, CurreWaveDetails.waveNr);
                 }
                 if (buildAcc >= buildTime) {
                     spawnController.startWave(CurreWaveDetails);
@@ -66,7 +66,8 @@ namespace Assets.Scripts.waves {
             var nextWaveDetails = Instantiate(CurreWaveDetails);
             nextWaveDetails.spawnDelay = Mathf.Max(nextWaveDetails.spawnDelay - 1, 1); //Todo balancing
             nextWaveDetails.buildTime = nextWaveDetails.buildTime;
-            nextWaveDetails.waveScore += 10f;
+            nextWaveDetails.waveScore += 1f;
+            nextWaveDetails.waveNr += 1;
             nextWaveGenerated = true;
             return nextWaveDetails;
         }

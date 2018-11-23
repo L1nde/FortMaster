@@ -41,8 +41,8 @@ public class SaveController : MonoBehaviour {
         string folderPath = Path.Combine(Application.persistentDataPath, folderName);
         string dataPath = Path.Combine(folderPath, waveNr + fileExtension);
         BinaryFormatter binaryFormatter = new BinaryFormatter();
-        using (FileStream fileStream = File.Open(dataPath, FileMode.OpenOrCreate)) {
-            binaryFormatter.Serialize(fileStream, waveDetails);
+        using (FileStream fileStream = File.Open(dataPath, FileMode.Create)) {
+            binaryFormatter.Serialize(fileStream, waveDetails.ToWaveSaveObject());
         }
     }
 
@@ -52,7 +52,7 @@ public class SaveController : MonoBehaviour {
         BinaryFormatter binaryFormatter = new BinaryFormatter();
 
         using (FileStream fileStream = File.Open(dataPath, FileMode.Open)) {
-            return (WaveDetails) binaryFormatter.Deserialize(fileStream);
+            return Instantiate(sampleWaveDetails).ToWaveDetails((WaveSaveObject) binaryFormatter.Deserialize(fileStream));
         }
     }
 
@@ -61,20 +61,6 @@ public class SaveController : MonoBehaviour {
         var directoryInfo = new DirectoryInfo(folderPath);
         return directoryInfo.GetFiles();
     }
-
-
-//    private WaveDetails convertToWaveDetails(WaveSaveObject waveSaveObject) {
-//        var waveDetails = Instantiate(sampleWaveDetails);
-//        waveDetails.buildTime = waveSaveObject.buildTime;
-//        waveDetails.spawnDelay = waveSaveObject.spawnDelay;
-//        var waveEnemies = new List<WaveEnemy>();
-//        foreach (var data in waveSaveObject.enemies) {
-//            waveEnemies.Add(new WaveEnemy(Resources.Load<Enemy>("Prefabs/" + data.Key), data.Value));
-//        }
-//
-//        waveDetails.enemies = waveEnemies;
-//        return waveDetails;
-//    }
 
     public void deleteAll() {
         foreach (var item in GetFilePaths()) {

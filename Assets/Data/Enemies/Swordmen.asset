@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Name: Swordmen
   m_EditorClassIdentifier: 
   hp: 100
-  speed: 1
+  speed: -1
   attackDelay: 1
-  attackRange: 10
-  moneyOnDeath: 0
-  enemyScore: 0
+  attackRange: 0.5
+  moneyOnDeath: 15
+  enemyScore: 2
   minLevel: 0
   enemyPrefab: {fileID: 114553184666542520, guid: ad02d701c9dee474c8138dd507e6afca,
     type: 2}
