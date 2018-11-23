@@ -75,7 +75,7 @@ namespace Assets.Scripts.enemies.ammo {
         }
 
         public void shootProjectile(Vector3 target) {
-            transform.position += posOffset;
+            transform.position += transform.rotation * posOffset;
             Rigidbody2D body = GetComponent<Rigidbody2D>();
             float initialAngle = calculateAngle(target) + directionOffset;
             float gravity = Physics.gravity.magnitude;
