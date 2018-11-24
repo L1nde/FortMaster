@@ -51,7 +51,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a0aec1b88d3d7a46b9729dc7843fd76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  traits:
+  - {fileID: 0}
   gold: 500
-  goldText: {fileID: 0}
   xp: 0
-  xpText: {fileID: 0}
