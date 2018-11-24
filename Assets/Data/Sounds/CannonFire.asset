@@ -9,11 +9,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 52e20798abb615040bb986c854811a80, type: 3}
-  m_Name: Cannon
+  m_Name: CannonFire
   m_EditorClassIdentifier: 
-  volumeMin: 0
-  volumeMax: 0
-  pitchMin: 0
-  pitchMax: 0
-  cooldown: 0
-  clips: []
+  volumeMin: 0.9
+  volumeMax: 1.1
+  pitchMin: 0.9
+  pitchMax: 1.1
+  cooldown: 0.5
+  clips:
+  - {fileID: 8300000, guid: 8b3ba5fbcf5c14c41b6d7feff58e3a5a, type: 3}

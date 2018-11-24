@@ -93,6 +93,7 @@ MonoBehaviour:
   damage: 25
   directionOffset: 45
   posOffset: {x: -0.25, y: 0, z: 0}
+  parabola: 1
   speed: 1
   noGravityTime: 0
   accuracySpread: 0.8

@@ -57,7 +57,7 @@ Rigidbody2D:
   m_Mass: 0.01
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 0
+  m_GravityScale: 1
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -93,9 +93,10 @@ MonoBehaviour:
   damage: 10
   directionOffset: 0
   posOffset: {x: 0, y: 0, z: 0}
-  speed: 1
+  parabola: 0
+  speed: 7
   noGravityTime: 0
-  accuracySpread: 0.8
+  accuracySpread: 2
   stayStuck: 1
 --- !u!212 &212168223136147920
 SpriteRenderer:

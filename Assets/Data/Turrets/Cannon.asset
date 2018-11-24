@@ -14,8 +14,9 @@ MonoBehaviour:
   name: Cannon
   cost: 250
   reloadTime: 2
-  attackRange: 30
+  attackRange: 20
   minxRange: 0
   projectile: {fileID: 114391454512516862, guid: db725d332a240aa4fba173d6063e9a5b,
     type: 2}
   aniController: {fileID: 9100000, guid: 31fda4ceca0f2454e9327e1b0bf5d394, type: 2}
+  fireSound: {fileID: 11400000, guid: 5040e2b7bafa67d4f81c185c01b10320, type: 2}
