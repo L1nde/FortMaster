@@ -62,7 +62,12 @@ namespace Assets.Scripts.waves {
             // Todo this doesn't belong to this class
             // TODO fix this, currently it adds 10-20xp at the beginning of the first wave.
             if (waveOver && waveCheck) {
-                GameController.instance.addXP(100f);
+                float wavexp = 10;
+                foreach (Trait trait in GameController.instance.traits) {
+                    if (trait.isToggled)
+                        wavexp *= trait.xpmodifier;
+                }
+                GameController.instance.addXP(wavexp);
                 waveCheck = false;
             }
         }

@@ -10,6 +10,7 @@ public class GameController : MonoBehaviour {
     public static GameController instance = null;
     public static WaveDetails CurrentWaveDetails;
 
+    public List<Trait> traits;
     public float gold;
     public float xp;
 
@@ -24,8 +25,6 @@ public class GameController : MonoBehaviour {
         DontDestroyOnLoad(gameObject);
         updateGoldText();
         loadSave();
-
-
     }
 
     void OnEnable() {
@@ -38,6 +37,8 @@ public class GameController : MonoBehaviour {
 
 
     public void loadSave() {
+        if (ConstructionManager.instance == null)
+            return;
         ConstructionManager.instance.loadBuilding(CurrentWaveDetails.fortObjects);
         gold = CurrentWaveDetails.gold;
         updateGoldText();
@@ -75,10 +76,20 @@ public class GameController : MonoBehaviour {
     }
 
     private void updateGoldText() {
-        UIController.Instance.updateGoldText(gold);
+        if (UIController.Instance != null)
+            UIController.Instance.updateGoldText(gold);
     }
 
     private void updateXPText() {
-        UIController.Instance.updateXPText(xp);
+        if (UIController.Instance != null)
+            UIController.Instance.updateXPText(xp);
+    }
+
+    public Trait getTrait(string name) {
+        foreach (Trait trait in traits) {
+            if (trait.name == name)
+                return trait;
+        }
+        return null;
     }
 }
