@@ -77,6 +77,12 @@ public class Turret : Placeable {
         }
     }
 
+    
+    public override void placeFree(Transform parent) {
+        CreateJoints();
+        isEnabled = true;
+    }
+
     public override Attacher[] getAttachPoints()
     {
         return null;

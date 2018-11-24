@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Assets.Scripts;
 using Assets.Scripts.Turrets;
+using Assets.Scripts.waves;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -10,7 +11,7 @@ public class ConstructionManager : MonoBehaviour {
 
     public static ConstructionManager instance = null;
 
-    private GameObject fortBase;
+    public GameObject fortBase;
     private Placeable selected;
 
     public List<TurretData> turrets;
@@ -30,9 +31,8 @@ public class ConstructionManager : MonoBehaviour {
 
         UIController.Instance.CreateTurretButtons(turrets);
         UIController.Instance.CreateStructureBlockButtons(structureBlocks);
-        fortBase = new GameObject("FortBase");
+//        fortBase = new GameObject("FortBase");
         fortBase.tag = "FortBase";
-        createCore();
         DontDestroyOnLoad(gameObject);
         
     }
@@ -63,27 +63,65 @@ public class ConstructionManager : MonoBehaviour {
 
     }
 
-    private void initStructureBlock(StructureBlockData sbd)
-    {
+    public void loadBuilding(List<PlaceableSaveObject> fort) {
+        if (fort == null) {
+            createCore();
+            return;
+        }
+        foreach (var saveObject in fort) {
+            if (saveObject.placeableName == "Core") {
+                Instantiate(core, saveObject.position.toVector3(), Quaternion.Euler(saveObject.rotation.toVector3()), fortBase.transform);
+                continue;
+            }
+            
+            foreach (TurretData t in turrets) {
+                if (t.name == saveObject.placeableName) {
+                    var block = Instantiate(attachTurretData(t), saveObject.position.toVector3(), Quaternion.Euler(saveObject.rotation.toVector3()));
+                    block.setAnimController(t.aniController);
+                    block.placeFree(fortBase.transform);
+                    break;
+                }
+            }
+            foreach (StructureBlockData sb in structureBlocks) {
+                if (sb.name == saveObject.placeableName) {
+                    var block = Instantiate(attachStructrueBlockData(sb), saveObject.position.toVector3(), Quaternion.Euler(saveObject.rotation.toVector3()));
+                    block.placeFree(fortBase.transform);
+                    break;
+                }
+            }
+        }
+    }
+
+    private StructureBlock attachStructrueBlockData(StructureBlockData sbd) {
+        structureBlockPrefab.name = sbd.name;
         structureBlockPrefab.cost = sbd.cost;
         structureBlockPrefab.jointBreakTorque = sbd.jointBreakTorque;
         structureBlockPrefab.hp = sbd.hp;
         structureBlockPrefab.GetComponent<SpriteRenderer>().sprite = sbd.sprite;
         structureBlockPrefab.placeSound = sbd.placeSoundGroup;
-        Select(Instantiate(structureBlockPrefab));
+        return structureBlockPrefab;
     }
 
-    private void initTurret(TurretData td)
+    private void initStructureBlock(StructureBlockData sbd)
     {
+        Select(Instantiate(attachStructrueBlockData(sbd)));
+    }
+
+    private void initTurret(TurretData td) {
+        var t = Instantiate(attachTurretData(td));
+        t.setAnimController(td.aniController);
+        Select(t);
+    }
+
+    private Turret attachTurretData(TurretData td) {
+        turretPrefab.name = td.name;
         turretPrefab.cost = td.cost;
         turretPrefab.attackRange = td.attackRange;
         turretPrefab.projectile = td.projectile;
         turretPrefab.reloadTime = td.reloadTime;
         turretPrefab.minxRange = td.minxRange;
         turretPrefab.fireSound = td.fireSound;
-        Turret t = Instantiate(turretPrefab);
-        t.setAnimController(td.aniController);
-        Select(t);
+        return turretPrefab;
     }
 
     public void PlaceBlock() {

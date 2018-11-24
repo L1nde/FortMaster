@@ -293,6 +293,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cost: 50
+  name: Wooden
   hp: 100
   jointBreakTorque: 10000
   placeSound: {fileID: 11400000, guid: dc1203a71779ab74b95feefbd72bf760, type: 2}

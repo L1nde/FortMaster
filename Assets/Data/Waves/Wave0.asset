@@ -13,5 +13,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waveScore: 3
   spawnDelay: 1
-  buildTime: 10
+  buildTime: 5
   waveNr: 0
+  gold: 500

@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 50288111695739746}
   m_Layer: 0
   m_Name: turretPrefab
-  m_TagString: Untagged
+  m_TagString: Turret
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -138,10 +138,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cost: 75
+  name: 
   attackRange: 10
-  projectile: {fileID: 114591867546780856, guid: ed1a42e6fcae41e41ae07f0d1ad5a439,
+  projectile: {fileID: 114915687652843784, guid: ed1a42e6fcae41e41ae07f0d1ad5a439,
     type: 2}
   reloadTime: 1
+  minxRange: 0
 --- !u!212 &212211070547246766
 SpriteRenderer:
   m_ObjectHideFlags: 1

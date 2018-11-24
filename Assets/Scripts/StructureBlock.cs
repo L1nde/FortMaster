@@ -20,12 +20,17 @@ public class StructureBlock : Placeable {
 
     // Use this for initialization
     void Start () {
+        
+	}
+
+    void OnEnable() {
         researched = true;
         setAttachPoints();
         isTurretAttachPointFree = true;
         canPlace = true;
         isPlaced = false;
-	}
+    }
+
 	
 	// Update is called once per frame
 	void Update () {
@@ -71,6 +76,14 @@ public class StructureBlock : Placeable {
             placeSound.play();
         } else {
             DestroySelf();
+        }
+    }
+
+    public override void placeFree(Transform parent) {
+        if (canPlace) {
+            CreateJoints();
+            transform.parent = parent;
+            isPlaced = true;
         }
     }
 

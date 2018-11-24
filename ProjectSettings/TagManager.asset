@@ -14,6 +14,7 @@ TagManager:
   - PlayerProjectile
   - SelectedItem
   - EnemySpawner
+  - Turret
   layers:
   - Default
   - TransparentFX

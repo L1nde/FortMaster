@@ -7,6 +7,7 @@ using UnityEngine;
 public abstract class Placeable : MonoBehaviour {
 
     public float cost;
+    public string name;
     protected bool researched = false;
 
 	void Start () {
@@ -26,6 +27,7 @@ public abstract class Placeable : MonoBehaviour {
     public abstract void disableDragMode();
     public abstract Attacher[] getAttachPoints();
     public abstract void place(Transform parent);
+    public abstract void placeFree(Transform parent);
 
     public void research()
     {
