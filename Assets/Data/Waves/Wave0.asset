@@ -15,4 +15,4 @@ MonoBehaviour:
   spawnDelay: 1
   buildTime: 5
   waveNr: 0
-  gold: 0
+  gold: 500

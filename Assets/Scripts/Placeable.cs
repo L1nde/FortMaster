@@ -27,6 +27,7 @@ public abstract class Placeable : MonoBehaviour {
     public abstract void disableDragMode();
     public abstract Attacher[] getAttachPoints();
     public abstract void place(Transform parent);
+    public abstract void placeFree(Transform parent);
 
     public void research()
     {

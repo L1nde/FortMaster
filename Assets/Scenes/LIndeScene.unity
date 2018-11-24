@@ -1391,6 +1391,10 @@ Prefab:
       propertyPath: fortBase
       value: 
       objectReference: {fileID: 339174535}
+    - target: {fileID: 1205870363113972, guid: b1c50e01c311bab40be2ac7a6c741c8d, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b1c50e01c311bab40be2ac7a6c741c8d, type: 2}
   m_IsPrefabAsset: 0

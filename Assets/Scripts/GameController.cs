@@ -20,7 +20,6 @@ public class GameController : MonoBehaviour {
 
     // Use this for initialization
     void Start() {
-        loadSave();
         if (instance == null)
             instance = this;
 
@@ -29,7 +28,8 @@ public class GameController : MonoBehaviour {
 
 //        DontDestroyOnLoad(gameObject);
         updateGoldText();
-        
+        loadSave();
+
 
     }
 
@@ -43,9 +43,9 @@ public class GameController : MonoBehaviour {
 
 
     public void loadSave() {
-        if (CurrentWaveDetails.fortObjects != null) {
-//            ConstructionManager.instance.spawnBuildings(CurrentWaveDetails.fortObjects);
-        }
+        ConstructionManager.instance.loadBuilding(CurrentWaveDetails.fortObjects);
+        gold = CurrentWaveDetails.gold;
+        updateGoldText();
     }
 
     public void addGold(float amount) {

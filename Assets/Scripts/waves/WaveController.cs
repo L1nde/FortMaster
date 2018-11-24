@@ -70,11 +70,12 @@ namespace Assets.Scripts.waves {
         private void saveWave() {
             List<PlaceableSaveObject> placeableSaveObjects = new List<PlaceableSaveObject>();
             foreach (var block in fortBase.GetComponentsInChildren<Placeable>()) {
-                placeableSaveObjects.Add(new PlaceableSaveObject(block.name, block.transform.position));
+                placeableSaveObjects.Add(new PlaceableSaveObject(block.name, block.transform.position, block.transform.eulerAngles));
             }
 
             currentWaveDetails.fortObjects = placeableSaveObjects;
             currentWaveDetails.terrainGenObject = new TerrainGenObject(MapGeneration.instance.maxX, MapGeneration.instance.maxY, MapGeneration.instance.minX, MapGeneration.instance.minY, MapGeneration.instance.seed);
+            currentWaveDetails.gold = GameController.instance.gold;
             SaveController.instance.saveWave(currentWaveDetails, currentWaveDetails.waveNr);
         }
 

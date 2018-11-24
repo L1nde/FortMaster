@@ -1,20 +1,20 @@
-﻿using UnityEngine;
+﻿using Assets.Scripts.saving;
+using UnityEngine;
 
 namespace Assets.Scripts.waves {
 
     [System.Serializable]
     public class PlaceableSaveObject {
         public string placeableName;
-        public float x;
-        public float y;
-        public float z;
+        public Vec3 position;
+        public Vec3 rotation;
+        
 
 
-        public PlaceableSaveObject(string placeableName, Vector3 position) {
+        public PlaceableSaveObject(string placeableName, Vector3 position, Vector3 rotation) {
             this.placeableName = placeableName;
-            this.x = position.x;
-            this.y = position.y;
-            this.z = position.z;
+            this.position = new Vec3(position);
+            this.rotation = new Vec3(rotation);
         }
     }
 }

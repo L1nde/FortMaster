@@ -11,6 +11,10 @@ public class Core : StructureBlock
     // Use this for initialization
     void Start()
     {
+        
+    }
+
+    void OnEnable() {
         setAttachPoints();
         canPlace = true;
         isPlaced = false;
