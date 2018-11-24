@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Assets.Scripts;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Animations;
 using UnityEngine;
@@ -8,10 +9,12 @@ public class Turret : Placeable {
     public PlayerProjectile projectile;
     public float reloadTime;
     public float minxRange;
+    public AudioClipGroup fireSound;
     private float currentReloadTime;
     private Animator anim;
     private bool isEnabled = false;
     private CircleCollider2D attackRangeCollider;
+    
 
 
     void Awake()
@@ -42,20 +45,16 @@ public class Turret : Placeable {
 
     private void fire() {
         Collider2D target = getTarget();
-        if (target != null && checkIfInView(target.gameObject.transform.position)){
+        if (target != null){
             if (minxRange < Mathf.Abs(transform.position.x - target.transform.position.x)) {
                 anim.Play("Fire");
+                if (fireSound != null)
+                    fireSound.play();
                 PlayerProjectile p = Instantiate(projectile);
                 p.init(transform.rotation.eulerAngles.z, transform.position, new Vector2(target.transform.position.x, target.transform.position.y - target.transform.localScale.y / 2));
                 transform.rotation = p.transform.rotation;
             }
         }
-    }
-
-    private bool checkIfInView(Vector3 position)
-    {
-        Vector3 screenPoint = Camera.main.WorldToViewportPoint(position);
-        return screenPoint.z > 0 && screenPoint.x > 0 && screenPoint.x < 1 && screenPoint.y > 0 && screenPoint.y < 1;
     }
 
     private Collider2D getTarget() {
@@ -71,7 +70,6 @@ public class Turret : Placeable {
 
     public override void place(Transform parent) {
         if (GameController.instance.canAfford(cost)) {
-            GameController.instance.removeGold(cost);
             disableDragMode();
             CreateJoints();
         } else {
@@ -90,6 +88,8 @@ public class Turret : Placeable {
             Destroy(gameObject);
             return;
         }
+        sb.placeSound.play();
+        GameController.instance.removeGold(cost);
         sb.disableTurretAttachPoint();
         HingeJoint2D fj = gameObject.AddComponent<HingeJoint2D>();
         fj.connectedBody = sb.GetComponent<Rigidbody2D>();

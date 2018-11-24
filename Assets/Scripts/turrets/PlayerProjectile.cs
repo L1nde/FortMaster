@@ -6,8 +6,6 @@ using Assets.Scripts.enemies;
 
 public class PlayerProjectile : Projectile {
 
-
-    public float speed;
     public float noGravityTime;
     public float accuracySpread = 0.8f;
     public bool stayStuck;
@@ -58,7 +56,8 @@ public class PlayerProjectile : Projectile {
         //transform.GetComponent<Rigidbody2D>().velocity = vel;
         transform.position = pos;
         transform.rotation = Quaternion.Euler(0, 0, z);
-        shootProjectile(new Vector2(target.x, target.y) + Random.insideUnitCircle * accuracySpread);
+        float xdist = Mathf.Abs(target.x - pos.x)/10;
+        shootProjectile(new Vector2(target.x, target.y) + Random.insideUnitCircle * accuracySpread * xdist);
     }
     
 }

@@ -7,6 +7,8 @@ namespace Assets.Scripts.enemies.ammo {
         public float damage = 10f;
         public float directionOffset;
         public Vector3 posOffset;
+        public bool parabola;
+        public float speed;
 
         protected Rigidbody2D rb2d;
 
@@ -75,6 +77,29 @@ namespace Assets.Scripts.enemies.ammo {
         }
 
         public void shootProjectile(Vector3 target) {
+            if (parabola)
+                shootWithParabola(target);
+            else
+                shootWithMinParabola(target);
+        }
+
+        private void shootWithMinParabola(Vector3 target) {
+            float x = target.x - transform.position.x;
+            float y = target.y + 0.5f - transform.position.y; //the 0.5 is small adjustment so the turrets would aim a bit higher
+
+            if (rb2d == null)
+                rb2d = GetComponent<Rigidbody2D>();
+            float ySpeed = speed * y / x + Physics.gravity.magnitude * x / (2 * speed);
+
+            Vector3 velVector = new Vector3(speed, ySpeed);
+            Rigidbody2D body = GetComponent<Rigidbody2D>();
+            body.AddForce(velVector * body.mass, ForceMode2D.Impulse);
+
+            transform.rotation = LookAt2D(body.velocity);
+
+        }
+
+        private void shootWithParabola(Vector3 target) {
             transform.position += transform.rotation * posOffset;
             Rigidbody2D body = GetComponent<Rigidbody2D>();
             float initialAngle = calculateAngle(target) + directionOffset;

@@ -80,6 +80,7 @@ public class ConstructionManager : MonoBehaviour {
         turretPrefab.projectile = td.projectile;
         turretPrefab.reloadTime = td.reloadTime;
         turretPrefab.minxRange = td.minxRange;
+        turretPrefab.fireSound = td.fireSound;
         Turret t = Instantiate(turretPrefab);
         t.setAnimController(td.aniController);
         Select(t);

@@ -18,5 +18,6 @@ namespace Assets.Scripts.Turrets
         public float minxRange;
         public PlayerProjectile projectile;
         public AnimatorController aniController;
+        public AudioClipGroup fireSound;
     }
 }
