@@ -62,7 +62,7 @@ namespace Assets.Scripts.waves {
             // Todo this doesn't belong to this class
             // TODO fix this, currently it adds 10-20xp at the beginning of the first wave.
             if (waveOver && waveCheck) {
-                GameController.instance.addXP(10f);
+                GameController.instance.addXP(100f);
                 waveCheck = false;
             }
         }
