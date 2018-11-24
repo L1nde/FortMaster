@@ -29,7 +29,7 @@ public class ResearchController : MonoBehaviour {
 
     public void generateButtons()
     {
-        clearButtons();
+//        clearButtons();
         initializeButtons();
     }
 

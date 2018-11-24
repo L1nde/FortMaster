@@ -1262,6 +1262,8 @@ MonoBehaviour:
   researchButtonPrefab: {fileID: 114658815616315778, guid: a8fbc3a6884b22f4ebee6ea60f2688fb,
     type: 2}
   researchScreen: {fileID: 714390635}
+  goldText: {fileID: 1664265995}
+  xpText: {fileID: 88854384}
 --- !u!114 &712043698
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1427,10 +1429,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gold: 500
-  goldText: {fileID: 1664265995}
-  waveController: {fileID: 0}
   xp: 0
-  xpText: {fileID: 88854384}
 --- !u!4 &740802246
 Transform:
   m_ObjectHideFlags: 0

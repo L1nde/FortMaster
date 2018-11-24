@@ -199,7 +199,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 0
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &5017794
@@ -1130,6 +1130,7 @@ MonoBehaviour:
   waveZero: {fileID: 11400000, guid: 9268deeec13d76042b01423fc01774d0, type: 2}
   play: {fileID: 1853933391}
   anim: {fileID: 448536296}
+  deleteSaves: {fileID: 5017793}
 --- !u!95 &448536296
 Animator:
   serializedVersion: 3
@@ -3057,7 +3058,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2efcf7dff26764648ae67b7f90ddcb5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sampleWaveDetails: {fileID: 11400000, guid: 9268deeec13d76042b01423fc01774d0, type: 2}
+  sampleWaveDetails:
+    waveScore: 0
+    spawnDelay: 0
+    buildTime: 0
+    waveNr: 0
+    gold: 0
+    fortObjects: []
+    terrainGenObject:
+      seed: 0
+      minX: 0
+      maxX: 0
+      minY: 0
+      maxY: 0
 --- !u!4 &2031185352
 Transform:
   m_ObjectHideFlags: 0

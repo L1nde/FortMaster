@@ -16,6 +16,11 @@ namespace Assets.Scripts {
         public Animator anim;
         private string waveSaveName = "null";
         private List<GameObject> saves = new List<GameObject>();
+        public Button deleteSaves;
+
+        void OnEnable() {
+            deleteSaves.onClick.AddListener(() => SaveController.instance.deleteAll());
+        }
 
         public void playButton() {
             anim.SetFloat("speed", -1f);

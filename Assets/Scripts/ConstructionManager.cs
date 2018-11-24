@@ -33,7 +33,7 @@ public class ConstructionManager : MonoBehaviour {
         UIController.Instance.CreateStructureBlockButtons(structureBlocks);
 //        fortBase = new GameObject("FortBase");
         fortBase.tag = "FortBase";
-        DontDestroyOnLoad(gameObject);
+//        DontDestroyOnLoad(gameObject);
         
     }
 

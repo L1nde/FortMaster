@@ -11,12 +11,7 @@ public class GameController : MonoBehaviour {
     public static WaveDetails CurrentWaveDetails;
 
     public float gold;
-    public Text goldText;
-    public WaveController waveController;
-    
-
     public float xp;
-    public Text xpText;
 
     // Use this for initialization
     void Start() {
@@ -26,7 +21,7 @@ public class GameController : MonoBehaviour {
         else if (instance != this)
             Destroy(gameObject);
 
-//        DontDestroyOnLoad(gameObject);
+        DontDestroyOnLoad(gameObject);
         updateGoldText();
         loadSave();
 
@@ -80,10 +75,10 @@ public class GameController : MonoBehaviour {
     }
 
     private void updateGoldText() {
-        goldText.text = "Gold: " + gold;
+        UIController.Instance.updateGoldText(gold);
     }
 
     private void updateXPText() {
-        xpText.text = "XP: " + xp;
+        UIController.Instance.updateXPText(xp);
     }
 }

@@ -26,6 +26,8 @@ public class UIController : MonoBehaviour {
     public BlockCreate PlaceableBlockPrefab;
     public ResearchButton researchButtonPrefab;
     public GameObject researchScreen;
+    public Text goldText;
+    public Text xpText;
 
     private List<BlockCreate> placeableItemButtons;
 
@@ -33,7 +35,7 @@ public class UIController : MonoBehaviour {
     void Awake()
     {
         if (Instance == null) {
-            DontDestroyOnLoad(gameObject);
+//            DontDestroyOnLoad(gameObject);
             Instance = this;
         }
         else if (Instance != this) {
@@ -68,7 +70,7 @@ public class UIController : MonoBehaviour {
 
     void Start () {
 
-        SceneManager.sceneLoaded += OnLevelLoading;
+//        SceneManager.sceneLoaded += OnLevelLoading;
     }
 	
 	// Update is called once per frame
@@ -160,13 +162,21 @@ public class UIController : MonoBehaviour {
         SceneManager.LoadScene("WaveSelection");
     }
 
-    void OnLevelLoading(Scene scene, LoadSceneMode mode) {
-        if (scene.name == "WaveSelection") {
-            overlay.SetActive(false);
-        } else {
-            overlay.SetActive(true);
-        }
+    public void updateGoldText(float gold) {
+        goldText.text = "Gold: " + gold;
     }
+
+    public void updateXPText(float xp) {
+        xpText.text = "XP: " + xp;
+    }
+
+    //    void OnLevelLoading(Scene scene, LoadSceneMode mode) {
+    //        if (scene.name == "WaveSelection") {
+    //            overlay.SetActive(false);
+    //        } else {
+    //            overlay.SetActive(true);
+    //        }
+    //    }
 
 
 }
