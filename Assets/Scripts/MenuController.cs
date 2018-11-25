@@ -12,7 +12,6 @@ namespace Assets.Scripts {
         public GameObject saveObject;
         public GameObject savesParent;
         public BaseWaveDetails waveZero;
-        public Button play;
         public Animator anim;
         private string waveSaveName = "null";
         private List<GameObject> saves = new List<GameObject>();
@@ -66,6 +65,11 @@ namespace Assets.Scripts {
             anim.SetBool("traits", false);
             anim.SetBool("playButton", false);
             anim.SetBool("options", true);
+        }
+
+        public void exitGame()
+        {
+            Application.Quit();
         }
 
         private void enableTraits() {
