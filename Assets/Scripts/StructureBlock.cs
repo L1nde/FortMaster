@@ -138,7 +138,7 @@ public class StructureBlock : Placeable {
         gameObject.layer = 14; // SelectedItem
         GetComponent<SpriteRenderer>().sortingLayerName = "SelectedItem";
         gameObject.GetComponent<BoxCollider2D>().isTrigger = true;
-        gameObject.GetComponent<BoxCollider2D>().size = new Vector2(0.9f, 0.9f);
+        gameObject.GetComponent<BoxCollider2D>().size = new Vector2(0.45f, 0.45f);
         initialGravity = gameObject.GetComponent<Rigidbody2D>().gravityScale;
         gameObject.GetComponent<Rigidbody2D>().gravityScale = 0f;
         setSelectedAlpha(0.5f);
@@ -151,7 +151,7 @@ public class StructureBlock : Placeable {
         gameObject.layer = 11; // Destroyable
         GetComponent<SpriteRenderer>().sortingLayerName = "Default";
         gameObject.GetComponent<BoxCollider2D>().isTrigger = false;
-        gameObject.GetComponent<BoxCollider2D>().size = new Vector2(1, 1);
+        gameObject.GetComponent<BoxCollider2D>().size = new Vector2(0.5f, 0.5f);
         gameObject.GetComponent<Rigidbody2D>().velocity = new Vector3();
         gameObject.GetComponent<Rigidbody2D>().gravityScale = initialGravity;
         setSelectedAlpha(1f);

@@ -96,7 +96,7 @@ MonoBehaviour:
   parabola: 0
   speed: 7
   noGravityTime: 0
-  accuracySpread: 2
+  accuracySpread: 1.5
   stayStuck: 1
 --- !u!212 &212168223136147920
 SpriteRenderer:
