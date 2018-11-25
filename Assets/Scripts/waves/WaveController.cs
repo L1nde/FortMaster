@@ -66,7 +66,7 @@ namespace Assets.Scripts.waves {
             // Todo still doesn't belong here
             if (waveOver && waveCheck) {
                 float wavexp = 100;
-                foreach (Trait trait in GameController.instance.traits) {
+                foreach (Trait trait in GameController.instance.getAllTraits()) {
                     if (trait.isToggled)
                         wavexp *= trait.xpmodifier;
                 }

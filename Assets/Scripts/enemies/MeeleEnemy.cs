@@ -7,6 +7,7 @@ namespace Assets.Scripts.enemies {
         // Use this for initialization
         new void Start() {
             base.Start();
+            applyDmgTrait();
         }
 
         // Update is called once per frame
@@ -43,6 +44,12 @@ namespace Assets.Scripts.enemies {
             attackDelay = meeleEnemyData.attackDelay;
             attackRange = meeleEnemyData.attackRange;
             moneyOnDeath = meeleEnemyData.moneyOnDeath;
+        }
+
+        private void applyDmgTrait() {
+            DmgTrait t = GameController.instance.GetDmgTrait();
+            if (t.isToggled)
+                damage *= t.dmgmodifier;
         }
     }
 }

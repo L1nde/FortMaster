@@ -15,6 +15,6 @@ MonoBehaviour:
   volumeMax: 1.1
   pitchMin: 0.9
   pitchMax: 1.1
-  cooldown: 0.5
+  cooldown: 0.2
   clips:
   - {fileID: 8300000, guid: 8b3ba5fbcf5c14c41b6d7feff58e3a5a, type: 3}
