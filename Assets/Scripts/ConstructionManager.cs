@@ -69,6 +69,7 @@ public class ConstructionManager : MonoBehaviour {
             return;
         }
         foreach (var saveObject in fort) {
+            
             if (saveObject.placeableName == "Core") {
                 Instantiate(core, saveObject.position.toVector3(), Quaternion.Euler(saveObject.rotation.toVector3()), fortBase.transform);
                 continue;

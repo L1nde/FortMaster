@@ -39,8 +39,8 @@ public class GameController : MonoBehaviour {
 
     public void setUpWave() {
         ResearchController.instance.generateButtons();
-        loadWave();
         loadResearch();
+        loadWave();
     }
 
     public void saveData() {
@@ -71,12 +71,10 @@ public class GameController : MonoBehaviour {
                 var researchBlock = researchItem as ResearchBlock;
                 ConstructionManager.instance.structureBlocks.Add(researchBlock.block);
                 UIController.Instance.CreateStructureBlockButton(researchBlock.block);
-                break;
             } else if (researchItem is ResearchTurret) {
                 var researchTurret = researchItem as ResearchTurret;
                 ConstructionManager.instance.turrets.Add(researchTurret.block);
                 UIController.Instance.CreateTurretButton(researchTurret.block);
-                break;
             }
         }
     }
