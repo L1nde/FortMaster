@@ -29,6 +29,7 @@ public class ResearchController : MonoBehaviour {
     public void loadResearches(List<string> researches) {
         foreach (var research in researches) {
             foreach (var possibleItem in possibleItems) {
+
                 if (possibleItem.name == research) {
                     researchedItems.Add(possibleItem);
                     possibleItems.Remove(possibleItem);
