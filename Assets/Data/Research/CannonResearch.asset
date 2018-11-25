@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Name: CannonResearch
   m_EditorClassIdentifier: 
   prerequisites: []
-  researchButtonText: Cannon
-  block: {fileID: 11400000, guid: 134eee0782987aa4a93e599d875958cb, type: 2}
+  researchName: Cannon
   xpCost: 10
+  block: {fileID: 11400000, guid: 134eee0782987aa4a93e599d875958cb, type: 2}

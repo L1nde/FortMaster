@@ -33,7 +33,7 @@ public class ResearchButton : MonoBehaviour {
         this.cost = cost;
     }
 
-    public void clicked()
+    public void clicked() // Could use maybe some refactoring
     {
         if (GameController.instance.canAffordResearch(cost))
         {
@@ -42,16 +42,16 @@ public class ResearchButton : MonoBehaviour {
                 ResearchBlock item = (ResearchBlock)researchable;
                 ConstructionManager.instance.structureBlocks.Add(item.block);
                 UIController.Instance.CreateStructureBlockButton(item.block);
-                ResearchController.instance.possibleBlocks.Remove(item);
-                ResearchController.instance.researchedBlocks.Add(item);
+                ResearchController.instance.possibleItems.Remove(item);
+                ResearchController.instance.researchedItems.Add(item);
             }
             else if (researchable is ResearchTurret)
             {
                 ResearchTurret item = (ResearchTurret)researchable;
                 ConstructionManager.instance.turrets.Add(item.block);
                 UIController.Instance.CreateTurretButton(item.block);
-                ResearchController.instance.possibleTurrets.Remove(item);
-                ResearchController.instance.researchedTurrets.Add(item);
+                ResearchController.instance.possibleItems.Remove(item);
+                ResearchController.instance.researchedItems.Add(item);
             }
             else
                 return;

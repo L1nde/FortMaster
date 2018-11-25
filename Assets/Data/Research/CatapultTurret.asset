@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Name: CatapultTurret
   m_EditorClassIdentifier: 
   prerequisites: []
-  researchButtonText: Catapult
-  block: {fileID: 11400000, guid: 3eb884d1bece26943bd9202044e3b875, type: 2}
+  researchName: Catapult
   xpCost: 10
+  block: {fileID: 11400000, guid: 3eb884d1bece26943bd9202044e3b875, type: 2}

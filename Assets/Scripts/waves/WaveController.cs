@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using Assets.Scripts.enemies;
 using System.Collections.Generic;
+using Assets.Scripts.saving;
 
 namespace Assets.Scripts.waves {
     public class WaveController : MonoBehaviour {
@@ -20,12 +21,12 @@ namespace Assets.Scripts.waves {
         // Use this for initialization
         void Start() {
             if (instance == null) {
-//                DontDestroyOnLoad(gameObject);
                 instance = this;
             }
             else if (instance != this) {
                 Destroy(gameObject);
             }
+            GameController.instance.setUpWave();
         }
 
         void OnEnable() {
@@ -40,6 +41,7 @@ namespace Assets.Scripts.waves {
                 if (!nextWaveGenerated) {
                     currentWaveDetails = genNextWave();
                     saveWave();
+                    GameController.instance.saveData();
                 }
 
                 if (buildAcc >= buildTime) {
@@ -73,6 +75,7 @@ namespace Assets.Scripts.waves {
         }
 
         private void saveWave() {
+            // Wave saving
             List<PlaceableSaveObject> placeableSaveObjects = new List<PlaceableSaveObject>();
             foreach (var block in fortBase.GetComponentsInChildren<Placeable>()) {
                 placeableSaveObjects.Add(new PlaceableSaveObject(block.name, block.transform.position, block.transform.eulerAngles));

@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Name: StoneBlock
   m_EditorClassIdentifier: 
   prerequisites: []
-  researchButtonText: Stone block
-  block: {fileID: 11400000, guid: 75ddd51d274e781478ea40ba52739989, type: 2}
+  researchName: Stone block
   xpCost: 10
+  block: {fileID: 11400000, guid: 75ddd51d274e781478ea40ba52739989, type: 2}

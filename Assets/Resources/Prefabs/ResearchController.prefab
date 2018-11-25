@@ -51,8 +51,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1603e4c6c24b684385b3cbafd725a07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  possibleBlocks:
-  - {fileID: 11400000, guid: 9e60c67da2bef0744b1bc06036e8bf1c, type: 2}
-  possibleTurrets:
-  - {fileID: 11400000, guid: cf70f21830b2a9748b825245245bb022, type: 2}
+  researchedItems: []
+  possibleItems:
   - {fileID: 11400000, guid: 1c22442b3eb19ff4aa68b059906d5da2, type: 2}
+  - {fileID: 11400000, guid: cf70f21830b2a9748b825245245bb022, type: 2}
+  - {fileID: 11400000, guid: 9e60c67da2bef0744b1bc06036e8bf1c, type: 2}

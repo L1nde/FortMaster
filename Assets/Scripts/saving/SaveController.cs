@@ -5,6 +5,7 @@ using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using Assets.Scripts;
 using Assets.Scripts.enemies;
+using Assets.Scripts.saving;
 using Assets.Scripts.waves;
 using UnityEditor;
 using UnityEngine;
@@ -18,35 +19,57 @@ using UnityEngine;
 
 public class SaveController : MonoBehaviour {
     public static SaveController instance;
-    public WaveDetails sampleWaveDetails;
 
-    const string folderName = "Waves";
+
+    public const string waveFolderName = "Waves";
+    public const string dataFolderName = "Data";
+    private const string dataSaveName = "data";
     const string fileExtension = ".dat";
 
 
-    private int saveFileNr = 1;
-
     void Start() {
+        string folderPath = Path.Combine(Application.persistentDataPath, waveFolderName);
+        if (!Directory.Exists(folderPath))
+            Directory.CreateDirectory(folderPath);
+        folderPath = Path.Combine(Application.persistentDataPath, dataFolderName);
+        if (!Directory.Exists(folderPath))
+            Directory.CreateDirectory(folderPath);
+    }
+
+    void Awake() {
         if (instance == null)
             instance = this;
         else if (instance != this)
             Destroy(gameObject);
         DontDestroyOnLoad(gameObject);
-
-        string folderPath = Path.Combine(Application.persistentDataPath, folderName);
-        if (!Directory.Exists(folderPath))
-            Directory.CreateDirectory(folderPath);
-        recalculateSaveNr();
     }
 
-    public void saveWave(WaveDetails waveDetails) {
-        saveFileNr++;
-        saveWave(waveDetails, saveFileNr);
+
+    public void saveData(GameSaveObject gameSaveObject) {
+        string folderPath = Path.Combine(Application.persistentDataPath, dataFolderName);
+        string dataPath = Path.Combine(folderPath, dataSaveName + fileExtension);
+        BinaryFormatter binaryFormatter = new BinaryFormatter();
+        using (FileStream fileStream = File.Open(dataPath, FileMode.Create)) {
+            binaryFormatter.Serialize(fileStream, gameSaveObject);
+        }
+    }
+
+    public GameSaveObject LoadData() {
+        string folderPath = Path.Combine(Application.persistentDataPath, dataFolderName);
+        string dataPath = Path.Combine(folderPath, dataSaveName + fileExtension);
+        if (!File.Exists(dataPath)) {
+            return null;
+        }
+        BinaryFormatter binaryFormatter = new BinaryFormatter();
+
+        using (FileStream fileStream = File.Open(dataPath, FileMode.Open)) {
+            return (GameSaveObject)binaryFormatter.Deserialize(fileStream);
+        }
     }
 
     public void saveWave(WaveDetails waveDetails, int waveNr)
     {
-        string folderPath = Path.Combine(Application.persistentDataPath, folderName);
+        string folderPath = Path.Combine(Application.persistentDataPath, waveFolderName);
         string dataPath = Path.Combine(folderPath, waveNr + fileExtension);
         BinaryFormatter binaryFormatter = new BinaryFormatter();
         using (FileStream fileStream = File.Open(dataPath, FileMode.Create))
@@ -56,7 +79,7 @@ public class SaveController : MonoBehaviour {
     }
 
     public WaveDetails LoadWave(string waveName) {
-        string folderPath = Path.Combine(Application.persistentDataPath, folderName);
+        string folderPath = Path.Combine(Application.persistentDataPath, waveFolderName);
         string dataPath = Path.Combine(folderPath, waveName);
         BinaryFormatter binaryFormatter = new BinaryFormatter();
 
@@ -65,26 +88,18 @@ public class SaveController : MonoBehaviour {
         }
     }
 
-    public static FileInfo[] GetFilePaths() {
-        string folderPath = Path.Combine(Application.persistentDataPath, folderName);
+    public static FileInfo[] GetFilePaths(string foldername) {
+        string folderPath = Path.Combine(Application.persistentDataPath, foldername);
         var directoryInfo = new DirectoryInfo(folderPath);
         return directoryInfo.GetFiles();
     }
 
     public void deleteAll() {
-        foreach (var item in GetFilePaths()) {
+        foreach (var item in GetFilePaths(waveFolderName)) {
             File.Delete(item.FullName);
         }
-        recalculateSaveNr();
-    }
-
-    public void recalculateSaveNr() {
-        var files = GetFilePaths().OrderBy(f => f.Name);
-        if (files.Count() != 0) {
-            FileInfo lastFile = files.Last();
-            saveFileNr = int.Parse(lastFile.Name.Substring(0, lastFile.Name.Length - 4));
-        } else {
-            saveFileNr = 0;
+        foreach (var item in GetFilePaths(dataFolderName)) {
+            File.Delete(item.FullName);
         }
     }
 }

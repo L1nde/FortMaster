@@ -35,7 +35,6 @@ public class UIController : MonoBehaviour {
     void Awake()
     {
         if (Instance == null) {
-//            DontDestroyOnLoad(gameObject);
             Instance = this;
         }
         else if (Instance != this) {
@@ -49,14 +48,9 @@ public class UIController : MonoBehaviour {
         researchScreen.SetActive(!researchScreen.activeSelf);
     }
 
-    public void createResearchButton(ResearchBlock item)
+    public void createResearchButton(ResearchItem item)
     {
-        instantiateResearchButton(item.researchButtonText, item.xpCost, item);
-    }
-
-    public void createResearchButton(ResearchTurret item)
-    {
-        instantiateResearchButton(item.researchButtonText, item.xpCost, item);
+        instantiateResearchButton(item.researchName, item.xpCost, item);
     }
 
     private void instantiateResearchButton(string text, float cost, UnityEngine.Object item)
@@ -70,7 +64,6 @@ public class UIController : MonoBehaviour {
 
     void Start () {
 
-//        SceneManager.sceneLoaded += OnLevelLoading;
     }
 	
 	// Update is called once per frame
@@ -170,13 +163,6 @@ public class UIController : MonoBehaviour {
         xpText.text = "XP: " + xp;
     }
 
-    //    void OnLevelLoading(Scene scene, LoadSceneMode mode) {
-    //        if (scene.name == "WaveSelection") {
-    //            overlay.SetActive(false);
-    //        } else {
-    //            overlay.SetActive(true);
-    //        }
-    //    }
 
 
 }

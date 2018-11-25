@@ -2,15 +2,9 @@
 using Assets.Scripts.Turrets;
 using UnityEngine;
 
-namespace Assets.Scripts.Research
-{
-
-    [CreateAssetMenu(menuName = "ResearchTurret")]
-    public class ResearchTurret : ScriptableObject
-    {
-        public List<ResearchTurret> prerequisites;
-        public string researchButtonText;
+namespace Assets.Scripts.Research {
+    [CreateAssetMenu(menuName = "Research/Turret")]
+    public class ResearchTurret : ResearchItem {
         public TurretData block;
-        public float xpCost = 10f;
     }
 }

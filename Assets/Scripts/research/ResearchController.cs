@@ -1,83 +1,73 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using Assets.Scripts.Research;
+using Assets.Scripts.Turrets;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class ResearchController : MonoBehaviour {
     public static ResearchController instance = null;
 
-    public List<ResearchBlock> researchedBlocks = new List<ResearchBlock>();
-    public List<ResearchTurret> researchedTurrets = new List<ResearchTurret>();
+    public List<ResearchItem> researchedItems = new List<ResearchItem>();
 
-    public List<ResearchBlock> possibleBlocks = new List<ResearchBlock>();
-    public List<ResearchTurret> possibleTurrets = new List<ResearchTurret>();
+    public List<ResearchItem> possibleItems = new List<ResearchItem>();
 
     // Use this for initialization
-    void Start()
-    {
-        if (instance == null)
-            instance = this;
+    void Start() {
+        
 
-        else if (instance != this)
-            Destroy(gameObject);
-
-        DontDestroyOnLoad(gameObject);
-
-        generateButtons();
     }
 
-    public void generateButtons()
-    {
+    void Awake() {
+        if (instance == null)
+            instance = this;
+        else if (instance != this)
+            Destroy(gameObject);
+        DontDestroyOnLoad(gameObject);
+    }
+
+    public void loadResearches(List<string> researches) {
+        foreach (var research in researches) {
+            foreach (var possibleItem in possibleItems) {
+                if (possibleItem.name == research) {
+                    researchedItems.Add(possibleItem);
+                    possibleItems.Remove(possibleItem);
+                    break;
+                }
+            }
+        }
+    }
+
+    public void generateButtons() {
 //        clearButtons();
         initializeButtons();
     }
 
-    private void clearButtons()
-    {
+    private void clearButtons() {
         GameObject screen = UIController.Instance.researchScreen;
-        for (var i = screen.transform.childCount - 1; i >= 0; i--)
-        {
+        for (var i = screen.transform.childCount - 1; i >= 0; i--) {
             var child = screen.transform.GetChild(i);
             child.transform.parent = null;
             Destroy(child);
         }
     }
 
-    private void initializeButtons()
-    {
-        foreach (ResearchBlock item in possibleBlocks)
-        {
+    private void initializeButtons() {
+        foreach (var item in possibleItems) {
             if (item.prerequisites.Count == 0)
                 UIController.Instance.createResearchButton(item);
-            else
-            {
+            else {
                 bool reqs = true;
-                foreach (ResearchBlock item2 in item.prerequisites)
-                {
-                    if (!researchedBlocks.Contains(item2))
+                foreach (var item2 in item.prerequisites) {
+                    if (!researchedItems.Contains(item2))
                         reqs = false;
                 }
+
                 if (reqs)
                     UIController.Instance.createResearchButton(item);
             }
         }
 
-        foreach (ResearchTurret item in possibleTurrets)
-        {
-            if (item.prerequisites.Count == 0)
-                UIController.Instance.createResearchButton(item);
-            else
-            {
-                bool reqs = true;
-                foreach (ResearchTurret item2 in item.prerequisites)
-                {
-                    if (!researchedTurrets.Contains(item2))
-                        reqs = false;
-                }
-                if (reqs)
-                    UIController.Instance.createResearchButton(item);
-            }
-        }
+        
     }
 }

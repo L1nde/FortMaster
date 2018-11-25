@@ -30,7 +30,7 @@ namespace Assets.Scripts {
             foreach (var o in saves) {
                 Destroy(o);
             }
-            foreach (var fileInfo in SaveController.GetFilePaths()) {
+            foreach (var fileInfo in SaveController.GetFilePaths(SaveController.waveFolderName)) {
                 var save = Instantiate(saveObject, savesParent.transform);
                 save.GetComponentInChildren<Text>().text = "Wave " + fileInfo.Name.Substring(0, fileInfo.Name.Length - 4);
                 save.GetComponentInChildren<Button>().onClick.AddListener(() => loadSave(fileInfo.Name));
