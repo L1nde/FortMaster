@@ -11,6 +11,7 @@ namespace Assets.Scripts.enemies {
         public float attackDelay = 1f;
         public float attackRange = 10f;
         public float moneyOnDeath;
+        public AudioClipGroup attackSound;
 
         protected CircleCollider2D attackRangeCollider;
         protected float attackAcc = 0f;

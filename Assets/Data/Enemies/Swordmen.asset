@@ -20,4 +20,5 @@ MonoBehaviour:
   minLevel: 0
   enemyPrefab: {fileID: 114553184666542520, guid: ad02d701c9dee474c8138dd507e6afca,
     type: 2}
+  attackSound: {fileID: 11400000, guid: 863610d1fa1e74543ae03a2e9bc450fe, type: 2}
   meeleDamage: 10

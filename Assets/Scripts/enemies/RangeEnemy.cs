@@ -31,6 +31,9 @@ namespace Assets.Scripts.enemies {
                     // projectile.setTarget(new Vector2(targetCollider.gameObject.transform.position.x + Random.Range(-1.0f, 1.0f) * accuracySpread, targetCollider.gameObject.transform.position.y));
                     applyDmgTrait(projectile);
                     projectile.shootProjectile(new Vector2(targetCollider.gameObject.transform.position.x, targetCollider.gameObject.transform.position.y) + Random.insideUnitCircle * accuracySpread);
+                    if (attackSound != null) {
+                        attackSound.play();
+                    } 
                 }
 
                 stopMovement = true;
@@ -53,6 +56,7 @@ namespace Assets.Scripts.enemies {
             attackDelay = rangeEnemyData.attackDelay;
             attackRange = rangeEnemyData.attackRange;
             moneyOnDeath = rangeEnemyData.moneyOnDeath;
+            attackSound = rangeEnemyData.attackSound;
         }
 
         private void applyDmgTrait(Projectile p) {

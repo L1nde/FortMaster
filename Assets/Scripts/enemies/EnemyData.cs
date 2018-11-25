@@ -3,7 +3,6 @@ using UnityEngine;
 
 namespace Assets.Scripts.enemies {
 
-    [CreateAssetMenu(menuName = "Enemy")]
     public class EnemyData : ScriptableObject {
         public float hp = 100;
         public float speed = 1f;
@@ -14,6 +13,7 @@ namespace Assets.Scripts.enemies {
         public int minLevel;
 
         public Enemy enemyPrefab;
+        public AudioClipGroup attackSound;
 
 
 

@@ -26,6 +26,9 @@ namespace Assets.Scripts.enemies {
                     anim.SetBool("attacking", true);
                     attackAcc = 0f;
                     targetCollider.gameObject.GetComponent<StructureBlock>().doDamage(damage);
+                    if (attackSound != null) {
+                        attackSound.play();
+                    }
                 }
             }
             else {
@@ -44,6 +47,8 @@ namespace Assets.Scripts.enemies {
             attackDelay = meeleEnemyData.attackDelay;
             attackRange = meeleEnemyData.attackRange;
             moneyOnDeath = meeleEnemyData.moneyOnDeath;
+            attackSound = meeleEnemyData.attackSound;
+
         }
 
         private void applyDmgTrait() {

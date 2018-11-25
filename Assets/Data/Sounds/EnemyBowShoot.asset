@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52e20798abb615040bb986c854811a80, type: 3}
+  m_Name: EnemyBowShoot
+  m_EditorClassIdentifier: 
+  volumeMin: 1
+  volumeMax: 1
+  pitchMin: 1
+  pitchMax: 1
+  cooldown: 1
+  clips:
+  - {fileID: 8300000, guid: 8c7e69fb3ee880749bb1f66b96a1a550, type: 3}
+  - {fileID: 8300000, guid: 7fcfcfb93d829474c8b224d04b592648, type: 3}
+  - {fileID: 8300000, guid: 6c32cd5a2c4a6654788513ef5a954abf, type: 3}
