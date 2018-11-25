@@ -69,6 +69,9 @@ namespace Assets.Scripts {
         }
 
         private void enableTraits() {
+
+            if (traitsPanel.GetComponentsInChildren<Button>().Length != 0)
+                return;
             foreach (Trait t in GameController.instance.getAllTraits()) {
                 Button b = Instantiate(traitButtonPrefab, traitsPanel.transform);
                 b.onClick.AddListener(() => t.toggleButton());
