@@ -100,7 +100,7 @@ namespace Assets.Scripts.enemies {
         }
 
         private void applyHPTrait() {
-            HPTrait t = (HPTrait)GameController.instance.getTrait("hp");
+            HPTrait t = GameController.instance.getHPTrait();
             if (t.isToggled)
                 hp *= t.hpmodifier;
         }

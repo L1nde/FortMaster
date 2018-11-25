@@ -65,7 +65,7 @@ namespace Assets.Scripts.waves {
             // TODO fix this, currently it adds 10-20xp at the beginning of the first wave.
             if (waveOver && waveCheck) {
                 float wavexp = 10;
-                foreach (Trait trait in GameController.instance.traits) {
+                foreach (Trait trait in GameController.instance.getAllTraits()) {
                     if (trait.isToggled)
                         wavexp *= trait.xpmodifier;
                 }

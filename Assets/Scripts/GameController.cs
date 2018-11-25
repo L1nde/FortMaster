@@ -11,7 +11,6 @@ public class GameController : MonoBehaviour {
     public static GameController instance = null;
     public static WaveDetails CurrentWaveDetails;
 
-    public List<Trait> traits;
     public float gold;
     public float xp;
 
@@ -80,9 +79,7 @@ public class GameController : MonoBehaviour {
                 break;
             }
         }
-        
     }
-
 
     public void loadWave() {
         if (ConstructionManager.instance == null)
@@ -97,14 +94,12 @@ public class GameController : MonoBehaviour {
         updateGoldText();
     }
 
-    public void addXP(float amount)
-    {
+    public void addXP(float amount) {
         xp += amount;
         updateXPText();
     }
 
-    public bool canAfford(float amount)
-    {
+    public bool canAfford(float amount) {
         return amount <= gold;
     }
 
@@ -117,8 +112,7 @@ public class GameController : MonoBehaviour {
         updateGoldText();
     }
 
-    public void removeXP(float amount)
-    {
+    public void removeXP(float amount) {
         xp -= amount;
         updateXPText();
     }
@@ -133,11 +127,15 @@ public class GameController : MonoBehaviour {
             UIController.Instance.updateXPText(xp);
     }
 
-    public Trait getTrait(string name) {
-        foreach (Trait trait in traits) {
-            if (trait.name == name)
-                return trait;
-        }
-        return null;
+    public Trait[] getAllTraits() {
+        return GetComponentsInChildren<Trait>();
+    }
+
+    public HPTrait getHPTrait() {
+        return GetComponentInChildren<HPTrait>();
+    }
+
+    public DmgTrait GetDmgTrait() {
+        return GetComponentInChildren<DmgTrait>();
     }
 }

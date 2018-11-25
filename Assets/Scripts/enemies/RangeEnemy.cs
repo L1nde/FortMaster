@@ -28,7 +28,8 @@ namespace Assets.Scripts.enemies {
                     anim.SetBool("attacking", true);
                     attackAcc = 0f;
                     Projectile projectile = Instantiate(projectilePrefab, transform.position, transform.rotation);
-//                    projectile.setTarget(new Vector2(targetCollider.gameObject.transform.position.x + Random.Range(-1.0f, 1.0f) * accuracySpread, targetCollider.gameObject.transform.position.y));
+                    // projectile.setTarget(new Vector2(targetCollider.gameObject.transform.position.x + Random.Range(-1.0f, 1.0f) * accuracySpread, targetCollider.gameObject.transform.position.y));
+                    applyDmgTrait(projectile);
                     projectile.shootProjectile(new Vector2(targetCollider.gameObject.transform.position.x, targetCollider.gameObject.transform.position.y) + Random.insideUnitCircle * accuracySpread);
                 }
 
@@ -52,6 +53,12 @@ namespace Assets.Scripts.enemies {
             attackDelay = rangeEnemyData.attackDelay;
             attackRange = rangeEnemyData.attackRange;
             moneyOnDeath = rangeEnemyData.moneyOnDeath;
+        }
+
+        private void applyDmgTrait(Projectile p) {
+            DmgTrait t = GameController.instance.GetDmgTrait();
+            if (t.isToggled)
+                p.damage *= t.dmgmodifier;
         }
     }
 }

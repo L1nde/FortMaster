@@ -17,12 +17,15 @@ namespace Assets.Scripts {
         private string waveSaveName = "null";
         private List<GameObject> saves = new List<GameObject>();
         public Button deleteSaves;
+        public GameObject traitsPanel;
+        public Button traitButtonPrefab;
 
         void OnEnable() {
             deleteSaves.onClick.AddListener(() => SaveController.instance.deleteAll());
         }
 
         public void playButton() {
+            enableTraits();
             anim.SetFloat("speed", -1f);
             anim.SetBool("options", false);
             anim.SetFloat("speed", 1f);
@@ -64,7 +67,15 @@ namespace Assets.Scripts {
             anim.SetBool("playButton", false);
             anim.SetBool("options", true);
         }
+
+        private void enableTraits() {
+            foreach (Trait t in GameController.instance.getAllTraits()) {
+                Button b = Instantiate(traitButtonPrefab, traitsPanel.transform);
+                b.onClick.AddListener(() => t.toggleButton());
+                b.GetComponentInChildren<Text>().text = t.name;
+                t.setImage(b.GetComponent<Image>());
+                t.updateImage();
+            }
+        }
     }
-
-
 }
