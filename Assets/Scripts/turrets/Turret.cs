@@ -1,7 +1,7 @@
 ﻿using Assets.Scripts;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Animations;
+
 using UnityEngine;
 
 public class Turret : Placeable {
@@ -138,7 +138,7 @@ public class Turret : Placeable {
         return o.transform.GetComponentInParent<StructureBlock>();
     }
 
-    public void setAnimController(AnimatorController controller)
+    public void setAnimController(RuntimeAnimatorController controller)
     {
         anim.runtimeAnimatorController = controller;
     }

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Animations;
 using UnityEngine;
 
 
@@ -17,7 +16,7 @@ namespace Assets.Scripts.Turrets
         public float attackRange;
         public float minxRange;
         public PlayerProjectile projectile;
-        public AnimatorController aniController;
+        public RuntimeAnimatorController aniController;
         public AudioClipGroup fireSound;
     }
 }
