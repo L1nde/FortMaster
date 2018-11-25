@@ -7,8 +7,6 @@ public class MapGeneration : MonoBehaviour {
     public static MapGeneration instance;
 
     // Width and height of the texture in pixels.
-    // -30 x 30
-    // -17 y -7
     // Map generation is based on algorithm described in:
     // https://blogs.unity3d.com/2018/05/29/procedural-patterns-you-can-use-with-tilemaps-part-i/
     public int minX = -30;
