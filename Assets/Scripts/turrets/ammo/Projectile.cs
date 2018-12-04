@@ -5,10 +5,10 @@ namespace Assets.Scripts.enemies.ammo {
         public float shootingAngleOffset = 10f;
 
         public float damage = 10f;
-        public float directionOffset;
         public Vector3 posOffset;
         public bool parabola;
         public float speed;
+        public float deathDelay;
 
         protected Rigidbody2D rb2d;
 
@@ -30,9 +30,9 @@ namespace Assets.Scripts.enemies.ammo {
                     transform.rotation = LookAt2D(rb2d.velocity);
             }
         }
-
+         
         private Quaternion LookAt2D(Vector2 forward) {
-            return Quaternion.Euler(0, 0, Mathf.Atan2(forward.y, forward.x) * Mathf.Rad2Deg - directionOffset);
+            return Quaternion.Euler(0, 0, Mathf.Atan2(forward.y, forward.x) * Mathf.Rad2Deg - shootingAngleOffset);
         }
 
         private void OnTriggerEnter2D(Collider2D collision) {
@@ -61,7 +61,7 @@ namespace Assets.Scripts.enemies.ammo {
             Rigidbody2D rb = collision.gameObject.GetComponent<Rigidbody2D>();
             if (rb != null)
                 CreateJoint(rb);
-            Destroy(gameObject, 1);
+            Destroy(gameObject, deathDelay);
             impacted = true;
         }
 
@@ -102,7 +102,7 @@ namespace Assets.Scripts.enemies.ammo {
         private void shootWithParabola(Vector3 target) {
             transform.position += transform.rotation * posOffset;
             Rigidbody2D body = GetComponent<Rigidbody2D>();
-            float initialAngle = calculateAngle(target) + directionOffset;
+            float initialAngle = calculateAngle(target);
             float gravity = Physics.gravity.magnitude;
             // Selected angle in radians
             float angle = initialAngle * Mathf.Deg2Rad;

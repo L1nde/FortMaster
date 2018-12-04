@@ -92,10 +92,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shootingAngleOffset: 0
   damage: 100
-  directionOffset: 0
   posOffset: {x: 0.25, y: 0, z: 0}
   parabola: 0
   speed: 10
+  deathDelay: 0
   noGravityTime: 0
   accuracySpread: 0.5
   stayStuck: 0

@@ -91,10 +91,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shootingAngleOffset: 25
   damage: 10
-  directionOffset: 0
   posOffset: {x: 0, y: 0, z: 0}
   parabola: 1
   speed: 0
+  deathDelay: 1
 --- !u!212 &212237153744355450
 SpriteRenderer:
   m_ObjectHideFlags: 1
