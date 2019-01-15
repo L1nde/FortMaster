@@ -9,11 +9,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b12caa6083979734b8a66b9094dd193a, type: 3}
-  m_Name: ConcreteBlock
+  m_Name: WoodBlock
   m_EditorClassIdentifier: 
   prerequisites:
-  - {fileID: 11400000, guid: 9e60c67da2bef0744b1bc06036e8bf1c, type: 2}
-  researchName: Concrete block
-  xpCost: 150
-  researched: 0
-  block: {fileID: 11400000, guid: 25da735cb55626b41ba8a4e0e1d8b0d9, type: 2}
+  - {fileID: 11400000, guid: 9a87283ee976fd646846f1b11f960726, type: 2}
+  researchName: Wood Block
+  xpCost: 10
+  researched: 1
+  block: {fileID: 0}

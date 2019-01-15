@@ -48,14 +48,14 @@ public class UIController : MonoBehaviour {
         researchScreen.SetActive(!researchScreen.activeSelf);
     }
 
-    public void createResearchButton(ResearchItem item)
+    public void createResearchButton(ResearchItem item, Transform parent)
     {
-        instantiateResearchButton(item.researchName, item.xpCost, item);
+        instantiateResearchButton(item.researchName, item.xpCost, item, parent);
     }
 
-    private void instantiateResearchButton(string text, float cost, UnityEngine.Object item)
+    private void instantiateResearchButton(string text, float cost, UnityEngine.Object item, Transform parent) // todo remove
     {
-        ResearchButton button = Instantiate(researchButtonPrefab, researchScreen.transform);
+        ResearchButton button = Instantiate(researchButtonPrefab, transform);
         button.setResearchText(text);
         button.setCostText(cost);
         button.setItem(item);

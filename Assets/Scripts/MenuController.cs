@@ -19,6 +19,7 @@ namespace Assets.Scripts {
         public Button deleteSaves;
         public GameObject traitsPanel;
         public Button traitButtonPrefab;
+        public GameObject Researches;
 
         void OnEnable() {
             deleteSaves.onClick.AddListener(() => SaveController.instance.deleteAll());
@@ -40,6 +41,9 @@ namespace Assets.Scripts {
                 saves.Add(save);
 
             }
+            
+            ResearchController.instance.getResearchTreeObject().transform.SetParent(Researches.transform, false);
+            ResearchController.instance.getResearchTreeObject().SetActive(true);
         }
 
         public void loadSave(string waveSaveName) {

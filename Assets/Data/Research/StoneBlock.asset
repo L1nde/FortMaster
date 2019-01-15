@@ -11,7 +11,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b12caa6083979734b8a66b9094dd193a, type: 3}
   m_Name: StoneBlock
   m_EditorClassIdentifier: 
-  prerequisites: []
+  prerequisites:
+  - {fileID: 11400000, guid: 53a3c49cba4aac74cb302ed611502c06, type: 2}
   researchName: Stone block
-  xpCost: 10
+  xpCost: 50
+  researched: 0
   block: {fileID: 11400000, guid: 75ddd51d274e781478ea40ba52739989, type: 2}

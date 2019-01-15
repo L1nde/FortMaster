@@ -11,7 +11,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b12caa6083979734b8a66b9094dd193a, type: 3}
   m_Name: GoldenBlock
   m_EditorClassIdentifier: 
-  prerequisites: []
+  prerequisites:
+  - {fileID: 11400000, guid: c9c8990a1d5f96043963c47a36ba24ae, type: 2}
   researchName: Golden block
-  xpCost: 10
+  xpCost: 5000
+  researched: 0
   block: {fileID: 11400000, guid: 3053e8f66b89c3b4ba7ad453034beffe, type: 2}

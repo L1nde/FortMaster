@@ -11,7 +11,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b12caa6083979734b8a66b9094dd193a, type: 3}
   m_Name: IronBlock
   m_EditorClassIdentifier: 
-  prerequisites: []
+  prerequisites:
+  - {fileID: 11400000, guid: c9c8990a1d5f96043963c47a36ba24ae, type: 2}
   researchName: Iron wall
-  xpCost: 10
+  xpCost: 1000
+  researched: 0
   block: {fileID: 11400000, guid: 5ebdd3a920667f545b0eaa876618d78c, type: 2}
