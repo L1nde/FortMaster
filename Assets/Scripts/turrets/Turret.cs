@@ -59,15 +59,26 @@ public class Turret : Placeable {
     }
 
     private Collider2D getTarget() {
-            Collider2D[] colliders = new Collider2D[10];
-            int count = attackRangeCollider.GetContacts(colliders);
-            if (count != 0) {
-                return colliders[0];
+        Collider2D[] colliders = new Collider2D[10];
+        int count = attackRangeCollider.GetContacts(colliders);
+        if (count != 0) {
+            Collider2D closest = colliders[0];
+            float closestDist = 10000;
+            foreach (Collider2D collider in colliders) {
+                if (collider == null)
+                    continue;
+                float d = Vector3.Distance(transform.position, collider.transform.position);
+                if (d < closestDist) {
+                    closest = collider;
+                    closestDist = d;
+                }
             }
-            else {
-                return null;
-            }
+            return closest;
         }
+        else {
+            return null;
+        }
+    }
 
     public override void place(Transform parent) {
         if (GameController.instance.canAfford(cost)) {

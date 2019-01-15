@@ -91,7 +91,6 @@ public class GameController : MonoBehaviour {
 
     public void addGold(float amount) {
         gold += amount * (1 + (ConstructionManager.instance.numberOfGoldBlocks / 10f)); // every gold block increases gold gain by 10%
-        Debug.Log(amount * (1 + (ConstructionManager.instance.numberOfGoldBlocks / 10f)));
         updateGoldText();
     }
 

@@ -11,12 +11,26 @@ public class BlockCreate : MonoBehaviour
 
     public int cost;
     public String name;
+    public Sprite sprite;
+
+    private Image image;
 
 	// Use this for initialization
 	void Start () {
         initTriggers();
         transform.Find("costText").GetComponent<Text>().text = cost + "$";
 	    transform.Find("Text").GetComponent<Text>().text = name;
+        image = transform.Find("Image").GetComponent<Image>();
+        image.sprite = sprite;
+
+    }
+
+    public void updateBlock() {
+        Image i = GetComponent<Image>();
+        if (cost > GameController.instance.gold)
+            i.color = new Color(1f, 0.2f, 0.2f, 0.6f);
+        else
+            i.color = new Color(0.2f, 0.8f, 0.2f, 0.4f);
     }
 
     private void initTriggers()
@@ -44,11 +58,6 @@ public class BlockCreate : MonoBehaviour
         ConstructionManager.instance.PlaceBlock();
         if (name == "Core")
             Destroy(gameObject);
-    }
-
-    void Update()
-    {
-
     }
 
 
