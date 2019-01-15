@@ -22,7 +22,6 @@ public class PlayerProjectile : Projectile {
     private void OnTriggerEnter2D(Collider2D collision) {
         if (collision.gameObject.tag == "Enemy" && !dead)
             collision.gameObject.GetComponent<Enemy>().doDamage(damage);
-
         dead = true;
         Rigidbody2D rb = collision.gameObject.GetComponent<Rigidbody2D>();
         if (rb != null && stayStuck)

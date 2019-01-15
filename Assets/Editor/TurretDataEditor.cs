@@ -18,6 +18,7 @@ public class TurretDataEditor : Editor {
         myTarget.projectile = (PlayerProjectile) EditorGUILayout.ObjectField("Projectile", myTarget.projectile, typeof(PlayerProjectile), false);
         myTarget.aniController = (RuntimeAnimatorController)EditorGUILayout.ObjectField("Animator controller", myTarget.aniController, typeof(RuntimeAnimatorController), false);
         myTarget.fireSound = (AudioClipGroup)EditorGUILayout.ObjectField("Projectile", myTarget.fireSound, typeof(AudioClipGroup), false);
+        myTarget.sprite = (Sprite)EditorGUILayout.ObjectField("Sprite", myTarget.sprite, typeof(Sprite), false);
         EditorGUILayout.LabelField("Impact Dps", myTarget.dps.ToString());
         EditorGUILayout.LabelField("Dps per $", myTarget.DpsPerCost.ToString());
 

@@ -78,15 +78,18 @@ public class UIController : MonoBehaviour {
     {
         PlaceableBlockPrefab.cost = turret.cost;
         PlaceableBlockPrefab.name = turret.name;
+        PlaceableBlockPrefab.sprite = turret.sprite;
         BlockCreate create = Instantiate(PlaceableBlockPrefab, TurretPanel.transform);
         create.transform.position = create.transform.position;
         placeableItemButtons.Add(create);
+        
     }
 
     public void CreateStructureBlockButton(StructureBlockData block)
     {
         PlaceableBlockPrefab.cost = block.cost;
         PlaceableBlockPrefab.name = block.name;
+        PlaceableBlockPrefab.sprite = block.sprite;
         BlockCreate structureBlock = Instantiate(PlaceableBlockPrefab, StructureBlockPanel.transform);
         placeableItemButtons.Add(structureBlock);
     }
@@ -99,6 +102,7 @@ public class UIController : MonoBehaviour {
         {
             PlaceableBlockPrefab.cost = t.cost;
             PlaceableBlockPrefab.name = t.name;
+            PlaceableBlockPrefab.sprite = t.sprite;
             BlockCreate turret = Instantiate(PlaceableBlockPrefab, TurretPanel.transform);
             turret.transform.position = turret.transform.position;
             placeableItemButtons.Add(turret);
@@ -112,6 +116,7 @@ public class UIController : MonoBehaviour {
         foreach (StructureBlockData sb in sblocks) {
             PlaceableBlockPrefab.cost = sb.cost;
             PlaceableBlockPrefab.name = sb.name;
+            PlaceableBlockPrefab.sprite = sb.sprite;
             BlockCreate structureBlock = Instantiate(PlaceableBlockPrefab, StructureBlockPanel.transform);
             placeableItemButtons.Add(structureBlock);
         }
@@ -157,12 +162,23 @@ public class UIController : MonoBehaviour {
 
     public void updateGoldText(float gold) {
         goldText.text = "Gold: " + gold;
+        updateButtons();
     }
 
     public void updateXPText(float xp) {
         xpText.text = "XP: " + xp;
     }
 
+    private void updateButtons() {
+        BlockCreate[] sbs = StructureBlockPanel.GetComponentsInChildren<BlockCreate>();
+        BlockCreate[] ts = TurretPanel.GetComponentsInChildren<BlockCreate>();
+        foreach (BlockCreate blockCreate in sbs) {
+            blockCreate.updateBlock();
+        }
+        foreach (BlockCreate blockCreate in ts) {
+            blockCreate.updateBlock();
+        }
+    }
 
 
 }

@@ -72,7 +72,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -101,10 +101,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shootingAngleOffset: 0
   damage: 100
-  posOffset: {x: 0, y: 0, z: 0}
+  posOffset: {x: 0.5, y: 0, z: 0}
   parabola: 0
   speed: 20
   deathDelay: 0
+  affectedByGravity: 0
   noGravityTime: 0
   accuracySpread: 2
   stayStuck: 0
