@@ -47,6 +47,7 @@ public class Turret : Placeable {
         Collider2D target = getTarget();
         if (target != null){
             if (minxRange < Mathf.Abs(transform.position.x - target.transform.position.x)) {
+                
                 anim.Play("Fire");
                 if (fireSound != null)
                     fireSound.play();

@@ -9,6 +9,7 @@ namespace Assets.Scripts.enemies.ammo {
         public bool parabola;
         public float speed;
         public float deathDelay;
+        public bool affectedByGravity;
 
         protected Rigidbody2D rb2d;
 
@@ -18,6 +19,8 @@ namespace Assets.Scripts.enemies.ammo {
         // Use this for initialization
         void Start() {
             rb2d = GetComponent<Rigidbody2D>();
+            if (!affectedByGravity)
+                rb2d.gravityScale = 0;
         }
 
         // Update is called once per frame
@@ -77,11 +80,24 @@ namespace Assets.Scripts.enemies.ammo {
         }
 
         public void shootProjectile(Vector3 target) {
-            if (parabola)
+            if (!affectedByGravity)
+                shootStraight(target);
+            else if (parabola)
                 shootWithParabola(target);
             else
                 shootWithMinParabola(target);
         }
+
+        private void shootStraight(Vector3 target) {
+            float dirToTarget = Mathf.Atan2(target.y - transform.position.y, target.x - transform.position.x);
+            Rigidbody2D body = GetComponent<Rigidbody2D>();
+            Vector3 dirV3 = new Vector3(0, 0, dirToTarget);
+            Quaternion dir = Quaternion.Euler(dirV3);
+            body.transform.rotation = dir;
+            body.velocity = new Vector3(Mathf.Cos(dirToTarget) * speed, Mathf.Sin(dirToTarget) * speed);
+            transform.rotation = dir;
+        }
+
 
         private void shootWithMinParabola(Vector3 target) {
             float x = target.x - transform.position.x;

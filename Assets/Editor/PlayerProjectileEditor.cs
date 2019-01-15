@@ -19,6 +19,7 @@ public class PlayerProjectileEdiotr : Editor {
         EditorGUILayout.LabelField("Other", EditorStyles.boldLabel);
         myTarget.stayStuck = EditorGUILayout.Toggle("StayStuck", myTarget.stayStuck);
         myTarget.parabola = EditorGUILayout.Toggle("Parabola", myTarget.parabola);
+        myTarget.affectedByGravity = EditorGUILayout.Toggle("AffectedByGravity", myTarget.affectedByGravity);
         if (!myTarget.parabola)
             constSpeed(myTarget);
     }

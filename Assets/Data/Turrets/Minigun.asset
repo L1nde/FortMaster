@@ -8,11 +8,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6486205c73a44746a9dfa066aeb5c2a, type: 3}
-  m_Name: Wave0
+  m_Script: {fileID: 11500000, guid: 399352c352c0eae4786cc2f8c8336924, type: 3}
+  m_Name: Minigun
   m_EditorClassIdentifier: 
-  waveScore: 10
-  spawnDelay: 1
-  buildTime: 5
-  waveNr: 0
-  gold: 5000
+  name: 
+  cost: 0
+  reloadTime: 0
+  attackRange: 0
+  minxRange: 0
+  projectile: {fileID: 0}
+  aniController: {fileID: 0}
+  fireSound: {fileID: 0}

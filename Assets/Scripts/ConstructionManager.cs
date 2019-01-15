@@ -21,6 +21,8 @@ public class ConstructionManager : MonoBehaviour {
     public Turret turretPrefab;
     public StructureBlock structureBlockPrefab;
 
+    public int numberOfGoldBlocks;
+
 
     void Start() {
         if (instance == null)
@@ -143,6 +145,9 @@ public class ConstructionManager : MonoBehaviour {
     public void Select(Placeable block) {
         DeSelectCurrent();
         selected = block;
+        if (selected.name == "Golden")
+            selected.gameObject.AddComponent<GoldBlock>();
+        
         block.activateDragMode();
     }
 
