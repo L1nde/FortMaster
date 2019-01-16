@@ -90,13 +90,13 @@ namespace Assets.Scripts.enemies.ammo {
 
         private void shootStraight(Vector3 target) {
             transform.position = transform.position + posOffset;
-            float dirToTarget = Mathf.Atan2(target.y - transform.position.y, target.x - transform.position.x);
+            float dirToTarget = Mathf.Atan2(target.y - transform.position.y + 0.5f, target.x - transform.position.x);
             Rigidbody2D body = GetComponent<Rigidbody2D>();
             Vector3 dirV3 = new Vector3(0, 0, dirToTarget);
             Quaternion dir = Quaternion.Euler(dirV3);
             body.transform.rotation = dir;
             body.velocity = new Vector3(Mathf.Cos(dirToTarget) * speed, Mathf.Sin(dirToTarget) * speed);
-            transform.rotation = dir;
+            transform.rotation = LookAt2D(body.velocity);
         }
 
 
