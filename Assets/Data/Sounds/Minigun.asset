@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 52e20798abb615040bb986c854811a80, type: 3}
-  m_Name: ButtonClick
+  m_Name: Minigun
   m_EditorClassIdentifier: 
-  volumeMin: 0.5
-  volumeMax: 0.5
+  volumeMin: 0.13
+  volumeMax: 0.13
   pitchMin: 1
   pitchMax: 1
-  cooldown: 0.2
+  cooldown: 1
   clips:
-  - {fileID: 8300000, guid: 3a50501a7e0a3f143bd67bf810f9e967, type: 3}
+  - {fileID: 8300000, guid: f261bdb9d0a561041a9eefb8d82a10cb, type: 3}
