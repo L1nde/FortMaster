@@ -59,7 +59,7 @@ namespace Assets.Scripts {
         }
 
         public void startGame() {
-            
+            GameController.instance.saveData();
             if (waveSaveName == "null") {
                 GameController.CurrentWaveDetails = waveZero.ToWaveDetails();
             }
