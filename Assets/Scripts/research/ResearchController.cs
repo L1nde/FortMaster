@@ -31,6 +31,10 @@ public class ResearchController : MonoBehaviour {
 
     }
 
+    public void resetTree() {
+        researchTree = new ResearchTreeNode(ResearchBase).createTree();
+    }
+
 public GameObject getScrollableResearchView() {
         var inst = Instantiate(ScrollableResearchView, transform);
         inst.GetComponent<RectTransform>().offsetMax = Vector2.zero;

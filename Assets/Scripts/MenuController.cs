@@ -15,7 +15,6 @@ namespace Assets.Scripts {
         public Animator anim;
         private string waveSaveName = "null";
         private List<GameObject> saves = new List<GameObject>();
-        public Button deleteSaves;
         public GameObject traitsPanel;
         public Button traitButtonPrefab;
 
@@ -23,8 +22,11 @@ namespace Assets.Scripts {
         public GameObject researchParent;
 
 
-        void OnEnable() {
-            deleteSaves.onClick.AddListener(() => SaveController.instance.deleteAll());
+
+        public void deleteSaves() {
+            SaveController.instance.deleteAll();
+            ResearchController.instance.resetTree();
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
 
         public void playButton() {
