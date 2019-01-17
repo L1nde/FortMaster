@@ -192,7 +192,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 90b166103c8d7d9449c4cf68a76e8362, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 679b40394b2b19e4ca435681d0b48fe4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -236,11 +236,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b6f0eb6012310d4ca60914f679be452, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 150
-  name: Concrete
-  hp: 300
-  jointBreakTorque: 1000
-  placeSound: {fileID: 11400000, guid: 3dfd65058b6029645aa9af59b6485835, type: 2}
+  cost: 50
+  name: Wooden
+  hp: 100
+  jointBreakTorque: 10000
+  placeSound: {fileID: 11400000, guid: dc1203a71779ab74b95feefbd72bf760, type: 2}
 --- !u!61 &61291110258691576
 BoxCollider2D:
   m_ObjectHideFlags: 0

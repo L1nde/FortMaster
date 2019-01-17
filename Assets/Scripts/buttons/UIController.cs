@@ -172,5 +172,9 @@ public class UIController : MonoBehaviour {
         }
     }
 
+    public void callWave() {
+        WaveController.instance.callWave();
+    }
+
 
 }
