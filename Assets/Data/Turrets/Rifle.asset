@@ -4,18 +4,21 @@
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 399352c352c0eae4786cc2f8c8336924, type: 3}
   m_Name: Rifle
   m_EditorClassIdentifier: 
-  name: 
-  cost: 0
-  reloadTime: 0
-  attackRange: 0
+  name: Rifle
+  cost: 500
+  reloadTime: 1
+  attackRange: 30
   minxRange: 0
-  projectile: {fileID: 0}
-  aniController: {fileID: 0}
-  fireSound: {fileID: 0}
+  projectile: {fileID: 114729862658431450, guid: 731ae5912fa6c7a4aa5f73b7e393bd5c,
+    type: 3}
+  aniController: {fileID: 9100000, guid: 161045d35e915e14ca428ecec7ba6ad1, type: 2}
+  fireSound: {fileID: 11400000, guid: a7ce58b78fdd91144ae31367fd191e1f, type: 2}
+  sprite: {fileID: 21300000, guid: 1ad5e3cc198f36f4ea01f0b245a7ad88, type: 3}

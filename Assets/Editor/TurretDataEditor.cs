@@ -21,6 +21,7 @@ public class TurretDataEditor : Editor {
         myTarget.sprite = (Sprite)EditorGUILayout.ObjectField("Sprite", myTarget.sprite, typeof(Sprite), false);
         EditorGUILayout.LabelField("Impact Dps", myTarget.dps.ToString());
         EditorGUILayout.LabelField("Dps per $", myTarget.DpsPerCost.ToString());
+        EditorUtility.SetDirty(myTarget);
 
     }
 }

@@ -39,6 +39,10 @@ public class ResearchButton : MonoBehaviour {
         this.cost = cost;
     }
 
+    private void OnDisable() {
+        hoverExit();
+    }
+
     public void clicked() // Could use maybe some refactoring
     {
         if (GameController.instance.canAffordResearch(cost))
@@ -90,8 +94,10 @@ public class ResearchButton : MonoBehaviour {
     }
 
     public void hoverExit() {
-        Destroy(currentToolTip.gameObject);
-        currentToolTip = null;
+        if (currentToolTip != null) {
+            Destroy(currentToolTip.gameObject);
+            currentToolTip = null;
+        }
     }
 
     private void createToolTipForResearchBlock(ResearchBlock rb) {

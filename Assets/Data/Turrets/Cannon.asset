@@ -4,7 +4,8 @@
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -17,6 +18,7 @@ MonoBehaviour:
   attackRange: 20
   minxRange: 0
   projectile: {fileID: 114391454512516862, guid: db725d332a240aa4fba173d6063e9a5b,
-    type: 2}
+    type: 3}
   aniController: {fileID: 9100000, guid: 31fda4ceca0f2454e9327e1b0bf5d394, type: 2}
   fireSound: {fileID: 11400000, guid: 5040e2b7bafa67d4f81c185c01b10320, type: 2}
+  sprite: {fileID: 21300000, guid: 11542913562aa3e4bbce0b406739d152, type: 3}
