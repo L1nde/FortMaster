@@ -380,7 +380,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 300
-  speed: 2
+  speed: -2
   attackDelay: 0.5
   attackRange: 20
   moneyOnDeath: 100

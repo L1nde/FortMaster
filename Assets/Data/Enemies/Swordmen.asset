@@ -4,7 +4,8 @@
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -12,13 +13,13 @@ MonoBehaviour:
   m_Name: Swordmen
   m_EditorClassIdentifier: 
   hp: 100
-  speed: -1
+  speed: -3
   attackDelay: 1
   attackRange: 0.5
   moneyOnDeath: 15
   enemyScore: 2
   minLevel: 0
   enemyPrefab: {fileID: 114553184666542520, guid: ad02d701c9dee474c8138dd507e6afca,
-    type: 2}
+    type: 3}
   attackSound: {fileID: 11400000, guid: 863610d1fa1e74543ae03a2e9bc450fe, type: 2}
   meeleDamage: 10

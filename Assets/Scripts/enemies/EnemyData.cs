@@ -16,7 +16,5 @@ namespace Assets.Scripts.enemies {
         public AudioClipGroup attackSound;
 
 
-
-
     }
 }
