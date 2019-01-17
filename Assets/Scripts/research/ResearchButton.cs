@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Assets.Scripts.Research;
 using Assets.Scripts.Turrets;
 using Assets.Scripts;
@@ -63,13 +64,17 @@ public class ResearchButton : MonoBehaviour {
     public void setNodeData(ResearchTreeNode node) {
         var n = node.FindNode(researchText.text);
         if (n != null) {
-            
             nodeData = n;
+            GetComponent<Button>().interactable = !nodeData.researched && nodeData.prerequisites.ToList().TrueForAll(prerequisitesResearched);
         }
 
-        
     }
 
-   
+    private bool prerequisitesResearched(ResearchTreeNode item) {
+        return item.researched;
+    }
 
+    public void alertButtons() {
+
+    }
 }

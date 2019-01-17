@@ -50,6 +50,10 @@ public GameObject getScrollableResearchView() {
         DontDestroyOnLoad(gameObject);
     }
 
+    public void updateButtons() {
+
+    }
+
 
     public void loadResearches(List<string> researches) {
         foreach (var research in researches) {
@@ -98,13 +102,6 @@ public GameObject getScrollableResearchView() {
 
     private ResearchButton createButton(ResearchTreeNode node, Transform parent) {
         ResearchButton button = Instantiate(researchButtonPrefab, parent);
-        if (node.researched) {
-            button.GetComponent<Button>().interactable = false;
-        }
-
-        if (node.prerequisites.ToList().TrueForAll(prerequisitesResearched)) {
-            button.GetComponent<Button>().interactable = false;
-        }
         button.setResearchText(node.researchName);
         button.setCostText(node.xpCost);
         button.setItem(node.Item);
@@ -112,9 +109,6 @@ public GameObject getScrollableResearchView() {
         return button;
     }
 
-    private bool prerequisitesResearched(ResearchTreeNode item) {
-        return !item.researched;
-    }
 
     public ResearchTreeNode getResearchTreeRoot() {
         return researchTree;
