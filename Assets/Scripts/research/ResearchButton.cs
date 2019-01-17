@@ -114,7 +114,8 @@ public class ResearchButton : MonoBehaviour {
 
 
     public void hoverEnter() {
-        UIController.Instance.tutorialPart(6);
+        if (UIController.Instance != null)
+            UIController.Instance.tutorialPart(6);
         if (currentToolTip != null)
             Destroy(currentToolTip.gameObject);
 
