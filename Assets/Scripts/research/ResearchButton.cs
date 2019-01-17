@@ -53,7 +53,9 @@ public class ResearchButton : MonoBehaviour {
                 ResearchBlock item = (ResearchBlock)researchable;
                 nodeData.researched = true;
                    updateChildsButtons();
-                UIController.Instance.CreateStructureBlockButton(item.block);
+                if (UIController.Instance != null) {
+                    UIController.Instance.CreateStructureBlockButton(item.block);
+                }
                 GetComponent<Button>().interactable = false;
             }
             else if (researchable is ResearchTurret)
@@ -61,7 +63,10 @@ public class ResearchButton : MonoBehaviour {
                 ResearchTurret item = (ResearchTurret)researchable;
                 nodeData.researched = true;
                 updateChildsButtons();
-                UIController.Instance.CreateTurretButton(item.block);
+                if (UIController.Instance != null) {
+                    UIController.Instance.CreateTurretButton(item.block);
+                }
+
                 GetComponent<Button>().interactable = false;
             }
             else
