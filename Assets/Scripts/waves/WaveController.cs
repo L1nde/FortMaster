@@ -70,6 +70,8 @@ namespace Assets.Scripts.waves {
             // Todo this doesn't belong to this class
             // TODO fix this, currently it adds 10-20xp at the beginning of the first wave.
             // Todo still doesn't belong here
+            // Todo no good here
+            // Todo need balancing
             if (waveOver && waveCheck) {
                 float wavexp = 100;
                 foreach (Trait trait in GameController.instance.getAllTraits()) {

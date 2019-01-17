@@ -56,7 +56,8 @@ public class ResearchButton : MonoBehaviour {
                 if (UIController.Instance != null) {
                     UIController.Instance.CreateStructureBlockButton(item.block);
                 }
-                GetComponent<Button>().interactable = false;
+                
+                setResearched();
             }
             else if (researchable is ResearchTurret)
             {
@@ -67,7 +68,7 @@ public class ResearchButton : MonoBehaviour {
                     UIController.Instance.CreateTurretButton(item.block);
                 }
 
-                GetComponent<Button>().interactable = false;
+                setResearched();
             }
             else
                 return;
@@ -81,14 +82,34 @@ public class ResearchButton : MonoBehaviour {
         if (n != null) {
             nodeData = n;
             nodeData.button = this;
-            GetComponent<Button>().interactable = !nodeData.researched && nodeData.prerequisites.ToList().TrueForAll(prerequisitesResearched);
+            if (nodeData.researched) {
+                setResearched();
+            }
+            else {
+                GetComponent<Button>().interactable = nodeData.prerequisites.ToList().TrueForAll(prerequisitesResearched);
+            }
+            
         }
     }
 
     private void updateChildsButtons() {
         foreach (var child in nodeData.Childs) {
-            child.button.GetComponent<Button>().interactable = !child.researched && child.prerequisites.ToList().TrueForAll(prerequisitesResearched);
+            if (child.researched) {
+                setResearched();
+            }
+            else {
+                child.button.GetComponent<Button>().interactable = child.prerequisites.ToList().TrueForAll(prerequisitesResearched);
+            }
+           
         }
+    }
+
+    private void setResearched() {
+        var button = GetComponent<Button>();
+        var buttonColors = button.colors;
+        buttonColors.disabledColor = new Color(0.3f, 1, 0, 0.5f);
+        button.colors = buttonColors;
+        button.interactable = false;
     }
 
 

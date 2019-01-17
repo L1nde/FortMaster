@@ -9,10 +9,6 @@ using UnityEngine.UI;
 public class ResearchController : MonoBehaviour {
     public static ResearchController instance = null;
 
-//    public List<ResearchItem> researchedItems = new List<ResearchItem>();
-//
-//    public List<ResearchItem> possibleItems = new List<ResearchItem>();
-
     public ResearchItem ResearchBase;
 
     public ResearchButton researchButtonPrefab;
@@ -26,7 +22,7 @@ public class ResearchController : MonoBehaviour {
 
     // Use this for initialization
     void Start() {
-        researchTree = new ResearchTreeNode(ResearchBase).createTree();
+        resetTree();
         createTreeGameObject(researchTree);
 
     }
@@ -36,6 +32,7 @@ public class ResearchController : MonoBehaviour {
     }
 
 public GameObject getScrollableResearchView() {
+
         var inst = Instantiate(ScrollableResearchView, transform);
         inst.GetComponent<RectTransform>().offsetMax = Vector2.zero;
         inst.GetComponent<RectTransform>().offsetMin = Vector2.zero;
@@ -54,38 +51,13 @@ public GameObject getScrollableResearchView() {
         DontDestroyOnLoad(gameObject);
     }
 
-    public void updateButtons() {
-
-    }
-
-
-//    public void loadResearches(List<string> researches) {
-//        foreach (var research in researches) {
-//            foreach (var possibleItem in possibleItems) {
-//
-//                if (possibleItem.name == research) {
-//                    researchedItems.Add(possibleItem);
-//                    possibleItems.Remove(possibleItem);
-//                    break;
-//                }
-//            }
-//        }
-//    }
-
-
-    private void clearButtons() {
-        GameObject screen = UIController.Instance.researchScreen;
-        for (var i = screen.transform.childCount - 1; i >= 0; i--) {
-            var child = screen.transform.GetChild(i);
-            child.transform.parent = null;
-            Destroy(child);
-        }
-    }
 
 
     private GameObject createTreeGameObject(ResearchTreeNode node) {
-        return createTreeGameObject(researchTree, 0, new Dictionary<int, GameObject>());
+        return createTreeGameObject(node, 0, new Dictionary<int, GameObject>());
     }
+
+
 
         private GameObject createTreeGameObject(ResearchTreeNode node, int depth, Dictionary<int, GameObject> levels) {
             if (!levels.ContainsKey(depth)) {
@@ -106,6 +78,7 @@ public GameObject getScrollableResearchView() {
 
     private ResearchButton createButton(ResearchTreeNode node, Transform parent) {
         ResearchButton button = Instantiate(researchButtonPrefab, parent);
+        node.button = button;
         button.setResearchText(node.researchName);
         button.setCostText(node.xpCost);
         button.setItem(node.Item);
