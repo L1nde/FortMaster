@@ -106,6 +106,7 @@ public class Turret : Placeable {
             Destroy(gameObject);
             return;
         }
+        UIController.Instance.tutorialPart(4);
         sb.placeSound.play();
         GameController.instance.removeGold(cost);
         sb.disableTurretAttachPoint();

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 399352c352c0eae4786cc2f8c8336924, type: 3}
   m_Name: RPG
   m_EditorClassIdentifier: 
-  name: RPG
+  name: RPG launcher
   cost: 2000
   reloadTime: 2
   attackRange: 30

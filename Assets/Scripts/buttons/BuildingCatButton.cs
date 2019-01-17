@@ -31,9 +31,11 @@ public class BuildingCatButton : MonoBehaviour {
 
     public void Enable()
     {
+        UIController.Instance.tutorialPart(3);
         isEnabled = true;
         GetComponent<Image>().color = new Color(0.5f, 0.5f, 0.5f);
         buttonsToShow.SetActive(true);
+
     }
 
     public void Disable()

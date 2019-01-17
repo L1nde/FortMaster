@@ -31,6 +31,11 @@ namespace Assets.Scripts.waves {
 
         void OnEnable() {
             currentWaveDetails = GameController.CurrentWaveDetails;
+            Debug.Log(currentWaveDetails.waveNr);
+            if (currentWaveDetails.waveNr == 0) {
+                UIController.Instance.tutorialInProgress = true;
+                UIController.Instance.GetComponent<Tutorial>().tutorialObj.SetActive(true);
+            }
             buildTime = currentWaveDetails.buildTime;
             buildAcc = 0f;
         }
@@ -50,7 +55,8 @@ namespace Assets.Scripts.waves {
                     waveCheck = true;
                 }
                 else {
-                    buildAcc += Time.deltaTime;
+                    if (!UIController.Instance.tutorialInProgress)
+                        buildAcc += Time.deltaTime;
                     UIController.Instance.showCountdown();
                     UIController.Instance.updateCountdown(buildTime - buildAcc);
                 }

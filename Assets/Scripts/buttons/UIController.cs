@@ -29,6 +29,7 @@ public class UIController : MonoBehaviour {
     public Text xpText;
 
     public GameObject ScrollableResearchView;
+    public bool tutorialInProgress = false;
 
     private List<BlockCreate> placeableItemButtons;
 
@@ -46,11 +47,16 @@ public class UIController : MonoBehaviour {
 
     public void researchScreenActivation()
     {
+        
         if (ScrollableResearchView == null) {
+            tutorialPart(5);
             ScrollableResearchView = ResearchController.instance.getScrollableResearchView();
             ScrollableResearchView.transform.SetParent(researchScreen.transform, false);
         }
         researchScreen.SetActive(!researchScreen.activeSelf);
+        if (!researchScreen.activeSelf) {
+            tutorialPart(7);
+        }
     }
 
 
@@ -173,8 +179,16 @@ public class UIController : MonoBehaviour {
     }
 
     public void callWave() {
+        tutorialPart(7);
         WaveController.instance.callWave();
     }
 
+    public void tutorialPart(int stepnr) {
+        if (tutorialInProgress) {
+            int step = GetComponent<Tutorial>().stepnr;
+            if (step == stepnr)
+                GetComponent<Tutorial>().completeStepnr(stepnr);
+        }
+    }
 
 }
