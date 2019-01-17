@@ -80,7 +80,7 @@ public class ResearchButton : MonoBehaviour {
 
         currentToolTip = Instantiate(toolTipPrefab);
         currentToolTip.transform.SetParent(FindObjectOfType<Canvas>().transform);
-        currentToolTip.transform.position = Input.mousePosition + new Vector3(60,-60,0);
+        currentToolTip.transform.position = Input.mousePosition + new Vector3(80,-60,0);
         //ja ja ja polümorfismiga on parem
         if (researchable.GetType() == typeof(ResearchBlock)) {
             createToolTipForResearchBlock((ResearchBlock)researchable);
@@ -95,17 +95,23 @@ public class ResearchButton : MonoBehaviour {
     }
 
     private void createToolTipForResearchBlock(ResearchBlock rb) {
-        addTextLineToParent("Type: structure block", currentToolTip.transform);
+        addTextLineToParent("Type: Structure block", currentToolTip.transform);
         addTextLineToParent("Gold cost: " + rb.block.cost, currentToolTip.transform);
         addTextLineToParent("HP: " + rb.block.hp, currentToolTip.transform);
+        if (rb.block.name == "Golden") {
+            addTextLineToParent("special: +10% gold gain per block", currentToolTip.transform);
+        }
     }
 
     private void createToolTipForTurret(ResearchTurret turret) {
-        addTextLineToParent("Type: structure block", currentToolTip.transform);
+        addTextLineToParent("Type: Turret", currentToolTip.transform);
         addTextLineToParent("Gold cost: " + turret.block.cost, currentToolTip.transform);
         addTextLineToParent("Damage: " + turret.block.projectile.damage, currentToolTip.transform);
         addTextLineToParent("Reload: " + turret.block.reloadTime, currentToolTip.transform);
         addTextLineToParent("Range: " + turret.block.attackRange, currentToolTip.transform);
+        if (turret.block.name == "RPG launcher") {
+            addTextLineToParent("special: hits enemies in an area", currentToolTip.transform);
+        }
     }
 
     private void addTextLineToParent(string text, Transform parent) {
@@ -115,7 +121,7 @@ public class ResearchButton : MonoBehaviour {
         Text myText = textObj.AddComponent<Text>();
         Font ArialFont = (Font)Resources.GetBuiltinResource(typeof(Font), "Arial.ttf");
         myText.font = ArialFont;
-        myText.rectTransform.sizeDelta = new Vector2(100, 18);
+        myText.rectTransform.sizeDelta = new Vector2(150, 18);
         myText.color = new Color(0, 0, 0);
         myText.text = text;
     }
