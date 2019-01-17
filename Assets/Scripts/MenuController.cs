@@ -20,7 +20,17 @@ namespace Assets.Scripts {
 
         private GameObject ScrollableResearchView;
         public GameObject researchParent;
+        public Text xpAmount;
 
+        public static MenuController instance;
+
+        void Awake() {
+            if (instance == null)
+                instance = this;
+
+            else if (instance != this)
+                Destroy(gameObject);
+        }
 
 
         public void deleteSaves() {
@@ -29,12 +39,17 @@ namespace Assets.Scripts {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
 
+        public void updateXP() {
+            xpAmount.text = GameController.instance.xp.ToString();
+        }
+
         public void playButton() {
             if (ScrollableResearchView == null) {
                 ScrollableResearchView = ResearchController.instance.getScrollableResearchView();
                 ScrollableResearchView.transform.SetParent(researchParent.transform, false);
 
             }
+            updateXP();
             enableTraits();
             anim.SetFloat("speed", -1f);
             anim.SetBool("options", false);
@@ -56,6 +71,11 @@ namespace Assets.Scripts {
             this.waveSaveName = waveSaveName;
             anim.SetFloat("speed", 1f);
             anim.SetBool("traits", true);
+        }
+
+        public void backToResearch() {
+            anim.SetFloat("speed", 1f);
+            anim.SetBool("traits", false);
         }
 
         public void startGame() {

@@ -51,28 +51,27 @@ public class ResearchButton : MonoBehaviour {
             if (researchable is ResearchBlock)
             {
                 ResearchBlock item = (ResearchBlock)researchable;
-                nodeData.researched = true;
-                   updateChildsButtons();
                 if (UIController.Instance != null) {
                     UIController.Instance.CreateStructureBlockButton(item.block);
                 }
-                
-                setResearched();
             }
             else if (researchable is ResearchTurret)
             {
                 ResearchTurret item = (ResearchTurret)researchable;
-                nodeData.researched = true;
-                updateChildsButtons();
                 if (UIController.Instance != null) {
                     UIController.Instance.CreateTurretButton(item.block);
                 }
-
-                setResearched();
             }
             else
                 return;
+            nodeData.researched = true;
+            updateChildsButtons();
             GameController.instance.removeXP(cost);
+
+            if (MenuController.instance != null) {
+                MenuController.instance.updateXP();
+            }
+            setResearched();
 
         }
     }
