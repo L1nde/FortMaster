@@ -74,6 +74,7 @@ public class StructureBlock : Placeable {
             transform.parent = parent;
             isPlaced = true;
             placeSound.play();
+            UIController.Instance.tutorialPart(2);
         } else {
             DestroySelf();
         }
@@ -192,8 +193,5 @@ public class StructureBlock : Placeable {
     public void disableTurretAttachPoint() {
         isTurretAttachPointFree = false;
     }
-
-
-
 }
 

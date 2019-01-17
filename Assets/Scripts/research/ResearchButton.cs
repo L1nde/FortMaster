@@ -93,6 +93,7 @@ public class ResearchButton : MonoBehaviour {
 
 
     public void hoverEnter() {
+        UIController.Instance.tutorialPart(6);
         if (currentToolTip != null)
             Destroy(currentToolTip.gameObject);
 
@@ -119,7 +120,7 @@ public class ResearchButton : MonoBehaviour {
         addTextLineToParent("Gold cost: " + rb.block.cost, currentToolTip.transform);
         addTextLineToParent("HP: " + rb.block.hp, currentToolTip.transform);
         if (rb.block.name == "Golden") {
-            addTextLineToParent("special: +10% gold gain per block", currentToolTip.transform);
+            addTextLineToParent("Special: +10% gold gain per block", currentToolTip.transform);
         }
     }
 
@@ -130,7 +131,7 @@ public class ResearchButton : MonoBehaviour {
         addTextLineToParent("Reload: " + turret.block.reloadTime + "s", currentToolTip.transform);
         addTextLineToParent("Range: " + turret.block.attackRange, currentToolTip.transform);
         if (turret.block.name == "RPG launcher") {
-            addTextLineToParent("special: hits enemies in an area", currentToolTip.transform);
+            addTextLineToParent("Special: hits enemies in an area", currentToolTip.transform);
         }
     }
 
