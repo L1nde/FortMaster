@@ -24,10 +24,11 @@ public class UIController : MonoBehaviour {
     public GameObject StructureBlockPanel;
     public GameObject TurretPanel;
     public BlockCreate PlaceableBlockPrefab;
-    public ResearchButton researchButtonPrefab;
     public GameObject researchScreen;
     public Text goldText;
     public Text xpText;
+
+    public GameObject ScrollableResearchView;
 
     private List<BlockCreate> placeableItemButtons;
 
@@ -45,22 +46,13 @@ public class UIController : MonoBehaviour {
 
     public void researchScreenActivation()
     {
+        if (ScrollableResearchView == null) {
+            ScrollableResearchView = ResearchController.instance.getScrollableResearchView();
+            ScrollableResearchView.transform.SetParent(researchScreen.transform, false);
+        }
         researchScreen.SetActive(!researchScreen.activeSelf);
     }
 
-    public void createResearchButton(ResearchItem item, Transform parent)
-    {
-        instantiateResearchButton(item.researchName, item.xpCost, item, parent);
-    }
-
-    private void instantiateResearchButton(string text, float cost, UnityEngine.Object item, Transform parent) // todo remove
-    {
-        ResearchButton button = Instantiate(researchButtonPrefab, transform);
-        button.setResearchText(text);
-        button.setCostText(cost);
-        button.setItem(item);
-        button.setCost(cost);
-    }
 
     void Start () {
 

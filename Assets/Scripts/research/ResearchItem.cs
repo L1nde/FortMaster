@@ -9,7 +9,7 @@ namespace Assets.Scripts.Research {
         public float xpCost = 10f;
         public bool researched = false;
 
-        private List<ResearchItem> childs = new List<ResearchItem>();
+        private HashSet<ResearchItem> childs = new HashSet<ResearchItem>();
 
         public void OnEnable() {
             foreach (var item in prerequisites) {
@@ -22,7 +22,7 @@ namespace Assets.Scripts.Research {
             childs.Add(item);
         }
 
-        public List<ResearchItem> getChilds() {
+        public HashSet<ResearchItem> getChilds() {
             return childs;
         }
     }

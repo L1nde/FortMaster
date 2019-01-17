@@ -18,13 +18,21 @@ namespace Assets.Scripts {
         public Button deleteSaves;
         public GameObject traitsPanel;
         public Button traitButtonPrefab;
-        public GameObject Researches;
+
+        private GameObject ScrollableResearchView;
+        public GameObject researchParent;
+
 
         void OnEnable() {
             deleteSaves.onClick.AddListener(() => SaveController.instance.deleteAll());
         }
 
         public void playButton() {
+            if (ScrollableResearchView == null) {
+                ScrollableResearchView = ResearchController.instance.getScrollableResearchView();
+                ScrollableResearchView.transform.SetParent(researchParent.transform, false);
+
+            }
             enableTraits();
             anim.SetFloat("speed", -1f);
             anim.SetBool("options", false);
@@ -40,9 +48,6 @@ namespace Assets.Scripts {
                 saves.Add(save);
 
             }
-            
-            ResearchController.instance.getResearchTreeObject().transform.SetParent(Researches.transform, false);
-            ResearchController.instance.getResearchTreeObject().SetActive(true);
         }
 
         public void loadSave(string waveSaveName) {

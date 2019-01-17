@@ -40,7 +40,6 @@ public class GameController : MonoBehaviour {
 	}
 
     public void setUpWave() {
-        ResearchController.instance.generateButtons();
         loadResearch();
         loadWave();
     }

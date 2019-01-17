@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Assets.Scripts;
 using Assets.Scripts.Turrets;
 using Assets.Scripts.waves;
@@ -13,6 +14,8 @@ public class ConstructionManager : MonoBehaviour {
 
     public GameObject fortBase;
     private Placeable selected;
+
+    private ResearchTreeNode researchRoot;
 
     public List<TurretData> turrets;
     public List<StructureBlockData> structureBlocks;
@@ -30,9 +33,9 @@ public class ConstructionManager : MonoBehaviour {
 
         else if (instance != this) 
             Destroy(gameObject);
-
-        UIController.Instance.CreateTurretButtons(turrets);
-        UIController.Instance.CreateStructureBlockButtons(structureBlocks);
+        researchRoot = ResearchController.instance.getResearchTreeRoot();
+        UIController.Instance.CreateTurretButtons(researchRoot.getResearchedTurrets().ToList());
+        UIController.Instance.CreateStructureBlockButtons(researchRoot.getResearchedSB().ToList());
 //        fortBase = new GameObject("FortBase");
         fortBase.tag = "FortBase";
 //        DontDestroyOnLoad(gameObject);
@@ -50,13 +53,13 @@ public class ConstructionManager : MonoBehaviour {
     }
 
     public void initBlock(String name) {
-        foreach (TurretData t in turrets) {
+        foreach (TurretData t in researchRoot.getResearchedTurrets().ToList()) { // not good probably
             if (t.name == name) {
                 initTurret(t);
                 return;
             }
         }
-        foreach (StructureBlockData sb in structureBlocks) {
+        foreach (StructureBlockData sb in researchRoot.getResearchedSB().ToList()) { // not good probably
             if (sb.name == name) {
                 initStructureBlock(sb);
                 return;
@@ -77,7 +80,7 @@ public class ConstructionManager : MonoBehaviour {
                 continue;
             }
             
-            foreach (TurretData t in turrets) {
+            foreach (TurretData t in researchRoot.getResearchedTurrets().ToList()) {
                 if (t.name == saveObject.placeableName) {
                     var block = Instantiate(attachTurretData(t), saveObject.position.toVector3(), Quaternion.Euler(saveObject.rotation.toVector3()));
                     block.setAnimController(t.aniController);
@@ -85,7 +88,7 @@ public class ConstructionManager : MonoBehaviour {
                     break;
                 }
             }
-            foreach (StructureBlockData sb in structureBlocks) {
+            foreach (StructureBlockData sb in researchRoot.getResearchedSB().ToList()) {
                 if (sb.name == saveObject.placeableName) {
                     var block = Instantiate(attachStructrueBlockData(sb), saveObject.position.toVector3(), Quaternion.Euler(saveObject.rotation.toVector3()));
                     block.placeFree(fortBase.transform);

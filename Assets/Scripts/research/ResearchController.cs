@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Assets.Scripts.Research;
 using Assets.Scripts.Turrets;
 using UnityEngine;
@@ -12,18 +13,33 @@ public class ResearchController : MonoBehaviour {
 
     public List<ResearchItem> possibleItems = new List<ResearchItem>();
 
-    public ResearchItem ResearchRoot;
+    public ResearchItem ResearchBase;
 
     public ResearchButton researchButtonPrefab;
     public GameObject TreeLevel;
     public GameObject TreeRoot;
 
-    private GameObject researchTree;
+    [SerializeField]
+    private GameObject ScrollableResearchView;
+
+    private ResearchTreeNode researchTree;
 
     // Use this for initialization
     void Start() {
-        researchTree = createTree(ResearchRoot);
+        researchTree = new ResearchTreeNode(ResearchBase).createTree();
+        createTreeGameObject(researchTree);
 
+    }
+
+public GameObject getScrollableResearchView() {
+        var inst = Instantiate(ScrollableResearchView, transform);
+        inst.GetComponent<RectTransform>().offsetMax = Vector2.zero;
+        inst.GetComponent<RectTransform>().offsetMin = Vector2.zero;
+        foreach (var button in inst.GetComponentsInChildren<ResearchButton>()) {
+            button.setNodeData(researchTree);
+        }
+
+        return inst;
     }
 
     void Awake() {
@@ -48,10 +64,6 @@ public class ResearchController : MonoBehaviour {
         }
     }
 
-    public void generateButtons() {
-//        clearButtons();
-        initializeButtons();
-    }
 
     private void clearButtons() {
         GameObject screen = UIController.Instance.researchScreen;
@@ -62,79 +74,50 @@ public class ResearchController : MonoBehaviour {
         }
     }
 
-    private void initializeButtons() {
-//        foreach (var item in possibleItems) {
-//            if (item.prerequisites.Count == 0)
-//                UIController.Instance.createResearchButton(item);
-//            else {
-//                bool reqs = true;
-//                foreach (var item2 in item.prerequisites) {
-//                    if (!researchedItems.Contains(item2))
-//                        reqs = false;
-//                }
-//
-//                if (reqs)
-//                    UIController.Instance.createResearchButton(item);
-//            }
-//        }        
-        
 
+    private GameObject createTreeGameObject(ResearchTreeNode node) {
+        return createTreeGameObject(researchTree, 0, new Dictionary<int, GameObject>());
     }
 
-    private GameObject createTree(ResearchItem root) {
-        Queue<ResearchItem> queue = new Queue<ResearchItem>();
-        Queue<ResearchItem> nextQueue = new Queue<ResearchItem>();
-        nextQueue.Enqueue(root);
-
-        HashSet<ResearchItem> closed = new HashSet<ResearchItem>();
-
-        var level = Instantiate(TreeRoot);
-        var rootObject = level;
-        level.SetActive(false);
-        
-        while (queue.Count != 0 || nextQueue.Count != 0) {
-            if (queue.Count == 0) {
-                if (nextQueue.Count == 0) {
-                    break;
-                }
-                queue = new Queue<ResearchItem>(nextQueue);
-                nextQueue.Clear();
-                var nextLevel = Instantiate(TreeLevel, rootObject.transform);
-                level = nextLevel;
-
+        private GameObject createTreeGameObject(ResearchTreeNode node, int depth, Dictionary<int, GameObject> levels) {
+            if (!levels.ContainsKey(depth)) {
+                var o = Instantiate(TreeLevel);
+                o.transform.SetParent(TreeRoot.transform);
+                levels.Add(depth, o);
             }
 
-            var currentItem = queue.Dequeue();
+            var b = createButton(node, levels[depth].transform);
 
-            if (!closed.Contains(currentItem)) {
-                createButton(currentItem, level.transform);
-                closed.Add(currentItem);
-                foreach (var child in currentItem.getChilds()) {
-                    nextQueue.Enqueue(child);
-
-                }
+            foreach (var child in node.Childs) {
+                var trans = createTreeGameObject(child, depth + 1, levels);
             }
-            
 
-            
-        }
-
-        return rootObject;
+            return b.gameObject;
     }
 
-    void createButton(ResearchItem item, Transform parent) {
+
+    private ResearchButton createButton(ResearchTreeNode node, Transform parent) {
         ResearchButton button = Instantiate(researchButtonPrefab, parent);
-        if (item.researched) {
+        if (node.researched) {
             button.GetComponent<Button>().interactable = false;
         }
-        button.setResearchText(item.researchName);
-        button.setCostText(item.xpCost);
-        button.setItem(item);
-        button.setCost(item.xpCost);
+
+        if (node.prerequisites.ToList().TrueForAll(prerequisitesResearched)) {
+            button.GetComponent<Button>().interactable = false;
+        }
+        button.setResearchText(node.researchName);
+        button.setCostText(node.xpCost);
+        button.setItem(node.Item);
+        button.setCost(node.xpCost);
+        return button;
     }
 
-    public GameObject getResearchTreeObject() {
-        return researchTree; 
+    private bool prerequisitesResearched(ResearchTreeNode item) {
+        return !item.researched;
+    }
+
+    public ResearchTreeNode getResearchTreeRoot() {
+        return researchTree;
     }
 
 }

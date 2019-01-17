@@ -12,6 +12,7 @@ public class ResearchButton : MonoBehaviour {
     public Text costText;
     public float cost;
     public UnityEngine.Object researchable;
+    public ResearchTreeNode nodeData;
 
     public void setResearchText(string text)
     {
@@ -37,26 +38,38 @@ public class ResearchButton : MonoBehaviour {
     {
         if (GameController.instance.canAffordResearch(cost))
         {
+            
             if (researchable is ResearchBlock)
             {
                 ResearchBlock item = (ResearchBlock)researchable;
-                ConstructionManager.instance.structureBlocks.Add(item.block);
-                UIController.Instance.CreateStructureBlockButton(item.block);
-                ResearchController.instance.possibleItems.Remove(item);
-                ResearchController.instance.researchedItems.Add(item);
+                nodeData.researched = true;
+//                UIController.Instance.CreateStructureBlockButton(item.block);
+                GetComponent<Button>().interactable = false;
             }
             else if (researchable is ResearchTurret)
             {
                 ResearchTurret item = (ResearchTurret)researchable;
-                ConstructionManager.instance.turrets.Add(item.block);
-                UIController.Instance.CreateTurretButton(item.block);
-                ResearchController.instance.possibleItems.Remove(item);
-                ResearchController.instance.researchedItems.Add(item);
+                nodeData.researched = true;
+                //                UIController.Instance.CreateTurretButton(item.block);
+                GetComponent<Button>().interactable = false;
             }
             else
                 return;
             GameController.instance.removeXP(cost);
-            Destroy(gameObject);
+
         }
     }
+
+    public void setNodeData(ResearchTreeNode node) {
+        var n = node.FindNode(researchText.text);
+        if (n != null) {
+            
+            nodeData = n;
+        }
+
+        
+    }
+
+   
+
 }
