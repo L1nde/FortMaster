@@ -22,6 +22,7 @@ public class PlayerProjectileEdiotr : Editor {
         myTarget.affectedByGravity = EditorGUILayout.Toggle("AffectedByGravity", myTarget.affectedByGravity);
         if (!myTarget.parabola)
             constSpeed(myTarget);
+        EditorUtility.SetDirty(myTarget);
     }
 
     private void constSpeed(PlayerProjectile myTarget) {

@@ -9,11 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6486205c73a44746a9dfa066aeb5c2a, type: 3}
-  m_Name: Wave0
+  m_Script: {fileID: 11500000, guid: 52e20798abb615040bb986c854811a80, type: 3}
+  m_Name: Crossbow
   m_EditorClassIdentifier: 
-  waveScore: 10
-  spawnDelay: 1
-  buildTime: 5
-  waveNr: 0
-  gold: 5000
+  volumeMin: 1
+  volumeMax: 1
+  pitchMin: 0.9
+  pitchMax: 1.1
+  cooldown: 0.1
+  clips:
+  - {fileID: 8300000, guid: 1cde8b9152ff26a49884b7cfa82d289e, type: 3}

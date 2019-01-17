@@ -100,5 +100,9 @@ namespace Assets.Scripts.waves {
         private bool isWaveEnded() {
             return spawnController.allEnemiesSpawned() && SpawnController.enemyCounter == 0;
         }
+
+        public void callWave() {
+            buildAcc += buildTime;
+        }
     }
 }

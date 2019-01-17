@@ -14,7 +14,7 @@ namespace Assets.Editor {
 
             EditorGUILayout.LabelField("Basic", EditorStyles.boldLabel);
             myTarget.hp = EditorGUILayout.FloatField("Health", myTarget.hp);
-            myTarget.speed = EditorGUILayout.FloatField("Movement Speed", myTarget.hp);
+            myTarget.speed = EditorGUILayout.FloatField("Movement Speed", myTarget.speed);
             myTarget.enemyScore = EditorGUILayout.FloatField("Difficulty score", myTarget.enemyScore);
             myTarget.minLevel = EditorGUILayout.IntField("Minimal level needed to spawn", myTarget.minLevel);
             myTarget.moneyOnDeath = EditorGUILayout.FloatField("Money on Death", myTarget.moneyOnDeath);
@@ -27,7 +27,8 @@ namespace Assets.Editor {
             EditorGUILayout.Space();
             EditorGUILayout.LabelField("Other", EditorStyles.boldLabel);
             myTarget.enemyPrefab = (Enemy)EditorGUILayout.ObjectField("Enemy prefab", myTarget.enemyPrefab, typeof(Enemy), false);
-            myTarget.ProjectilePrefab = (Projectile)EditorGUILayout.ObjectField("Projectile", myTarget.ProjectilePrefab, typeof(Projectile), false);          
+            myTarget.ProjectilePrefab = (Projectile)EditorGUILayout.ObjectField("Projectile", myTarget.ProjectilePrefab, typeof(Projectile), false);
+            EditorUtility.SetDirty(myTarget);
         }
     }
 }

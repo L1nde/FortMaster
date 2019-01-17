@@ -127,7 +127,7 @@ public class ResearchButton : MonoBehaviour {
         addTextLineToParent("Type: Turret", currentToolTip.transform);
         addTextLineToParent("Gold cost: " + turret.block.cost, currentToolTip.transform);
         addTextLineToParent("Damage: " + turret.block.projectile.damage, currentToolTip.transform);
-        addTextLineToParent("Reload: " + turret.block.reloadTime, currentToolTip.transform);
+        addTextLineToParent("Reload: " + turret.block.reloadTime + "s", currentToolTip.transform);
         addTextLineToParent("Range: " + turret.block.attackRange, currentToolTip.transform);
         if (turret.block.name == "RPG launcher") {
             addTextLineToParent("special: hits enemies in an area", currentToolTip.transform);
