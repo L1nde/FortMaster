@@ -5,7 +5,6 @@ using Assets.Scripts.Research;
 using Assets.Scripts.Turrets;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.UI.Extensions;
 
 public class ResearchController : MonoBehaviour {
     public static ResearchController instance = null;
@@ -15,7 +14,6 @@ public class ResearchController : MonoBehaviour {
     public ResearchButton researchButtonPrefab;
     public GameObject TreeLevel;
     public GameObject TreeRoot;
-    public UILineRenderer line;
 
     [SerializeField]
     private GameObject ScrollableResearchView;
