@@ -5,10 +5,10 @@ namespace Assets.Scripts.saving {
     [System.Serializable]
     public class GameSaveObject {
         public float xp;
-        public List<string> researchedItems;
+        public List<string> researchedTree;
 
-        public GameSaveObject(List<string> researchedItems, float xp) {
-            this.researchedItems = researchedItems;
+        public GameSaveObject(List<string> researchedTree, float xp) {
+            this.researchedTree = researchedTree;
             this.xp = xp;
         }
     }

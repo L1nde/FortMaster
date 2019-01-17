@@ -9,9 +9,9 @@ using UnityEngine.UI;
 public class ResearchController : MonoBehaviour {
     public static ResearchController instance = null;
 
-    public List<ResearchItem> researchedItems = new List<ResearchItem>();
-
-    public List<ResearchItem> possibleItems = new List<ResearchItem>();
+//    public List<ResearchItem> researchedItems = new List<ResearchItem>();
+//
+//    public List<ResearchItem> possibleItems = new List<ResearchItem>();
 
     public ResearchItem ResearchBase;
 
@@ -55,18 +55,18 @@ public GameObject getScrollableResearchView() {
     }
 
 
-    public void loadResearches(List<string> researches) {
-        foreach (var research in researches) {
-            foreach (var possibleItem in possibleItems) {
-
-                if (possibleItem.name == research) {
-                    researchedItems.Add(possibleItem);
-                    possibleItems.Remove(possibleItem);
-                    break;
-                }
-            }
-        }
-    }
+//    public void loadResearches(List<string> researches) {
+//        foreach (var research in researches) {
+//            foreach (var possibleItem in possibleItems) {
+//
+//                if (possibleItem.name == research) {
+//                    researchedItems.Add(possibleItem);
+//                    possibleItems.Remove(possibleItem);
+//                    break;
+//                }
+//            }
+//        }
+//    }
 
 
     private void clearButtons() {
@@ -112,6 +112,17 @@ public GameObject getScrollableResearchView() {
 
     public ResearchTreeNode getResearchTreeRoot() {
         return researchTree;
+    }
+
+    public void loadResearchTree(List<string> names) {
+        foreach (var name in names) {
+            var node = researchTree.FindNode(name);
+            if (node != null) {
+                node.researched = true;
+            }
+
+            
+        }
     }
 
 }

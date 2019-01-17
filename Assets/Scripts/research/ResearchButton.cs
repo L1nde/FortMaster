@@ -52,14 +52,16 @@ public class ResearchButton : MonoBehaviour {
             {
                 ResearchBlock item = (ResearchBlock)researchable;
                 nodeData.researched = true;
-//                UIController.Instance.CreateStructureBlockButton(item.block);
+                   updateChildsButtons();
+                UIController.Instance.CreateStructureBlockButton(item.block);
                 GetComponent<Button>().interactable = false;
             }
             else if (researchable is ResearchTurret)
             {
                 ResearchTurret item = (ResearchTurret)researchable;
                 nodeData.researched = true;
-                //                UIController.Instance.CreateTurretButton(item.block);
+                updateChildsButtons();
+                UIController.Instance.CreateTurretButton(item.block);
                 GetComponent<Button>().interactable = false;
             }
             else
@@ -73,10 +75,17 @@ public class ResearchButton : MonoBehaviour {
         var n = node.FindNode(researchText.text);
         if (n != null) {
             nodeData = n;
+            nodeData.button = this;
             GetComponent<Button>().interactable = !nodeData.researched && nodeData.prerequisites.ToList().TrueForAll(prerequisitesResearched);
         }
-
     }
+
+    private void updateChildsButtons() {
+        foreach (var child in nodeData.Childs) {
+            child.button.GetComponent<Button>().interactable = !child.researched && child.prerequisites.ToList().TrueForAll(prerequisitesResearched);
+        }
+    }
+
 
     public void hoverEnter() {
         if (currentToolTip != null)

@@ -17,8 +17,8 @@ public class ConstructionManager : MonoBehaviour {
 
     private ResearchTreeNode researchRoot;
 
-    public List<TurretData> turrets;
-    public List<StructureBlockData> structureBlocks;
+//    public List<TurretData> turrets;
+//    public List<StructureBlockData> structureBlocks;
     public Core core;
 
     public Turret turretPrefab;

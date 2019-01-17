@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Assets.Scripts;
 using Assets.Scripts.Research;
 using Assets.Scripts.Turrets;
@@ -7,7 +8,9 @@ using UnityEngine;
 using UnityEditor;
 using UnityEngine.UI;
 
+
 public class ResearchTreeNode {
+
 
     public string researchName;
     public float xpCost;
@@ -15,6 +18,7 @@ public class ResearchTreeNode {
     private HashSet<ResearchTreeNode> childs = new HashSet<ResearchTreeNode>();
     public HashSet<ResearchTreeNode> prerequisites = new HashSet<ResearchTreeNode>();
 
+    [NonSerialized] public ResearchButton button;
     [NonSerialized] private ResearchItem item;
 
 
@@ -99,8 +103,25 @@ public class ResearchTreeNode {
         return blocks;
     }
 
+    public List<string> getResearchedItemsNames() {
+        return getResearchedItemsNames(new HashSet<string>()).ToList();
+    }
+
+    private HashSet<string> getResearchedItemsNames(HashSet<string> names) {
+        if (researched) {
+            names.Add(researchName);
+        }
+
+        foreach (var child in childs) {
+            names.UnionWith(child.getResearchedItemsNames(names));
+        }
+
+        return names;
+    }
+
     public ResearchTreeNode FindNode(string name) {
-        if (researchName == (name)) {
+        if (researchName == name) {
+            
             return this;
         }
         
