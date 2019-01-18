@@ -20,6 +20,8 @@ public class ResearchController : MonoBehaviour {
 
     private ResearchTreeNode researchTree;
 
+    public ResearchItem[] RItems;
+
     // Use this for initialization
     void Start() {
         resetTree();
@@ -28,6 +30,10 @@ public class ResearchController : MonoBehaviour {
     }
 
     public void resetTree() {
+        
+        foreach (var item in RItems) {
+            item.Init();
+        }
         researchTree = new ResearchTreeNode(ResearchBase).createTree();
     }
 
