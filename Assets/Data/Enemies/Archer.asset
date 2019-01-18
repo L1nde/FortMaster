@@ -15,7 +15,7 @@ MonoBehaviour:
   hp: 100
   speed: -1
   attackDelay: 1
-  attackRange: 15
+  attackRange: 7.5
   moneyOnDeath: 10
   enemyScore: 3
   minLevel: 0

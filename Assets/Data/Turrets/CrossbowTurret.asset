@@ -15,7 +15,7 @@ MonoBehaviour:
   name: Crossbow
   cost: 125
   reloadTime: 1
-  attackRange: 20
+  attackRange: 10
   minxRange: 0
   projectile: {fileID: 114915687652843784, guid: ed1a42e6fcae41e41ae07f0d1ad5a439,
     type: 3}

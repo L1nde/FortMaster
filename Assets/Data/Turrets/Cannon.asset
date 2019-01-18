@@ -15,7 +15,7 @@ MonoBehaviour:
   name: Cannon
   cost: 350
   reloadTime: 3
-  attackRange: 30
+  attackRange: 15
   minxRange: 0
   projectile: {fileID: 114391454512516862, guid: db725d332a240aa4fba173d6063e9a5b,
     type: 3}

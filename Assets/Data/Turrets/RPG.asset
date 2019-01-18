@@ -15,7 +15,7 @@ MonoBehaviour:
   name: RPG launcher
   cost: 3000
   reloadTime: 10
-  attackRange: 30
+  attackRange: 15
   minxRange: 0
   projectile: {fileID: 114558611222994108, guid: 8ff93306dbf073b47b3b8afa72e46f9b,
     type: 3}

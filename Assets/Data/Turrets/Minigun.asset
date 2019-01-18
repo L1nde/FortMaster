@@ -15,7 +15,7 @@ MonoBehaviour:
   name: Minigun
   cost: 3000
   reloadTime: 0.08
-  attackRange: 25
+  attackRange: 12.5
   minxRange: 0
   projectile: {fileID: 114551893575975700, guid: 580845188fbe3104aad9e9c652dc884d,
     type: 3}

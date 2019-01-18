@@ -15,7 +15,7 @@ MonoBehaviour:
   name: Rifle
   cost: 500
   reloadTime: 0.5
-  attackRange: 25
+  attackRange: 12.5
   minxRange: 0
   projectile: {fileID: 114729862658431450, guid: 731ae5912fa6c7a4aa5f73b7e393bd5c,
     type: 3}
