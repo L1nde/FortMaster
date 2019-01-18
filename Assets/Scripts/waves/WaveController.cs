@@ -31,7 +31,6 @@ namespace Assets.Scripts.waves {
 
         void OnEnable() {
             currentWaveDetails = GameController.CurrentWaveDetails;
-            Debug.Log(currentWaveDetails.waveNr);
             if (currentWaveDetails.waveNr == 0) {
                 UIController.Instance.tutorialInProgress = true;
                 UIController.Instance.GetComponent<Tutorial>().tutorialObj.SetActive(true);

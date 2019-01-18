@@ -683,6 +683,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 9d82b66d924deeb4090627511f4238be, type: 2}
   - {fileID: 11400000, guid: caa08f78e45c8954a882721c4b404994, type: 2}
   - {fileID: 11400000, guid: b004b0630707bb4488b91dae3528c152, type: 2}
+  cam: {fileID: 134366676}
+  fortBase: {fileID: 339174535}
   seed: 0
 --- !u!1001 &2102417893578993298
 PrefabInstance:
