@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f903e2bcf9885e94ebb4910f16c0855e, type: 3}
-  m_Name: Hummvee
+  m_Name: Soldier
   m_EditorClassIdentifier: 
   hp: 100
-  speed: 100
+  speed: -1
   attackDelay: 1
   attackRange: 10
   moneyOnDeath: 0
-  enemyScore: 0
+  enemyScore: 1
   minLevel: 0
-  enemyPrefab: {fileID: 1791569045869435810, guid: e1297acdf21c2304ba65610ef80ba6e6,
+  enemyPrefab: {fileID: 18977864580400322, guid: 785f9a9b20a7e9d4e9ed8cf0901e30b4,
     type: 3}
-  attackSound: {fileID: 11400000, guid: 383ed4adf0c71414c8e508f20351b4e3, type: 2}
-  ProjectilePrefab: {fileID: 114551893575975700, guid: 580845188fbe3104aad9e9c652dc884d,
+  attackSound: {fileID: 11400000, guid: a7ce58b78fdd91144ae31367fd191e1f, type: 2}
+  ProjectilePrefab: {fileID: 114341463140934870, guid: f1d8adf1a81f5b6459dfa417de77a3df,
     type: 3}
   AccuracySpread: 1

@@ -9,6 +9,10 @@ namespace Assets.Scripts.enemies {
         // Use this for initialization
         new void Start() {
             base.Start();
+            Vector3 scale = gameObject.transform.localScale;
+            if (scale.x > 0)
+                scale.x *= -1;
+            transform.transform.localScale = scale;
         }
 
         // Update is called once per frame
@@ -25,11 +29,13 @@ namespace Assets.Scripts.enemies {
             Collider2D targetCollider = getTarget();
             if (targetCollider != null) {
                 if (attackAcc > attackDelay) {
+                    Debug.Log(targetCollider.name);
                     anim.SetBool("attacking", true);
                     attackAcc = 0f;
                     Projectile projectile = Instantiate(projectilePrefab, transform.position, transform.rotation);
                     // projectile.setTarget(new Vector2(targetCollider.gameObject.transform.position.x + Random.Range(-1.0f, 1.0f) * accuracySpread, targetCollider.gameObject.transform.position.y));
                     applyDmgTrait(projectile);
+                    Debug.Log(new Vector2(targetCollider.gameObject.transform.position.x, targetCollider.gameObject.transform.position.y) + Random.insideUnitCircle * accuracySpread);
                     projectile.shootProjectile(new Vector2(targetCollider.gameObject.transform.position.x, targetCollider.gameObject.transform.position.y) + Random.insideUnitCircle * accuracySpread);
                     if (attackSound != null) {
                         attackSound.play();

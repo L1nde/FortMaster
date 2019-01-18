@@ -17,7 +17,7 @@ MonoBehaviour:
   attackDelay: 1
   attackRange: 0.5
   moneyOnDeath: 15
-  enemyScore: 2
+  enemyScore: 300
   minLevel: 0
   enemyPrefab: {fileID: 114553184666542520, guid: ad02d701c9dee474c8138dd507e6afca,
     type: 3}

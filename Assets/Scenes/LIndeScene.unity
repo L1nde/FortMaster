@@ -263,6 +263,17 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114295157333357046, guid: b1c50e01c311bab40be2ac7a6c741c8d,
+        type: 3}
+      propertyPath: enemiesData.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114295157333357046, guid: b1c50e01c311bab40be2ac7a6c741c8d,
+        type: 3}
+      propertyPath: enemiesData.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: 635f3957851839045af1bbdf928adff7,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b1c50e01c311bab40be2ac7a6c741c8d, type: 3}
 --- !u!1001 &830890881
@@ -321,7 +332,8 @@ PrefabInstance:
       propertyPath: m_Size.x
       value: 300
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 61273963776322568, guid: d6dcda2f85f9541418b56ec051e28713, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d6dcda2f85f9541418b56ec051e28713, type: 3}
 --- !u!1001 &1184234650
 PrefabInstance:
@@ -923,6 +935,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 860579912351243484, guid: abbac4fe12e366049be1e2889fbdda11,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.25006104
+      objectReference: {fileID: 0}
+    - target: {fileID: 860579912351243484, guid: abbac4fe12e366049be1e2889fbdda11,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.000015258789
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: abbac4fe12e366049be1e2889fbdda11, type: 3}
