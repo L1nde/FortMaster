@@ -23,7 +23,7 @@ public class ResearchController : MonoBehaviour {
     public ResearchItem[] RItems;
 
     // Use this for initialization
-    void Start() {
+    void OnEnable() {
         resetTree();
         createTreeGameObject(researchTree);
 

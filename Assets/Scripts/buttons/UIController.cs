@@ -156,6 +156,7 @@ public class UIController : MonoBehaviour {
 
     public void exitToMenu() {
         SceneManager.LoadScene("WaveSelection");
+        Time.timeScale = 1f;
     }
 
     public void updateGoldText(float gold) {
