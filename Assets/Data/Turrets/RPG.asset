@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: RPG
   m_EditorClassIdentifier: 
   name: RPG launcher
-  cost: 2000
-  reloadTime: 2
+  cost: 3000
+  reloadTime: 10
   attackRange: 30
   minxRange: 0
   projectile: {fileID: 114558611222994108, guid: 8ff93306dbf073b47b3b8afa72e46f9b,

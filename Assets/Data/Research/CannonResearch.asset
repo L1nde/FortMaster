@@ -4,7 +4,8 @@
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -14,6 +15,6 @@ MonoBehaviour:
   prerequisites:
   - {fileID: 11400000, guid: cf70f21830b2a9748b825245245bb022, type: 2}
   researchName: Cannon
-  xpCost: 250
+  xpCost: 350
   researched: 0
   block: {fileID: 11400000, guid: 134eee0782987aa4a93e599d875958cb, type: 2}

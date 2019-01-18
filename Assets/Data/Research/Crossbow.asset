@@ -16,5 +16,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 9a87283ee976fd646846f1b11f960726, type: 2}
   researchName: Crossbow
   xpCost: 10
-  researched: 1
+  researched: 0
   block: {fileID: 11400000, guid: b4edf7bcb2e942341bf39c49f87fc4a0, type: 2}

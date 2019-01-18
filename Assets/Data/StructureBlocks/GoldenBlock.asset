@@ -4,7 +4,8 @@
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -12,7 +13,7 @@ MonoBehaviour:
   m_Name: GoldenBlock
   m_EditorClassIdentifier: 
   name: Golden
-  cost: 1000
+  cost: 2000
   hp: 400
   sprite: {fileID: 21300000, guid: 5f7d329eb15b82d48b35792e1ac2b724, type: 3}
   jointBreakTorque: 10000

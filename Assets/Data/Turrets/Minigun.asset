@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Minigun
   m_EditorClassIdentifier: 
   name: Minigun
-  cost: 2000
+  cost: 3000
   reloadTime: 0.1
-  attackRange: 30
+  attackRange: 25
   minxRange: 0
   projectile: {fileID: 114551893575975700, guid: 580845188fbe3104aad9e9c652dc884d,
     type: 3}

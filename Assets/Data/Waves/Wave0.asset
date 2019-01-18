@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6486205c73a44746a9dfa066aeb5c2a, type: 3}
   m_Name: Wave0
   m_EditorClassIdentifier: 
-  waveScore: 10
-  spawnDelay: 1
-  buildTime: 5
+  waveScore: 20
+  spawnDelay: 5
+  buildTime: 30
   waveNr: 0
-  gold: 5000
+  gold: 1500

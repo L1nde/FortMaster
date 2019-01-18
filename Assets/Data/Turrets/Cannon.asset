@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Cannon
   m_EditorClassIdentifier: 
   name: Cannon
-  cost: 250
-  reloadTime: 2
-  attackRange: 20
+  cost: 350
+  reloadTime: 3
+  attackRange: 30
   minxRange: 0
   projectile: {fileID: 114391454512516862, guid: db725d332a240aa4fba173d6063e9a5b,
     type: 3}

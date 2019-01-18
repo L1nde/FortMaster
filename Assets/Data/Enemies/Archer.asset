@@ -13,15 +13,15 @@ MonoBehaviour:
   m_Name: Archer
   m_EditorClassIdentifier: 
   hp: 100
-  speed: -0.5
+  speed: -1
   attackDelay: 1
-  attackRange: 10
+  attackRange: 15
   moneyOnDeath: 10
-  enemyScore: 200
+  enemyScore: 3
   minLevel: 0
   enemyPrefab: {fileID: 114219937301509240, guid: c87566c463b016d42856178cbac838d5,
     type: 3}
   attackSound: {fileID: 11400000, guid: e155cbe9738e4ae468b904f90d81adc1, type: 2}
   ProjectilePrefab: {fileID: 114341463140934870, guid: c874c41003b9ed9479010e688907b355,
     type: 3}
-  AccuracySpread: 1
+  AccuracySpread: 2

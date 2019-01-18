@@ -191,8 +191,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2031185351}
-        m_MethodName: deleteAll
+      - m_Target: {fileID: 448536295}
+        m_MethodName: deleteSaves
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -201,7 +201,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 0
+        m_CallState: 2
       - m_Target: {fileID: 11400000, guid: b60aec1e7c6502345adacc8d6e6e5218, type: 2}
         m_MethodName: play
         m_Mode: 1
@@ -3394,7 +3394,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1608530826
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3533,6 +3533,11 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 224346501611339970, guid: bbbaed1021302f24e81d8a2eaf45f172,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 224209352244971762, guid: bbbaed1021302f24e81d8a2eaf45f172,
         type: 3}
       propertyPath: m_SizeDelta.x
@@ -3542,11 +3547,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224346501611339970, guid: bbbaed1021302f24e81d8a2eaf45f172,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bbbaed1021302f24e81d8a2eaf45f172, type: 3}

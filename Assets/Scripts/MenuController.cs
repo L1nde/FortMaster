@@ -37,6 +37,7 @@ namespace Assets.Scripts {
             SaveController.instance.deleteAll();
             ResearchController.instance.resetTree();
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            updateXP();
         }
 
         public void updateXP() {

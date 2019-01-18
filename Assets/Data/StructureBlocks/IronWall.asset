@@ -4,7 +4,8 @@
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -13,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Iron
   cost: 500
-  hp: 750
+  hp: 1000
   sprite: {fileID: 21300000, guid: ae958b65bc78fda42be2d0f358b92fac, type: 3}
   jointBreakTorque: 10000
   placeSoundGroup: {fileID: 11400000, guid: a54c1cca201be104a9593e4885e573c6, type: 2}

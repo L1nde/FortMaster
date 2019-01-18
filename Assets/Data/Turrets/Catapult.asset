@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Catapult
   m_EditorClassIdentifier: 
   name: Catapult
-  cost: 100
-  reloadTime: 2
-  attackRange: 15
+  cost: 200
+  reloadTime: 2.5
+  attackRange: 40
   minxRange: 5
   projectile: {fileID: 114116376057509874, guid: 4ab3a579717c9d146bd0ddefb58d753c,
     type: 3}

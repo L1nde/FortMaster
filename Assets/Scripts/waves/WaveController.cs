@@ -106,7 +106,7 @@ namespace Assets.Scripts.waves {
         }
 
         private WaveDetails genNextWave() {
-            var nextWaveDetails = new WaveDetails(currentWaveDetails.buildTime,null, 0, Mathf.Max(currentWaveDetails.spawnDelay - 1, 1), currentWaveDetails.waveNr + 1, currentWaveDetails.waveScore + 1);
+            var nextWaveDetails = new WaveDetails(currentWaveDetails.buildTime, null, 0, Mathf.Max(currentWaveDetails.spawnDelay - 0.01f, 0.25f), currentWaveDetails.waveNr + 1, currentWaveDetails.waveScore + Mathf.Pow(3, (currentWaveDetails.waveNr + 1)/5f));
             //Todo balancing
             nextWaveGenerated = true;
             return nextWaveDetails;

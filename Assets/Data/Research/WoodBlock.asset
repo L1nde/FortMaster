@@ -16,5 +16,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 9a87283ee976fd646846f1b11f960726, type: 2}
   researchName: Wood Block
   xpCost: 10
-  researched: 1
+  researched: 0
   block: {fileID: 11400000, guid: 1c425b823f7da19448c2d8080cecd418, type: 2}
