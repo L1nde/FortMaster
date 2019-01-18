@@ -18,7 +18,7 @@ MonoBehaviour:
   attackRange: 10
   moneyOnDeath: 0
   enemyScore: 1
-  minLevel: 0
+  minLevel: 20
   enemyPrefab: {fileID: 18977864580400322, guid: 785f9a9b20a7e9d4e9ed8cf0901e30b4,
     type: 3}
   attackSound: {fileID: 11400000, guid: a7ce58b78fdd91144ae31367fd191e1f, type: 2}

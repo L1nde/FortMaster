@@ -222,6 +222,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1655785535609952, guid: b1c50e01c311bab40be2ac7a6c741c8d, type: 3}
+      propertyPath: m_Name
+      value: WaveManager
+      objectReference: {fileID: 0}
     - target: {fileID: 4352001600698412, guid: b1c50e01c311bab40be2ac7a6c741c8d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -254,26 +258,23 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 4352001600698412, guid: b1c50e01c311bab40be2ac7a6c741c8d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4352001600698412, guid: b1c50e01c311bab40be2ac7a6c741c8d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4352001600698412, guid: b1c50e01c311bab40be2ac7a6c741c8d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 114954119408443644, guid: b1c50e01c311bab40be2ac7a6c741c8d,
         type: 3}
       propertyPath: fortBase
       value: 
       objectReference: {fileID: 339174535}
-    - target: {fileID: 1205870363113972, guid: b1c50e01c311bab40be2ac7a6c741c8d, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114295157333357046, guid: b1c50e01c311bab40be2ac7a6c741c8d,
-        type: 3}
-      propertyPath: enemiesData.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 114295157333357046, guid: b1c50e01c311bab40be2ac7a6c741c8d,
-        type: 3}
-      propertyPath: enemiesData.Array.data[2]
-      value: 
-      objectReference: {fileID: 11400000, guid: 635f3957851839045af1bbdf928adff7,
-        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b1c50e01c311bab40be2ac7a6c741c8d, type: 3}
 --- !u!1001 &830890881

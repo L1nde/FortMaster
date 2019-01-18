@@ -116,14 +116,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shootingAngleOffset: 0
-  damage: 100
+  damage: 50
   posOffset: {x: 0.5, y: 0, z: 0}
   parabola: 0
   speed: 20
   deathDelay: 0
   affectedByGravity: 0
   noGravityTime: 0
-  accuracySpread: 0.5
+  accuracySpread: 0.75
   stayStuck: 0
 --- !u!61 &61349090581882598
 BoxCollider2D:

@@ -132,12 +132,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shootingAngleOffset: 45
-  damage: 150
+  damage: 125
   posOffset: {x: -0.4, y: 0, z: 0}
   parabola: 1
   speed: 1
   deathDelay: 0
   affectedByGravity: 1
   noGravityTime: 0
-  accuracySpread: 0.8
+  accuracySpread: 3
   stayStuck: 0

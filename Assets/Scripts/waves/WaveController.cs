@@ -45,7 +45,7 @@ namespace Assets.Scripts.waves {
                 if (!nextWaveGenerated) {
                     currentWaveDetails = genNextWave();
 
-                    float wavexp = 100;
+                    float wavexp = 10 * currentWaveDetails.waveNr;
                     foreach (Trait trait in GameController.instance.getAllTraits()) {
                         if (trait.isToggled)
                             wavexp *= trait.xpmodifier;
