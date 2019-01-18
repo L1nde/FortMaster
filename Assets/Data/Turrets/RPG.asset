@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: RPG
   m_EditorClassIdentifier: 
   name: RPG launcher
-  cost: 3000
+  cost: 2500
   reloadTime: 10
   attackRange: 15
   minxRange: 0

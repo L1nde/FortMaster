@@ -230,7 +230,7 @@ MonoBehaviour:
   speed: -0.5
   attackDelay: 1
   attackRange: 10
-  moneyOnDeath: 10
+  moneyOnDeath: 25
   attackSound: {fileID: 11400000, guid: e155cbe9738e4ae468b904f90d81adc1, type: 2}
   projectilePrefab: {fileID: 114341463140934870, guid: c874c41003b9ed9479010e688907b355,
     type: 3}

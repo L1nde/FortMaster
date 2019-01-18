@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebc2a87ce6e5b8744a634d540ac2f7b4, type: 3}
   m_Name: Swordmen
   m_EditorClassIdentifier: 
-  hp: 250
+  hp: 150
   speed: -2
   attackDelay: 0.5
   attackRange: 0.5
-  moneyOnDeath: 20
-  enemyScore: 5
+  moneyOnDeath: 35
+  enemyScore: 6
   minLevel: 0
   enemyPrefab: {fileID: 114553184666542520, guid: ad02d701c9dee474c8138dd507e6afca,
     type: 3}

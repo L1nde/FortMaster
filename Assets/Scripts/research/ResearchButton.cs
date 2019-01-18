@@ -138,7 +138,7 @@ public class ResearchButton : MonoBehaviour {
 
     private void createToolTipForResearchBlock(ResearchBlock rb) {
         addTextLineToParent("Type: Structure block", currentToolTip.transform);
-        addTextLineToParent("Gold cost: " + rb.block.cost, currentToolTip.transform);
+        addTextLineToParent("Cost: " + rb.block.cost + " gold", currentToolTip.transform);
         addTextLineToParent("HP: " + rb.block.hp, currentToolTip.transform);
         if (rb.block.name == "Golden") {
             addTextLineToParent("Special: +10% gold gain per block", currentToolTip.transform);
@@ -147,7 +147,7 @@ public class ResearchButton : MonoBehaviour {
 
     private void createToolTipForTurret(ResearchTurret turret) {
         addTextLineToParent("Type: Turret", currentToolTip.transform);
-        addTextLineToParent("Gold cost: " + turret.block.cost, currentToolTip.transform);
+        addTextLineToParent("Cost: " + turret.block.cost + " gold", currentToolTip.transform);
         addTextLineToParent("Damage: " + turret.block.projectile.damage, currentToolTip.transform);
         addTextLineToParent("Reload: " + turret.block.reloadTime + "s", currentToolTip.transform);
         addTextLineToParent("Range: " + turret.block.attackRange, currentToolTip.transform);

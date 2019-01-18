@@ -49,9 +49,9 @@ public class UIController : MonoBehaviour {
     {
         
         if (ScrollableResearchView == null) {
-            tutorialPart(5);
             ScrollableResearchView = ResearchController.instance.getScrollableResearchView();
             ScrollableResearchView.transform.SetParent(researchScreen.transform, false);
+            tutorialPart(5);
         }
         researchScreen.SetActive(!researchScreen.activeSelf);
         if (!researchScreen.activeSelf) {

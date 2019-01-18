@@ -9,8 +9,18 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1632828922115676, guid: efe15fb49bafcb74091b0fa3b8a3a4ec, type: 3}
       propertyPath: m_Name
-      value: ScrollableResearchView
+      value: ScrollableResearchView Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 114852946797214926, guid: efe15fb49bafcb74091b0fa3b8a3a4ec,
+        type: 3}
+      propertyPath: m_Content
+      value: 
+      objectReference: {fileID: 2287119391090826632}
+    - target: {fileID: 114852946797214926, guid: efe15fb49bafcb74091b0fa3b8a3a4ec,
+        type: 3}
+      propertyPath: m_Viewport
+      value: 
+      objectReference: {fileID: 2287466534724317892}
     - target: {fileID: 224346500864924808, guid: efe15fb49bafcb74091b0fa3b8a3a4ec,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -116,5 +126,27 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 224209351615927480, guid: efe15fb49bafcb74091b0fa3b8a3a4ec,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224209351615927480, guid: efe15fb49bafcb74091b0fa3b8a3a4ec,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: efe15fb49bafcb74091b0fa3b8a3a4ec, type: 3}
+--- !u!224 &2287466534724317892 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 224970463390284788, guid: efe15fb49bafcb74091b0fa3b8a3a4ec,
+    type: 3}
+  m_PrefabInstance: {fileID: 2063202509769607472}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &2287119391090826632 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 224209351615927480, guid: efe15fb49bafcb74091b0fa3b8a3a4ec,
+    type: 3}
+  m_PrefabInstance: {fileID: 2063202509769607472}
+  m_PrefabAsset: {fileID: 0}

@@ -37,6 +37,7 @@ public GameObject getScrollableResearchView() {
         inst.GetComponent<RectTransform>().offsetMax = Vector2.zero;
         inst.GetComponent<RectTransform>().offsetMin = Vector2.zero;
         foreach (var button in inst.GetComponentsInChildren<ResearchButton>()) {
+            Debug.Log("kek");
             button.setNodeData(researchTree);
         }
 

@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f903e2bcf9885e94ebb4910f16c0855e, type: 3}
   m_Name: Soldier
   m_EditorClassIdentifier: 
-  hp: 100
+  hp: 350
   speed: -1
   attackDelay: 1
   attackRange: 10
-  moneyOnDeath: 0
-  enemyScore: 1
+  moneyOnDeath: 50
+  enemyScore: 25
   minLevel: 20
   enemyPrefab: {fileID: 18977864580400322, guid: 785f9a9b20a7e9d4e9ed8cf0901e30b4,
     type: 3}

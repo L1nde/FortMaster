@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Concrete
   cost: 150
-  hp: 250
+  hp: 300
   sprite: {fileID: 21300000, guid: 90b166103c8d7d9449c4cf68a76e8362, type: 3}
   jointBreakTorque: 1000
   placeSoundGroup: {fileID: 11400000, guid: 3dfd65058b6029645aa9af59b6485835, type: 2}

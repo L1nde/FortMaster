@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Minigun
   m_EditorClassIdentifier: 
   name: Minigun
-  cost: 3000
+  cost: 2000
   reloadTime: 0.08
   attackRange: 12.5
   minxRange: 0

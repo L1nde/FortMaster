@@ -116,7 +116,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shootingAngleOffset: 0
-  damage: 50
+  damage: 75
   posOffset: {x: 0.5, y: 0, z: 0}
   parabola: 0
   speed: 20
