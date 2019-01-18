@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Stone
   cost: 200
-  hp: 250
+  hp: 400
   sprite: {fileID: 21300000, guid: c1720308c39bbf245abaa4a486983ebe, type: 3}
   jointBreakTorque: 10000
   placeSoundGroup: {fileID: 11400000, guid: 3dfd65058b6029645aa9af59b6485835, type: 2}
