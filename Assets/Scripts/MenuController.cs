@@ -62,6 +62,8 @@ namespace Assets.Scripts {
                 var save = Instantiate(saveObject, savesParent.transform);
                 save.GetComponentInChildren<Text>().text = "Wave " + fileInfo.Name.Substring(0, fileInfo.Name.Length - 4);
                 save.GetComponentInChildren<Button>().onClick.AddListener(() => loadSave(fileInfo.Name));
+                save.GetComponentsInChildren<Text>()[1].text =
+                    "XP earned: " + SaveController.instance.LoadWave(fileInfo.Name).xpEarned;
                 saves.Add(save);
 
             }

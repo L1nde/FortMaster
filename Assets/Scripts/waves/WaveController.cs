@@ -45,7 +45,15 @@ namespace Assets.Scripts.waves {
             if (waveOver) {
                 if (!nextWaveGenerated) {
                     currentWaveDetails = genNextWave();
-                    saveWave();
+
+                    float wavexp = 100;
+                    foreach (Trait trait in GameController.instance.getAllTraits()) {
+                        if (trait.isToggled)
+                            wavexp *= trait.xpmodifier;
+                    }
+                    GameController.instance.addXP(wavexp);
+
+                    saveWave(wavexp);
                     GameController.instance.saveData();
                 }
 
@@ -73,17 +81,17 @@ namespace Assets.Scripts.waves {
             // Todo no good here
             // Todo need balancing
             if (waveOver && waveCheck) {
-                float wavexp = 100;
-                foreach (Trait trait in GameController.instance.getAllTraits()) {
-                    if (trait.isToggled)
-                        wavexp *= trait.xpmodifier;
-                }
-                GameController.instance.addXP(wavexp);
-                waveCheck = false;
+//                float wavexp = 100;
+//                foreach (Trait trait in GameController.instance.getAllTraits()) {
+//                    if (trait.isToggled)
+//                        wavexp *= trait.xpmodifier;
+//                }
+//                GameController.instance.addXP(wavexp);
+//                waveCheck = false;
             }
         }
 
-        private void saveWave() {
+        private void saveWave(float xpEarned) {
             // Wave saving
             List<PlaceableSaveObject> placeableSaveObjects = new List<PlaceableSaveObject>();
             foreach (var block in fortBase.GetComponentsInChildren<Placeable>()) {
@@ -93,6 +101,7 @@ namespace Assets.Scripts.waves {
             currentWaveDetails.fortObjects = placeableSaveObjects;
             currentWaveDetails.terrainGenObject = new TerrainGenObject(MapGeneration.instance.maxX, MapGeneration.instance.maxY, MapGeneration.instance.minX, MapGeneration.instance.minY, MapGeneration.instance.seed);
             currentWaveDetails.gold = GameController.instance.gold;
+            currentWaveDetails.xpEarned = xpEarned;
             SaveController.instance.saveWave(currentWaveDetails, currentWaveDetails.waveNr);
         }
 

@@ -10,11 +10,7 @@ namespace Assets.Scripts.waves {
         public float buildTime = 30f;
         public int waveNr = 0;
         public float gold;
-//
-//        public WaveSaveObject ToWaveSaveObject() {
-//            return new WaveSaveObject(this);
-//        }
-//
+
         public WaveDetails ToWaveDetails() {
             return new WaveDetails(buildTime, null, gold, spawnDelay, waveNr, waveScore);
         }

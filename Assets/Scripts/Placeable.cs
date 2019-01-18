@@ -29,10 +29,6 @@ public abstract class Placeable : MonoBehaviour {
     public abstract void place(Transform parent);
     public abstract void placeFree(Transform parent);
 
-    public void research()
-    {
-
-    }
 
     protected void setSelectedAlpha(float a) {
         Color c = gameObject.GetComponent<SpriteRenderer>().color;

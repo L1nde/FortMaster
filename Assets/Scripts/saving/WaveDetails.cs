@@ -11,6 +11,7 @@ namespace Assets.Scripts.waves {
         public float gold;
         public List<PlaceableSaveObject> fortObjects;
         public TerrainGenObject terrainGenObject;
+        public float xpEarned;
 
 
         public WaveDetails(float buildTime, List<PlaceableSaveObject> fortObjects, float gold, float spawnDelay, int waveNr, float waveScore) {
