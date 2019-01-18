@@ -11,10 +11,9 @@ namespace Assets.Scripts.Research {
 
         private HashSet<ResearchItem> childs = new HashSet<ResearchItem>();
 
-        public void OnEnable() {
+        public void Init() {
             foreach (var item in prerequisites) {
                 item.addChild(this);
-               
             }
         }
 
@@ -26,4 +25,6 @@ namespace Assets.Scripts.Research {
             return childs;
         }
     }
+
+
 }
