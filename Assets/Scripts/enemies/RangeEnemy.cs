@@ -10,7 +10,7 @@ namespace Assets.Scripts.enemies {
         new void Start() {
             base.Start();
             Vector3 scale = gameObject.transform.localScale;
-            if (scale.x > 0)
+            if (scale.x > 0 && gameObject.name.Contains("Soldier"))
                 scale.x *= -1;
             transform.transform.localScale = scale;
         }
