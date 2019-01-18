@@ -17,9 +17,16 @@ public class MapGeneration : MonoBehaviour {
     public Tilemap tilemap;
     public List<TileBase> tilebase = new List<TileBase>();
 
+    public Camera cam;
+    public GameObject fortBase;
+
     public int seed;
 
+    private int[] coordsCore = new int[2];
+
     public void Start() {
+        coordsCore[0] = -1;
+        coordsCore[1] = -1;
         if (instance == null)
             instance = this;
         else if (instance != this)
@@ -40,6 +47,9 @@ public class MapGeneration : MonoBehaviour {
 
         // Generate map
         generateMap(this.seed);
+
+
+        fortBase.GetComponentInChildren<Core>().gameObject.transform.position = new Vector3(coordsCore[0], coordsCore[1]);
     }
 
     public int generateSeed() {
@@ -122,8 +132,25 @@ public class MapGeneration : MonoBehaviour {
                 map[x, y] = 1;
             }
 
+            if (coordsCore[0] == -1 && coordsCore[1] == -1)
+            {
+                coordsCore[0] = minX + x + 1;
+                coordsCore[1] = minY + lastHeight + 2;
+            }
+            else
+            {
+                Vector3 temp = cam.WorldToViewportPoint(new Vector3(coordsCore[0], coordsCore[1], 0));
+                if (temp.x > 1 || temp.x < 0 || temp.y > 1 || temp.y < 0)
+                {
+                    coordsCore[0] = minX + x + 1;
+                    coordsCore[1] = minY + lastHeight + 2;
+                }
+            }
+
             if (sectionWidth == 1 && lastPlus)
+            {
                 map[x, lastHeight] = 3;
+            }
             lastPlus = false;
         }
 
